@@ -53,3 +53,9 @@ development:
 #   database: vitalsyn_production
 #   username: vitalsyn
 #   password: <%= ENV['VITALSYN_DATABASE_PASSWORD'] %>
+
+production:
+  adapter:    postgresql
+  database:   vital_synapse
+  pool:       10
+  timeout:    5000
