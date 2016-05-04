@@ -17,7 +17,7 @@
 #   password: chandima9
 #   host: localhost
 #   socket: /var/run/mysqld/mysqld.sock
-#
+
 development:
   adapter:    postgresql
   database:   vital_synapse
