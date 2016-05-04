@@ -18,7 +18,8 @@ Devise.setup do |config|
   # config.mailer = 'Devise::Mailer'
 
   ## facebook omnitauth key and secret
-  config.omniauth :facebook, "1032668920145714", "585f6bf04d0cdd62309f383c85f07c87"
+  config.omniauth :facebook,
+  "1032668920145714", "585f6bf04d0cdd62309f383c85f07c87"
 
 
   # ==> ORM configuration
