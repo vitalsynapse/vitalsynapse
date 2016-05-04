@@ -18,7 +18,11 @@
 #   host: localhost
 #   socket: /var/run/mysqld/mysqld.sock
 #
-# development:
+development:
+  adapter:    postgresql
+  database:   vital_synapse
+  pool:       10
+  timeout:    5000
 #   <<: *default
 #   database: vitalsyn_development
 
