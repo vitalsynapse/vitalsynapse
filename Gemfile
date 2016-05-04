@@ -24,11 +24,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Added gems
-gem 'devise', '~> 3.5', '>= 3.5.6' 
-gem 'bootstrap-sass' 
+gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem 'delayed_job_active_record'
 gem 'devise_zxcvbn'
+
+#purry -fb 
+gem 'omniauth-facebook'
 
 
 # Use ActiveModel has_secure_password
@@ -52,4 +55,3 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
-
