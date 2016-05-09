@@ -1,0 +1,44 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<h1> <%= @user.first_name %> </h1>
+<h1> BMI <%= @user.bmi %> </h1>
+<h1> BLOOD : <%= @user.blood_type %> </h1>
+<td><%= link_to 'Edit', edit_user_path(@user),  class: "btn btn-lg btn-danger" %></td>
+
+<!-- <button type="button" class="btn btn-danger" id="edit_profile">EDIT</button> -->
+
+<%if @user_health != nil  %>
+  <%  @user_health.all.each do |health_record| %>
+    <table>
+      <thead>
+        <tr>
+          <td> Subject </td>
+          <td> Details </td>
+          <td> File </td>
+        </tr>
+      </thead>
+
+      <tbody>
+         <tr>
+           <td><%= health_record.subject%> </td>
+           <td><%= health_record.details %> </td>
+           <td><%= health_record.file%> </td>
+
+         </tr>
+      </tbody>
+    </table>
+  <% end %>
+<% end %>
+<%= nested_form_for @user do |f| %>
+<%= f.fields_for :healths do |task_form| %>
+  Subject <%= task_form.text_field :subject %>
+   Details :  <%= task_form.text_field :details %>
+  File : <%= task_form.text_field :file %>
+  <%= task_form.link_to_remove "Remove this record" %>
+<% end %>
+<p><%= f.link_to_add "Add a task", :healths %></p>
+<%= f.submit "ADD RECORD" %>
+<% end %>
