@@ -18,8 +18,7 @@ Devise.setup do |config|
   # config.mailer = 'Devise::Mailer'
 
   ## facebook omnitauth key and secret for staging/production
-  config.omniauth :facebook,
-  "1032668920145714", "585f6bf04d0cdd62309f383c85f07c87"
+  config.omniauth :facebook, ENV["1032668920145714"] , ENV["585f6bf04d0cdd62309f383c85f07c87"], scope: 'email', info_fields: 'email, first_name, last_name'
 
 
   ## facebook omnitauth key and secret for development
