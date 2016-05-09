@@ -89,4 +89,5 @@ Rails.application.configure do
       :password       => ENV['VSsocial123'],
       :domain         => 'heroku.com',
       :enable_starttls_auto => true
+    }
 end
