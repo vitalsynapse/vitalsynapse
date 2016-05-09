@@ -30,6 +30,7 @@ gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem 'delayed_job_active_record'
 gem 'devise_zxcvbn'
+gem 'carrierwave'
 
 #purry -fb
 gem 'omniauth-facebook'

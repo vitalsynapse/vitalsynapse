@@ -25,18 +25,18 @@
          <tr>
            <td><%= health_record.subject%> </td>
            <td><%= health_record.details %> </td>
-           <td><%= health_record.file%> </td>
+           <td>    <%= image_tag(health_record.file.url, :width => 100, :height => 100)%></td>
 
          </tr>
       </tbody>
     </table>
   <% end %>
 <% end %>
-<%= nested_form_for @user do |f| %>
+<%= nested_form_for @user,:html => {:multipart => true} do |f| %>
 <%= f.fields_for :healths do |task_form| %>
   Subject <%= task_form.text_field :subject %>
    Details :  <%= task_form.text_field :details %>
-  File : <%= task_form.text_field :file %>
+  File : <%= task_form.file_field :file %>
   <%= task_form.link_to_remove "Remove this record" %>
 <% end %>
 <p><%= f.link_to_add "Add a task", :healths %></p>
