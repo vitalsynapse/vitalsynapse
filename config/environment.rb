@@ -25,8 +25,8 @@ Rails.application.initialize!
       :address        => 'smtp.sendgrid.net',
       :port           => '587',
       :authentication => :plain,
-      :user_name      => ENV['vsnoreply'],
-      :password       => ENV['VSsocial123'],
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
       :domain         => 'vitalsynapse-staging.herokuapp.com',
       :enable_starttls_auto => true
     }
