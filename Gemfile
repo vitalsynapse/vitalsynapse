@@ -4,7 +4,8 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5.1'
 # Use mysql as the database for Active Record
-gem 'mysql2', '>= 0.3.13', '< 0.5'
+# gem 'mysql2', '>= 0.3.13', '< 0.5'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -24,11 +25,14 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 #Added gems
-gem 'devise', '~> 3.5', '>= 3.5.6' 
-gem 'bootstrap-sass' 
+gem 'devise', '~> 3.5', '>= 3.5.6'
+gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem 'delayed_job_active_record'
 gem 'devise_zxcvbn'
+
+#purry -fb
+gem 'omniauth-facebook'
 
 
 # Use ActiveModel has_secure_password
@@ -42,6 +46,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'mysql2', '>= 0.3.13', '< 0.5'
+
+  gem 'rspec-rails', '2.13.1'
   gem 'byebug'
 end
 
@@ -53,3 +60,8 @@ group :development do
   gem 'spring'
 end
 
+
+group :production do
+  gem 'pg', '0.15.1'
+  gem 'rails_12factor'
+end

@@ -11,23 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160427074853) do
+=======
+ActiveRecord::Schema.define(version: 20160504114744) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+>>>>>>> origin/staging
 
   create_table "admins", force: :cascade do |t|
-    t.string   "email",              limit: 255, default: "", null: false
-    t.string   "encrypted_password", limit: 255, default: "", null: false
-    t.integer  "sign_in_count",      limit: 4,   default: 0
+    t.string   "email",              default: "", null: false
+    t.string   "encrypted_password", default: "", null: false
+    t.integer  "sign_in_count",      default: 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip", limit: 255
-    t.string   "last_sign_in_ip",    limit: 255
-    t.integer  "failed_attempts",    limit: 4,   default: 0
-    t.string   "unlock_token",       limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.integer  "failed_attempts",    default: 0
+    t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
+<<<<<<< HEAD
   create_table "bmis", force: :cascade do |t|
     t.integer  "height",        limit: 4
     t.integer  "weight",        limit: 4
@@ -36,39 +44,55 @@ ActiveRecord::Schema.define(version: 20160427074853) do
     t.datetime "updated_at",               null: false
   end
 
+=======
+  create_table "identities", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.string   "provide",    limit: 255
+    t.string   "uid",        limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
+>>>>>>> origin/staging
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",             limit: 255
-    t.string   "last_name",              limit: 255
-    t.string   "gender",                 limit: 255
-    t.string   "ethnicity",              limit: 255
-    t.string   "blood_type",             limit: 255
-    t.string   "occupation",             limit: 255
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.string   "ethnicity"
+    t.string   "blood_type"
+    t.string   "occupation"
     t.date     "dob"
-    t.string   "marital_status",         limit: 255
-    t.string   "address",                limit: 255
-    t.string   "state",                  limit: 255
-    t.string   "city",                   limit: 255
-    t.string   "postcode",               limit: 255
-    t.string   "email",                  limit: 255, default: "",    null: false
-    t.string   "encrypted_password",     limit: 255, default: "",    null: false
-    t.string   "reset_password_token",   limit: 255
+    t.string   "marital_status"
+    t.string   "address"
+    t.string   "state"
+    t.string   "city"
+    t.string   "postcode"
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          limit: 4,   default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.string   "confirmation_token",     limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "unconfirmed_email",      limit: 255
-    t.integer  "failed_attempts",        limit: 4,   default: 0,     null: false
-    t.string   "unlock_token",           limit: 255
+    t.string   "unconfirmed_email"
+    t.integer  "failed_attempts",        default: 0,     null: false
+    t.string   "unlock_token"
     t.datetime "locked_at"
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.boolean  "admin",                              default: false
+    t.string   "name",                   limit: 255
+    t.string   "provider",               limit: 255
+    t.string   "uid",                    limit: 255
+>>>>>>> fbloginnew
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -76,4 +100,5 @@ ActiveRecord::Schema.define(version: 20160427074853) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "identities", "users"
 end
