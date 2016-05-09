@@ -11,14 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160427074853) do
-=======
+
 ActiveRecord::Schema.define(version: 20160504114744) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
->>>>>>> origin/staging
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              default: "", null: false
@@ -35,7 +32,7 @@ ActiveRecord::Schema.define(version: 20160504114744) do
     t.datetime "updated_at"
   end
 
-<<<<<<< HEAD
+
   create_table "bmis", force: :cascade do |t|
     t.integer  "height",        limit: 4
     t.integer  "weight",        limit: 4
@@ -43,8 +40,6 @@ ActiveRecord::Schema.define(version: 20160504114744) do
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
-
-=======
   create_table "identities", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
     t.string   "provide",    limit: 255
@@ -55,7 +50,7 @@ ActiveRecord::Schema.define(version: 20160504114744) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
->>>>>>> origin/staging
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -92,7 +87,7 @@ ActiveRecord::Schema.define(version: 20160504114744) do
     t.string   "name",                   limit: 255
     t.string   "provider",               limit: 255
     t.string   "uid",                    limit: 255
->>>>>>> fbloginnew
+
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
