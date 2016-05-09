@@ -222,6 +222,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   jquery-turbolinks
+  mail
   mysql2 (>= 0.3.13, < 0.5)
   omniauth-facebook
   pg (= 0.15.1)

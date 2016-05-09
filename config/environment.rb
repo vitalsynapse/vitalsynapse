@@ -20,3 +20,13 @@ Rails.application.initialize!
     #   authentication: :plain,
     #   domain: 'vitalsynapse-staging.herokuapp.com'
     # }
+
+    ActionMailer::Base.smtp_settings = {
+      :address        => 'smtp.sendgrid.net',
+      :port           => '587',
+      :authentication => :plain,
+      :user_name      => ENV['vsnoreply'],
+      :password       => ENV['VSsocial123'],
+      :domain         => 'vitalsynapse-staging.herokuapp.com',
+      :enable_starttls_auto => true
+    }

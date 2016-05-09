@@ -39,11 +39,31 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }  #to properly generate links inside the e-mail views.
+   config.action_mailer.default_url_options = { host: '127.0.0.1', port: 3000 }  #to properly generate links inside the e-mail views.
 
   # config.action_mailer.perform_deliveries = true
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+  # config.action_mailer.smtp_settings = { :address => "localhost", :port => 1025 }
+
+
+
+    #Added per active admin install instructions
+# config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+
+#These settings are for the sending out email for active admin and consequently the   devise mailer
+ActionMailer::Base.delivery_method = :smtp
+ActionMailer::Base.perform_deliveries = true
+ActionMailer::Base.raise_delivery_errors = true
+
+config.action_mailer.smtp_settings = {
+  address:              'smtp.gmail.com',
+  port:                 587,
+  domain:               'example.com',
+  user_name:            'purry235@gmail.com',
+  password:             'Chandima23*',
+  authentication:       'plain',
+  enable_starttls_auto: true  }
 
 end

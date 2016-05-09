@@ -30,9 +30,11 @@ gem 'bootstrap-sass'
 gem 'jquery-turbolinks'
 gem 'delayed_job_active_record'
 gem 'devise_zxcvbn'
+gem 'mail'
 
 #purry -fb
 gem 'omniauth-facebook'
+
 
 
 # Use ActiveModel has_secure_password

@@ -11,7 +11,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 20160504114744) do
 
   # These are extensions that must be enabled in order to support this database
@@ -32,24 +31,13 @@ ActiveRecord::Schema.define(version: 20160504114744) do
     t.datetime "updated_at"
   end
 
-
   create_table "bmis", force: :cascade do |t|
-    t.integer  "height",        limit: 4
-    t.integer  "weight",        limit: 4
-    t.float    "bodymassindex", limit: 24
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.integer  "height"
+    t.integer  "weight"
+    t.float    "bodymassindex"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
-  create_table "identities", force: :cascade do |t|
-    t.integer  "user_id",    limit: 4
-    t.string   "provide",    limit: 255
-    t.string   "uid",        limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
-
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -81,13 +69,11 @@ ActiveRecord::Schema.define(version: 20160504114744) do
     t.integer  "failed_attempts",        default: 0,     null: false
     t.string   "unlock_token"
     t.datetime "locked_at"
-    t.datetime "created_at",                                         null: false
-    t.datetime "updated_at",                                         null: false
-    t.boolean  "admin",                              default: false
-    t.string   "name",                   limit: 255
-    t.string   "provider",               limit: 255
-    t.string   "uid",                    limit: 255
-
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false
+    t.string   "provider"
+    t.string   "uid"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -95,5 +81,4 @@ ActiveRecord::Schema.define(version: 20160504114744) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
-  add_foreign_key "identities", "users"
 end
