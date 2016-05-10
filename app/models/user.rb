@@ -7,11 +7,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable,
          :omniauthable, :omniauth_providers => [:facebook]
 
- enum gender: [:male, :female]
- enum marital_status: [:single, :married, :widowed, :divorced]
- enum blood_type: [:A, :B, :AB, :O]
- enum ethnicity: [:Malay, :Indian, :Chinese, :Others]
- enum occupation: [:Professional, :Student, :Unemployed, :Executive]
+ enum gender: [ :female,:male]
+ enum marital_status: [:divorced, :married, :single, :widowed]
+ enum blood_type: [:a, :ab, :b, :o]
+ enum ethnicity: [:african,:caribbean,:caucasian,:chinese,:indian, :malay,:orang_asal ]
+ enum occupation: [ :executive, :professional, :student, :unemployed,]
 	# def send_devise_notification(notification, *args)
  #  		devise_mailer.send(notification, self, *args).deliver_later
 	# end
