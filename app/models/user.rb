@@ -1,15 +1,26 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  has_many :healths
+  has_many :survey_records
+  has_many :results, :through => :survey_records
+  has_many :questions, :through => :results
+  has_many :answers, :through => :results
+  accepts_nested_attributes_for :healths
+  accepts_nested_attributes_for :survey_records
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable,
          :omniauthable, :omniauth_providers => [:facebook]
 
+ enum gender: [ :female,:male]
+ enum marital_status: [:divorced, :married, :single, :widowed]
+ enum blood_type: [:a, :ab, :b, :o]
+ enum ethnicity: [:african,:caribbean,:caucasian,:chinese,:indian, :malay,:orang_asal ]
+ enum occupation: [ :executive, :professional, :student, :unemployed,]
 
 	# def send_devise_notification(notification, *args)
  #  		devise_mailer.send(notification, self, *args).deliver_later
 	# end
-
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
@@ -25,5 +36,10 @@ class User < ActiveRecord::Base
        user.email = data["email"] if user.email.blank?
      end
    end
+ end
+
+ def bmi
+   height = self.height
+   self.weight/(height*height)
  end
 end

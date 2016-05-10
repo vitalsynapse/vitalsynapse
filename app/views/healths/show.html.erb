@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @health.user %>
+</p>
+
+<p>
+  <strong>Subject:</strong>
+  <%= @health.subject %>
+</p>
+
+<p>
+  <strong>Details:</strong>
+  <%= @health.details %>
+</p>
+
+<p>
+  <strong>File:</strong>
+  <%= @health.file %>
+</p>
+
+<%= link_to 'Edit', edit_health_path(@health) %> |
+<%= link_to 'Back', healths_path %>

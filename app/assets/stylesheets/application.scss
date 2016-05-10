@@ -9,3 +9,40 @@
 .alert-notice {
   @extend .alert-info;
 }
+
+.navbar-inverse {
+   background-image: linear-gradient(to bottom, rgb(242, 242, 242) 0%, rgb(242, 242, 242)100%);
+   padding-left: 185px
+
+}
+
+#dashboardbody {
+  padding-left: 140px;
+}
+
+#formbody {
+  padding-left: 140px;
+}
+
+.sidenav-details {
+  padding-top: 200px;
+
+  .btn{
+    margin-bottom: 10px !important;
+    font-size: 20px !important
+  }
+}
+
+
+
+
+#userdetails {
+  background-color:rgba(72,72,72,0.4);
+
+border: 1px solid;
+// padding-top: 50px;
+// padding-bottom: 50px;
+// padding-left: 20px;
+// padding-right: 20px;
+ margin-bottom: 50px
+}

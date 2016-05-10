@@ -1,0 +1,186 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+ <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<div class="container" id="dashboardbody">
+
+    <div class="row"  id="userdetails" >
+      <h1> <%#= @user.first_name %> </h1>
+      <div class="col-md-1">
+        <center>
+        <h3><%=  @user.gender.chars.first.capitalize %></h3>
+      </center>
+      </div>
+      <div class="col-md-2" >
+        <center>
+        <li><h4> <%= @user.weight %> kg </h4></li>
+        <li><h4> <%= @user.height%> m </h4> </li>
+        </center>
+      </div>
+      <div class="col-md-3">
+        <center>
+        <h3> BMI <%= @user.bmi %> </h3>
+      </center>
+      </div>
+      <div class="col-md-3">
+        <h3> BLOOD : <%= @user.blood_type %> </h3>
+      </div>
+      <div class="col-md-3">
+        <%= link_to 'Edit Profile', edit_user_path(@user),  class: "btn btn-lg btn-danger" %>
+      </div>
+  </div>
+    <!-- <button type="button" class="btn btn-danger" id="edit_profile">EDIT</button> -->
+    <div class="maindashboard">
+
+    </div>
+
+    <div class ="basichealth">
+      <div class="row" id="uploadsdesc">
+        <div class="col-md-6" >
+          <button type="button" class="btn btn-danger btn-block" id="basicbtn">Basic Health</button>
+        </div>
+
+        <div class="col-md-6" >
+          <button type="button" class="btn btn-danger btn-block" id="healthbtn">Health Upload</button>
+        </div>
+
+      </div>
+        <div class="questionaire">
+          <h3> Basic Questionaire </h3>
+
+          <%if @user_questionaire != nil  %>
+            <%  @user_questionaire.all.each do |survey| %>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <td> Subject </td>
+                    <td> Date </td>
+
+                  </tr>
+                </thead>
+                <tbody>
+                   <tr>
+                     <td><%= survey.subject%> </td>
+                     <td><%= survey.created_at.strftime('%v')%> </td>
+                   </tr>
+                </tbody>
+              </table>
+            <% end %>
+          <% end %>
+
+          <%= nested_form_for @user,:html => {:multipart => true}  do |f| %>
+              <div class="surveyrecord">
+                  <%= f.fields_for :survey_records do |survey| %>
+                    Subject: <%= survey.text_field :subject %><br>
+                    <% @questions.each do |question| %>
+                      <%= question.description %><br>
+                        <%= survey.fields_for :results do |q| %>
+                          <%= q.hidden_field :question_id, question.id %>
+                            <%# question.answers.each do |ans| %>
+                              <%#= q.check_box :question_id, ans.description %>
+                            <%# end %>
+                          <%# end %>
+                      <% end %>
+                  <% end %>
+                    <%= survey.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                    <%= f.submit "submit", class: "btn btn-warning" %>
+              <% end %>
+            </div>
+          <%= f.link_to_add "Add a New Record", :survey_records, class: "btn btn-info new-record"%>
+          <% end %>
+
+          <p>  Basic Questionaire End </p>
+      </div>
+
+
+      <div class="healthupload">
+        <h3> Health Upload </h3>
+        <%if @user_health != nil  %>
+          <%  @user_health.all.each do |health_record| %>
+            <table class="table">
+              <thead>
+                <tr>
+                  <td> Subject </td>
+                  <td> Details </td>
+                  <td> Date</td>
+                  <td> File </td>
+                </tr>
+              </thead>
+
+              <tbody>
+                 <tr>
+                   <td><%= health_record.subject%> </td>
+                   <td><%= health_record.details %> </td>
+                   <td><%= health_record.created_at.strftime('%v')%> </td>
+                   <td>    <%= image_tag(health_record.file.url, :width => 100, :height => 100)%></td>
+
+                 </tr>
+              </tbody>
+            </table>
+          <% end %>
+        <% end %>
+
+
+        <%= nested_form_for @user,:html => {:multipart => true}  do |f| %>
+
+          <div class="healthrecord">
+            <%= f.fields_for :healths do |task_form| %>
+              Subject <%= task_form.text_field :subject %>
+               Details :  <%= task_form.text_field :details %>
+              File : <%= task_form.file_field :file %>
+              <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+              <%= f.submit "submit", class: "btn btn-warning" %>
+            <% end %>
+          </div>
+
+            <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
+
+        <% end %>
+
+
+
+        <h3> health upload end </h3>
+      </div>
+    </div>
+</div>
+
+<script>
+$( document ).ready(function() {
+
+  $( ".basichealth" ).hide();
+
+
+    $( "#dashboardbtn" ).click(function() {
+      console.log("hello basichealthbtn")
+      $( ".maindashboard" ).show();
+      $( ".basichealth" ).hide();
+    });
+
+    $( "#basichealthbtn" ).click(function() {
+      $( ".maindashboard" ).hide();
+      $( ".basichealth" ).show();
+    });
+
+
+      $( ".questionaire" ).show();
+      $( ".healthupload" ).hide();
+      $( ".surveyrecord" ).hide();
+      $( ".healthrecord" ).hide();
+
+      $( "#basicbtn" ).click(function() {
+        $( ".questionaire" ).show();
+        $( ".healthupload" ).hide();
+      });
+
+      $( "#healthbtn" ).click(function() {
+        $( ".questionaire" ).hide();
+        $( ".healthupload" ).show();
+      });
+
+
+
+});
+
+
+</script>
