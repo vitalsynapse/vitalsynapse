@@ -5,7 +5,7 @@ class HealthRecordUploader < CarrierWave::Uploader::Base
   # Include RMagick or MiniMagick support:
   # include CarrierWave::RMagick
   # include CarrierWave::MiniMagick
-  mount_uploader :file, PictureUploader
+  # mount_uploader :file, PictureUploader
 
   # Choose what kind of storage to use for this uploader:
   storage :file
