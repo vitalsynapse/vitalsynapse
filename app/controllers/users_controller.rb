@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   def userdashboard
     @user = User.find(current_user.id)
     @user_health = Health.where(user_id: @user.id)
+    @user_questionaire = SurveyRecord.where(user_id: @user.id)
+    @questions=  Question.all
+    # @first_question = @question.find(1)
 
   end
   # GET /users/1
@@ -77,7 +80,7 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(
       :first_name, :lastname, :gender, :ethnicity, :blood_type, :occupation, :dob, :marital_status, :address, :state, :city, :postcode, :email,
-      :height, :weight, :name, healths_attributes: [:subject, :details, :file]
+      :height, :weight, :name, healths_attributes: [:subject, :details, :file], survey_records_attributes: [:user_id, :subject, results_attributes: [:survey_record_id, :question_id, :answer]]
       )
     end
 

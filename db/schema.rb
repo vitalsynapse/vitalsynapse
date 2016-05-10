@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510011936) do
+ActiveRecord::Schema.define(version: 20160510071247) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              limit: 255, default: "", null: false
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20160510011936) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "question_id", limit: 4
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "healths", force: :cascade do |t|
     t.integer  "user_id",    limit: 4
@@ -48,6 +57,40 @@ ActiveRecord::Schema.define(version: 20160510011936) do
   end
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
+
+  create_table "questionaires", force: :cascade do |t|
+    t.text     "question",   limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.text     "description", limit: 65535
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  create_table "results", force: :cascade do |t|
+    t.integer  "survey_record_id", limit: 4
+    t.integer  "question_id",      limit: 4
+    t.text     "answer",           limit: 65535
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "answer_id",        limit: 4
+  end
+
+  add_index "results", ["answer_id"], name: "index_results_on_answer_id", using: :btree
+  add_index "results", ["question_id"], name: "index_results_on_question_id", using: :btree
+  add_index "results", ["survey_record_id"], name: "index_results_on_survey_record_id", using: :btree
+
+  create_table "survey_records", force: :cascade do |t|
+    t.text     "subject",    limit: 65535
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "user_id",    limit: 4
+  end
+
+  add_index "survey_records", ["user_id"], name: "index_survey_records_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name",             limit: 255
@@ -94,6 +137,11 @@ ActiveRecord::Schema.define(version: 20160510011936) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "healths", "users"
   add_foreign_key "identities", "users"
+  add_foreign_key "results", "answers"
+  add_foreign_key "results", "questions"
+  add_foreign_key "results", "survey_records"
+  add_foreign_key "survey_records", "users"
 end

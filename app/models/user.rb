@@ -2,7 +2,12 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :healths
+  has_many :survey_records
+  has_many :results, :through => :survey_records
+  has_many :questions, :through => :results
+  has_many :answers, :through => :results
   accepts_nested_attributes_for :healths
+  accepts_nested_attributes_for :survey_records
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable,
          :omniauthable, :omniauth_providers => [:facebook]
