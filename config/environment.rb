@@ -1,7 +1,7 @@
 # Load the Rails application.
 require File.expand_path('../application', __FILE__)
-# require 'carrierwave'
-# require 'carrierwave/orm/activerecord'
+require 'carrierwave'
+require 'carrierwave/orm/activerecord'
 # Initialize the Rails application.
 Rails.application.initialize!
 
