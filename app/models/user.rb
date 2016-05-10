@@ -40,6 +40,7 @@ class User < ActiveRecord::Base
 
  def bmi
    height = self.height
-   self.weight/(height*height)
+   bmi = self.weight/(height*height)
+   bmi.round(2)
  end
 end

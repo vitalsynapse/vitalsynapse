@@ -4,12 +4,20 @@
 
 
 <div class="container" id="dashboardbody">
+  
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+
 
     <div class="row"  id="userdetails" >
       <h1> <%#= @user.first_name %> </h1>
       <div class="col-md-1">
         <center>
-        <h3><%=  @user.gender.chars.first.capitalize %></h3>
+
+        <h3><%=   @user.gender || " " %></h3>
       </center>
       </div>
       <div class="col-md-2" >
@@ -20,7 +28,7 @@
       </div>
       <div class="col-md-3">
         <center>
-        <h3> BMI <%= @user.bmi %> </h3>
+        <h3> BMI <%= @user.weight.present? ?  @user.bmi  : " "%> </h3>
       </center>
       </div>
       <div class="col-md-3">
