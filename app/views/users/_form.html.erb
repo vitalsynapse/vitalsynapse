@@ -1,4 +1,4 @@
-<%= form_for(@user) do |f| %>
+<%= bootstrap_form_for(@user) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
@@ -24,25 +24,26 @@
     <%= f.select :blood_type, User.blood_types.keys.to_a %>
   </div>
   <div class="field">
-    <%= f.text_field :height %> M
+    <%= f.text_field :height, placeholder: "M" %>
   </div>
   <div class="field">
-    <%= f.text_field :weight %> KG
+    <%= f.text_field :weight, placeholder: "KG" %>
   </div>
   <div class="field">
       <%= f.select :marital_status, User.marital_statuses.keys.to_a %>
   </div>
   <div class="field">
-    address:<%= f.text_field :address %>
+    <%= f.text_field :address %>
+  </div>
+  
+  <div class="field">
+    <<%= f.text_field :city %>
   </div>
   <div class="field">
-    City:<%= f.text_field :city %>
+    <%= f.text_field :state %>
   </div>
   <div class="field">
-    state:<%= f.text_field :state %>
-  </div>
-  <div class="field">
-    postcode:<%= f.text_field :postcode %>
+    <%= f.text_field :postcode %>
   </div>
 
   <div class="actions">

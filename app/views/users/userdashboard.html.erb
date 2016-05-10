@@ -4,7 +4,7 @@
 
 
 <div class="container" id="dashboardbody">
-  
+
     <% flash.each do |key, value| %>
       <div class="alert alert-<%= key %>">
         <%= value %>
@@ -77,7 +77,7 @@
             <% end %>
           <% end %>
 
-          <%= nested_form_for @user,:html => {:multipart => true}  do |f| %>
+          <%= bootstrap_nested_form_for(@user,:html => {:multipart => true})  do |f| %>
               <div class="surveyrecord">
                   <%= f.fields_for :survey_records do |survey| %>
                     Subject: <%= survey.text_field :subject %><br>
@@ -130,7 +130,7 @@
         <% end %>
 
 
-        <%= nested_form_for @user,:html => {:multipart => true}  do |f| %>
+        <%= bootstrap_nested_form_for(@user,:html => {:multipart => true})  do |f| %>
 
           <div class="healthrecord">
             <%= f.fields_for :healths do |task_form| %>

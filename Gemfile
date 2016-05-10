@@ -14,7 +14,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem "nested_form"
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -32,7 +32,8 @@ gem 'jquery-turbolinks'
 gem 'delayed_job_active_record'
 gem 'devise_zxcvbn'
 gem 'mail'
-
+gem 'bootstrap_form'
+gem "nested_form"
 gem 'carrierwave'
 
 #purry -fb

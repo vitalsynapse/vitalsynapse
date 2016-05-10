@@ -6,12 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Question.find_or_create_by(description: "Have you been diagnosed with any of the diseases below?")
-# Question.find_or_create_by(description: "Have any of your family members been diagnosed with any of the diseases below?, Diabetes, Hypertension, Heart Disease, Bronchial Asthma, Cancer, (if yes, specify who)")
-# Question.find_or_create_by(description: "Do you..")
-# Question.find_or_create_by(description:"Do you exercise for about 20 minutes three or more days a week?")
-# Question.find_or_create_by(description:"Do you have any allergies to the following?")
-# Question.find_or_create_by(description:"Have you been admitted in a hospital before?")
+Question.find_or_create_by(description: "Have you been diagnosed with any of the diseases below?")
+Question.find_or_create_by(description: "Have any of your family members been diagnosed with any of the diseases below?, Diabetes, Hypertension, Heart Disease, Bronchial Asthma, Cancer, (if yes, specify who)")
+Question.find_or_create_by(description: "Do you..")
+Question.find_or_create_by(description:"Do you exercise for about 20 minutes three or more days a week?")
+Question.find_or_create_by(description:"Do you have any allergies to the following?")
+Question.find_or_create_by(description:"Have you been admitted in a hospital before?")
 
 Answer.find_or_create_by(question_id: 1, description:  "Diabetes")
 Answer.find_or_create_by(question_id: 1, description:  "Hypertension")
