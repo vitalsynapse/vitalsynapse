@@ -78,19 +78,25 @@
             <% end %>
           <% end %>
 
-          <%= bootstrap_nested_form_for(@user,:html => {:multipart => true})  do |f| %>
+          <%= nested_form_for(@user,:html => {:multipart => true})  do |f| %>
               <div class="surveyrecord">
                   <%= f.fields_for :survey_records do |survey| %>
-                    Subject: <%= survey.text_field :subject %><br>
+                    <h5> Subject: <%= survey.text_field :subject %></h5><br>
+                    <!-- question -->
+                      <% Rails.logger.info ">>> question #{@questions.inspect}" %>
                     <% @questions.each do |question| %>
-                      <%= question.description %><br>
-                        <%= survey.fields_for :results do |q| %>
-                          <%= q.hidden_field :question_id, question.id %>
-                            <%# question.answers.each do |ans| %>
-                              <%#= q.check_box :question_id, ans.description %>
-                            <%# end %>
-                          <%# end %>
-                      <% end %>
+                    <%= question.description %> <br>
+                      <% question.answers.each do |answer| %>
+                      <input type="checkbox"> <%= answer.description %><br>
+                      <%= survey.fields_for :results do |result| %>
+                        <%= result.hidden_field :question_id, question.id %>
+                        <!-- answer options -->
+
+                              <%= result.input :answer_ids, :as => :check_boxes %>
+                            <% end %>
+                    <% end %>
+
+
                   <% end %>
                     <%= survey.link_to_remove "Remove this record", class: "btn btn-danger"%>
                     <%= f.submit "submit", class: "btn btn-warning" %>
