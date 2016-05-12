@@ -6,22 +6,29 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <link href="css/sidebar.css" rel="stylesheet">
+
 
 </head>
 
 <body>
-  <% if user_signed_in?  %>
-  <nav class="w3-sidenav w3-red w3-card-2" style="width:200px">
+  <!-- <nav class="w3-sidenav w3-red w3-card-2" style="width:200px"> -->
 
-    <div class="sidenav-details">
-      <h1 color="white"><%= current_user.first_name %></h1>
-      <h2 class="btn w3-border-bottom w3-border-white" color="white" id="dashboardbtn">Dashboard</h2>
-      <h2 class="btn w3-border-bottom w3-border-white" color="white" id="basichealthbtn">Basic Health</h2>
-    </div>
+    <!-- <div class="sidenav-details"> -->
+      <!-- <h1 color="white"><%= current_user.first_name %></h1> -->
+      <!-- <h2 class="btn w3-border-bottom w3-border-white" color="white" id="dashboardbtn">Dashboard</h2> -->
+      <!-- <h2 class="btn w3-border-bottom w3-border-white" color="white" id="basichealthbtn">Basic Health</h2> -->
+    <!-- </div> -->
     <!-- <p class="btn" color="white">Advance Health</p> -->
-  </nav>
+  <!-- </nav> -->
 
-<% end %>
+  <% if user_signed_in?  %>
+    <nav class="w3-sidenav w3-collapse w3-card-2 w3-animate-left" style="width:200px; background-colour:d91e18;">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">&times;</a>
+      <a href="#"><h2>Dashboard</h2></a>
+      <a href="#"><h2>Basic Health</h2></a>
+    </nav>
+  <% end %>
 
 
 

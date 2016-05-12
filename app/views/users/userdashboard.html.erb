@@ -1,8 +1,11 @@
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
- <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<link href="css/sidebar.css" rel="stylesheet">
 
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<div id="wrapper">
 <div class="container" id="dashboardbody">
 
     <% flash.each do |key, value| %>
@@ -15,9 +18,7 @@
     <div class="row"  id="userdetails" >
       <h1> <%#= @user.first_name %> </h1>
       <div class="col-md-1">
-        <center>
-
-        <h3><%=   @user.gender || " " %></h3>
+        <center><h3><%=   @user.gender || " " %></h3>
       </center>
       </div>
       <div class="col-md-2" >
@@ -151,6 +152,7 @@
         <h3> health upload end </h3>
       </div>
     </div>
+</div>
 </div>
 
 <script>
