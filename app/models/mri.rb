@@ -1,0 +1,4 @@
+class Mri < ActiveRecord::Base
+  belongs_to :user
+  mount_uploader :mri_file
+end

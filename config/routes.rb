@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
   resources :healths
   devise_for :admins
-  get "dashboard" => "users#userdashboard"
+
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
   root 'pages#index'
+  get "dashboard" => "users#userdashboard"
+  get "health_upload" => "users#healthupload"
+
+  get "health_record" => "users#healtrecord"
+
+  get "daily_update" => "users#dailyupdate"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,0 +1,220 @@
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="css/sidebar.css" rel="stylesheet">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+<div id="wrapper">
+<div class="container" id="dashboardbody">
+
+
+      Glucose upload:-
+     <%= nested_form_for @user do |f| %>
+
+      <div class="healthrecord">
+        <%= f.fields_for :glucoses do |task_form| %>
+           <%#= task_form.hidden_field :title, value: "BLOOD" %>
+           <%= task_form.text_field :measurement %>
+           <%= task_form.text_field :context %> <!-- to fill up enum values -->
+          <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+          <%= task_form.submit "submit", class: "btn btn-warning" %>
+        <% end %>
+      </div>
+
+      <%= f.link_to_add "Add a New Record", :glucoses, class: "btn btn-info new-record"%>
+
+    <% end %>
+      <div class="healthupload">
+        <h3> Glucose Record </h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <td> Measurement </td>
+                  <td> Index </td>
+                  <td> Date</td>
+                  <td> Time </td>
+                </tr>
+              </thead>
+
+              <tbody>
+                 <tr>
+                   <%if @user_glucose!= nil  %>
+                   <%  @user_glucose.all.each do |health_record| %>
+                   <td><%= health_record.measurement%> </td>
+                   <td><%= health_record.context %> </td>
+                   <td><%= health_record.created_at.strftime('%v')%> </td>
+                   <td><%= health_record.created_at.strftime('%H')%></td>
+                   <% end %>
+                 <% end %>
+                 </tr>
+              </tbody>
+            </table>
+          </div>
+
+
+
+
+
+      Pressure upload:-
+     <%= nested_form_for @user do |f| %>
+
+      <div class="healthrecord">
+        <%= f.fields_for :pressures do |task_form| %>
+           <%#= task_form.hidden_field :title, value: "BLOOD" %>
+           <%= task_form.text_field :sbp %>
+           <%= task_form.text_field :dpb %>
+           <%= task_form.text_field :context %> <!-- to fill up enum values -->
+          <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+          <%= task_form.submit "submit", class: "btn btn-warning" %>
+        <% end %>
+      </div>
+
+      <%= f.link_to_add "Add a New Record", :pressures, class: "btn btn-info new-record"%>
+
+    <% end %>
+    <div class="healthupload">
+      <h3> Pressure Record </h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <td> sbp </td>
+                <td> dpb </td>
+                <td> Index</td>
+                <td> Date</td>
+                <td> Time </td>
+              </tr>
+            </thead>
+
+            <tbody>
+               <tr>
+                 <%if @user_pressure != nil  %>
+                 <%  @user_pressure.all.each do |health_record| %>
+                 <td><%= health_record.sbp %> </td>
+                 <td><%= health_record.dpb %> </td>
+                 <td><%= health_record.context %> </td>
+                 <td><%= health_record.created_at.strftime('%v')%> </td>
+                 <td><%= health_record.created_at.strftime('%H')%></td>
+                 <% end %>
+               <% end %>
+               </tr>
+            </tbody>
+          </table>
+        </div>
+
+
+
+
+    Clinical REcord upload:-
+   <%= nested_form_for @user do |f| %>
+
+    <div class="healthrecord">
+      <%= f.fields_for :clinic_records do |task_form| %>
+         <%#= task_form.hidden_field :title, value: "BLOOD" %>
+         <%= task_form.text_field :problem %>
+         <%= task_form.text_field :diagnosis %>
+         <%= task_form.text_field :treatment %> <!-- to fill up enum values -->
+        <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+        <%= task_form.submit "submit", class: "btn btn-warning" %>
+      <% end %>
+    </div>
+
+    <%= f.link_to_add "Add a New Record", :clinic_records, class: "btn btn-info new-record"%>
+
+  <% end %>
+  <div class="healthupload">
+    <h3> Clinic Record </h3>
+        <table class="table">
+          <thead>
+            <tr>
+              <td> Problem </td>
+              <td> Diagnosis </td>
+              <td> Treatment</td>
+              <td> Date</td>
+              <td> Time </td>
+            </tr>
+          </thead>
+
+          <tbody>
+             <tr>
+               <%if @user_clinic != nil  %>
+               <%  @user_clinic.all.each do |health_record| %>
+               <td><%= health_record.problem %> </td>
+               <td><%= health_record.diagnosis %> </td>
+               <td><%= health_record.treatment %> </td>
+               <td><%= health_record.created_at.strftime('%v')%> </td>
+               <td><%= health_record.created_at.strftime('%H')%></td>
+               <% end %>
+             <% end %>
+             </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+  BMI upload:-
+ <%= nested_form_for @user do |f| %>
+
+  <div class="healthrecord">
+    <%= f.fields_for :bmis do |task_form| %>
+       <%#= task_form.hidden_field :title, value: "BLOOD" %>
+       <%= task_form.text_field :height %>
+       <%= task_form.text_field :weight %>
+       <%#= task_form.text_field :treatment %> <!-- to fill up enum values -->
+      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+      <%= task_form.submit "submit", class: "btn btn-warning" %>
+    <% end %>
+  </div>
+
+  <%= f.link_to_add "Add a New Record", :bmis, class: "btn btn-info new-record"%>
+
+<% end %>
+
+<div class="healthupload">
+  <h3> BMI Record </h3>
+      <table class="table">
+        <thead>
+          <tr>
+            <td> Height </td>
+            <td> Weight </td>
+            <td> Date</td>
+            <td> Time </td>
+          </tr>
+        </thead>
+
+        <tbody>
+           <tr>
+             <%if @user_bmi != nil  %>
+             <%  @user_bmi.all.each do |health_record| %>
+             <td><%= health_record.height %> </td>
+             <td><%= health_record.weight %> </td>
+
+             <td><%= health_record.created_at.strftime('%v')%> </td>
+             <td><%= health_record.created_at.strftime('%H')%></td>
+             <% end %>
+           <% end %>
+           </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+
+
+
+
+
+
+
+</div>
+</div>
+
+<script>
+
+   $( ".healthrecord" ).hide();
+
+
+</script>

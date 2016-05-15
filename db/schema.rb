@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160510071247) do
+ActiveRecord::Schema.define(version: 20160515205949) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,13 +40,67 @@ ActiveRecord::Schema.define(version: 20160510071247) do
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
+  create_table "bloods", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "blood_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "bloods", ["user_id"], name: "index_bloods_on_user_id", using: :btree
+
   create_table "bmis", force: :cascade do |t|
     t.integer  "height"
     t.integer  "weight"
     t.float    "bodymassindex"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "user_id"
   end
+
+  add_index "bmis", ["user_id"], name: "index_bmis_on_user_id", using: :btree
+
+  create_table "cancer_markers", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "cancer_file"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "cancer_markers", ["user_id"], name: "index_cancer_markers_on_user_id", using: :btree
+
+  create_table "clinic_records", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "problem"
+    t.text     "diagnosis"
+    t.text     "treatment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "clinic_records", ["user_id"], name: "index_clinic_records_on_user_id", using: :btree
+
+  create_table "ctscans", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "ctscan_file"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "ctscans", ["user_id"], name: "index_ctscans_on_user_id", using: :btree
+
+  create_table "glucoses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.float    "measurement"
+    t.integer  "context"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "glucoses", ["user_id"], name: "index_glucoses_on_user_id", using: :btree
 
   create_table "healths", force: :cascade do |t|
     t.integer  "user_id"
@@ -59,10 +113,47 @@ ActiveRecord::Schema.define(version: 20160510071247) do
 
   add_index "healths", ["user_id"], name: "index_healths_on_user_id", using: :btree
 
+  create_table "mris", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "mri_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "mris", ["user_id"], name: "index_mris_on_user_id", using: :btree
+
+  create_table "petscans", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "petscan_file"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "petscans", ["user_id"], name: "index_petscans_on_user_id", using: :btree
+
+  create_table "pressures", force: :cascade do |t|
+    t.integer  "user_id"
+    t.float    "sbp"
+    t.float    "dpb"
+    t.integer  "context"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "pressures", ["user_id"], name: "index_pressures_on_user_id", using: :btree
+
   create_table "questions", force: :cascade do |t|
     t.text     "description"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "record_categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "results", force: :cascade do |t|
@@ -78,6 +169,16 @@ ActiveRecord::Schema.define(version: 20160510071247) do
   add_index "results", ["question_id"], name: "index_results_on_question_id", using: :btree
   add_index "results", ["survey_record_id"], name: "index_results_on_survey_record_id", using: :btree
 
+  create_table "scopes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "scope_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "scopes", ["user_id"], name: "index_scopes_on_user_id", using: :btree
+
   create_table "survey_records", force: :cascade do |t|
     t.text     "subject"
     t.datetime "created_at", null: false
@@ -86,6 +187,26 @@ ActiveRecord::Schema.define(version: 20160510071247) do
   end
 
   add_index "survey_records", ["user_id"], name: "index_survey_records_on_user_id", using: :btree
+
+  create_table "ultrasounds", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "ultrasound_file"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "ultrasounds", ["user_id"], name: "index_ultrasounds_on_user_id", using: :btree
+
+  create_table "urines", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "urine_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "urines", ["user_id"], name: "index_urines_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -131,10 +252,33 @@ ActiveRecord::Schema.define(version: 20160510071247) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["unlock_token"], name: "index_users_on_unlock_token", unique: true, using: :btree
 
+  create_table "xrays", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "xray_file"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "xrays", ["user_id"], name: "index_xrays_on_user_id", using: :btree
+
   add_foreign_key "answers", "questions"
+  add_foreign_key "bloods", "users"
+  add_foreign_key "bmis", "users"
+  add_foreign_key "cancer_markers", "users"
+  add_foreign_key "clinic_records", "users"
+  add_foreign_key "ctscans", "users"
+  add_foreign_key "glucoses", "users"
   add_foreign_key "healths", "users"
+  add_foreign_key "mris", "users"
+  add_foreign_key "petscans", "users"
+  add_foreign_key "pressures", "users"
   add_foreign_key "results", "answers"
   add_foreign_key "results", "questions"
   add_foreign_key "results", "survey_records"
+  add_foreign_key "scopes", "users"
   add_foreign_key "survey_records", "users"
+  add_foreign_key "ultrasounds", "users"
+  add_foreign_key "urines", "users"
+  add_foreign_key "xrays", "users"
 end

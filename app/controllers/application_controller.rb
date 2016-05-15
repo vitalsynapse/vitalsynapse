@@ -9,6 +9,15 @@ class ApplicationController < ActionController::Base
     dashboard_path @user
   end
 
+  def user_or_admin
+    if !(@user == current_user || current_admin)
+      puts "ACCESS DENIED - WRONG USER"
+      render file: "#{Rails.root}/public/403.html", layout: false, status: 403 and return
+      # # render error status page or just redirect to root?...
+      # flash[:notice] = "Access Denied"
+      # redirect_to root_path and return
+    end
+  end
 
 protected
 	def configure_permitted_parameters

@@ -47,3 +47,8 @@ Answer.find_or_create_by(question_id: 5, description:  "Others")
 
 Answer.find_or_create_by(question_id: 6, description:  "No")
 Answer.find_or_create_by(question_id: 6, description:  "Yes")
+
+
+RecordCategory.find_or_create_by(name: "Blood")
+RecordCategory.find_or_create_by(name: "Urine")
+RecordCategory.find_or_create_by(name: "X-Ray")

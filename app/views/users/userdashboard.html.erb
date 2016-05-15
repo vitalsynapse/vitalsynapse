@@ -78,35 +78,7 @@
             <% end %>
           <% end %>
 
-          <%= nested_form_for(@user,:html => {:multipart => true})  do |f| %>
-              <div class="surveyrecord">
-                  <%= f.fields_for :survey_records do |survey| %>
-                    <h5> Subject: <%= survey.text_field :subject %></h5><br>
-                    <!-- question -->
-                      <% Rails.logger.info ">>> question #{@questions.inspect}" %>
-                    <% @questions.each do |question| %>
-                    <%= question.description %> <br>
-                      <% question.answers.each do |answer| %>
-                      <input type="checkbox"> <%= answer.description %><br>
-                      <%= survey.fields_for :results do |result| %>
-                        <%= result.hidden_field :question_id, question.id %>
-                        <!-- answer options -->
 
-                              <%= result.input :answer_ids, :as => :check_boxes %>
-                            <% end %>
-                    <% end %>
-
-
-                  <% end %>
-                    <%= survey.link_to_remove "Remove this record", class: "btn btn-danger"%>
-                    <%= f.submit "submit", class: "btn btn-warning" %>
-              <% end %>
-            </div>
-          <%= f.link_to_add "Add a New Record", :survey_records, class: "btn btn-info new-record"%>
-          <% end %>
-
-          <p>  Basic Questionaire End </p>
-      </div>
 
 
       <div class="healthupload">
@@ -128,7 +100,7 @@
                    <td><%= health_record.subject%> </td>
                    <td><%= health_record.details %> </td>
                    <td><%= health_record.created_at.strftime('%v')%> </td>
-                   <td>    <%= image_tag(health_record.file.url, :width => 100, :height => 100)%></td>
+                   <td><%= image_tag(health_record.file.url, :width => 100, :height => 100)%></td>
 
                  </tr>
               </tbody>
@@ -137,25 +109,8 @@
         <% end %>
 
 
-        <%= bootstrap_nested_form_for(@user,:html => {:multipart => true})  do |f| %>
-
-          <div class="healthrecord">
-            <%= f.fields_for :healths do |task_form| %>
-              Subject <%= task_form.text_field :subject %>
-               Details :  <%= task_form.text_field :details %>
-              File : <%= task_form.file_field :file %>
-              <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-              <%= f.submit "submit", class: "btn btn-warning" %>
-            <% end %>
-          </div>
-
-            <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-        <% end %>
 
 
-
-        <h3> health upload end </h3>
       </div>
     </div>
 </div>
