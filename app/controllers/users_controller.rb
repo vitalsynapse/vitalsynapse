@@ -114,7 +114,7 @@ class UsersController < ApplicationController
       ultrasounds_attributes: [:id, :user_id, :title, :ultrasound_file, :_destroy],
       mris_attributes: [:id, :user_id, :title, :mri_file, :_destroy],
       petscans_attributes: [:id, :user_id, :title, :petscan_file, :_destroy],
-      healths_attributes: [:id, :user_id, :subject, :details, :file, :_destroy, :_destroy],
+      healths_attributes: [:id, :user_id, :subject, :details, :file, :record_category_id, :_destroy],
       glucoses_attributes: [:id, :user_id, :measurement, :context, :_destroy],
       pressures_attributes: [:id, :user_id, :sbp, :dpb, :context, :_destroy],
       clinic_records_attributes: [:id, :user_id, :problem, :diagnosis, :treatment, :_destroy],

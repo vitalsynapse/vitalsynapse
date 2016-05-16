@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160515205949) do
+ActiveRecord::Schema.define(version: 20160516064527) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -107,10 +107,12 @@ ActiveRecord::Schema.define(version: 20160515205949) do
     t.string   "subject"
     t.text     "details"
     t.text     "file"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.integer  "record_category_id"
   end
 
+  add_index "healths", ["record_category_id"], name: "index_healths_on_record_category_id", using: :btree
   add_index "healths", ["user_id"], name: "index_healths_on_user_id", using: :btree
 
   create_table "mris", force: :cascade do |t|
@@ -269,6 +271,7 @@ ActiveRecord::Schema.define(version: 20160515205949) do
   add_foreign_key "clinic_records", "users"
   add_foreign_key "ctscans", "users"
   add_foreign_key "glucoses", "users"
+  add_foreign_key "healths", "record_categories"
   add_foreign_key "healths", "users"
   add_foreign_key "mris", "users"
   add_foreign_key "petscans", "users"
