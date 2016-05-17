@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160516064527) do
+ActiveRecord::Schema.define(version: 20160517130036) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -104,8 +104,6 @@ ActiveRecord::Schema.define(version: 20160516064527) do
 
   create_table "healths", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "subject"
-    t.text     "details"
     t.text     "file"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
@@ -158,6 +156,15 @@ ActiveRecord::Schema.define(version: 20160516064527) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "result_answers", force: :cascade do |t|
+    t.integer  "result_id"
+    t.integer  "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "result_answers", ["result_id"], name: "index_result_answers_on_result_id", using: :btree
+
   create_table "results", force: :cascade do |t|
     t.integer  "survey_record_id"
     t.integer  "question_id"
@@ -165,11 +172,13 @@ ActiveRecord::Schema.define(version: 20160516064527) do
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
     t.integer  "answer_id"
+    t.integer  "user_id"
   end
 
   add_index "results", ["answer_id"], name: "index_results_on_answer_id", using: :btree
   add_index "results", ["question_id"], name: "index_results_on_question_id", using: :btree
   add_index "results", ["survey_record_id"], name: "index_results_on_survey_record_id", using: :btree
+  add_index "results", ["user_id"], name: "index_results_on_user_id", using: :btree
 
   create_table "scopes", force: :cascade do |t|
     t.integer  "user_id"
@@ -276,9 +285,11 @@ ActiveRecord::Schema.define(version: 20160516064527) do
   add_foreign_key "mris", "users"
   add_foreign_key "petscans", "users"
   add_foreign_key "pressures", "users"
+  add_foreign_key "result_answers", "results"
   add_foreign_key "results", "answers"
   add_foreign_key "results", "questions"
   add_foreign_key "results", "survey_records"
+  add_foreign_key "results", "users"
   add_foreign_key "scopes", "users"
   add_foreign_key "survey_records", "users"
   add_foreign_key "ultrasounds", "users"

@@ -15,8 +15,8 @@
       <div class="healthrecord">
         <%= f.fields_for :glucoses do |task_form| %>
            <%#= task_form.hidden_field :title, value: "BLOOD" %>
-           <%= task_form.text_field :measurement %>
-           <%= task_form.text_field :context %> <!-- to fill up enum values -->
+           Reading<%= task_form.text_field :measurement %>
+           After lunch e.g<%= task_form.text_field :context %> <!-- to fill up enum values -->
           <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
           <%= task_form.submit "submit", class: "btn btn-warning" %>
         <% end %>
@@ -62,9 +62,9 @@
       <div class="healthrecord">
         <%= f.fields_for :pressures do |task_form| %>
            <%#= task_form.hidden_field :title, value: "BLOOD" %>
-           <%= task_form.text_field :sbp %>
-           <%= task_form.text_field :dpb %>
-           <%= task_form.text_field :context %> <!-- to fill up enum values -->
+           sbp<%= task_form.text_field :sbp %>
+           DBP<%= task_form.text_field :dpb %>
+           Remark <%= task_form.text_field :context %> <!-- to fill up enum values -->
           <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
           <%= task_form.submit "submit", class: "btn btn-warning" %>
         <% end %>
@@ -111,9 +111,9 @@
     <div class="healthrecord">
       <%= f.fields_for :clinic_records do |task_form| %>
          <%#= task_form.hidden_field :title, value: "BLOOD" %>
-         <%= task_form.text_field :problem %>
-         <%= task_form.text_field :diagnosis %>
-         <%= task_form.text_field :treatment %> <!-- to fill up enum values -->
+         PROBLEM<%= task_form.text_field :problem %>
+         DIAGNOSIS<%= task_form.text_field :diagnosis %>
+         TREATMENT<%= task_form.text_field :treatment %>
         <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
         <%= task_form.submit "submit", class: "btn btn-warning" %>
       <% end %>
@@ -161,9 +161,8 @@
   <div class="healthrecord">
     <%= f.fields_for :bmis do |task_form| %>
        <%#= task_form.hidden_field :title, value: "BLOOD" %>
-       <%= task_form.text_field :height %>
-       <%= task_form.text_field :weight %>
-       <%#= task_form.text_field :treatment %> <!-- to fill up enum values -->
+       HEIGH <%= task_form.text_field :height %>
+       WEIGHT<%= task_form.text_field :weight %>
       <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
       <%= task_form.submit "submit", class: "btn btn-warning" %>
     <% end %>
@@ -178,7 +177,7 @@
       <table class="table">
         <thead>
           <tr>
-            <td> Height </td>
+          <td> Height </td>
             <td> Weight </td>
             <td> Date</td>
             <td> Time </td>

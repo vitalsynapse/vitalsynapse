@@ -1,7 +1,6 @@
 class CreateResults < ActiveRecord::Migration
   def change
     create_table :results do |t|
-      t.belongs_to :survey_record, index: true, foreign_key: true
       t.belongs_to :question, index: true, foreign_key: true
       t.text :answer
 

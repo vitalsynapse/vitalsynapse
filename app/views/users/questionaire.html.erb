@@ -1,0 +1,70 @@
+<div id="wrapper">
+  <div class="container" id="dashboardbody">
+    <div class="info">
+      <h2> Thank you for signing up! Let's start with some exciting quiz </h2>
+
+    </div>
+    <%= nested_form_for(@user,:html => {:multipart => true}) do |f| %>
+
+        <%= f.fields_for :results do |result| %>
+
+        <h4> Q1. <%= @questions.first.description %> </h4><br>
+
+              <%= check_box_tag "user[results_attributes][0][answer_id]", 1%> <%= @questions.first.answers.first.description %><br>
+              <%= check_box_tag "user[results_attributes][1][answer_id]", 2%><%= @questions.first.answers.find(2).description %><br>
+              <%= check_box_tag "user[results_attributes][2][answer_id]", 3%><%= @questions.first.answers.find(3).description %><br>
+              <%= check_box_tag "user[results_attributes][3][answer_id]", 4%><%= @questions.first.answers.find(4).description %><br>
+              <%= check_box_tag "user[results_attributes][4][answer_id]", 5%><%= @questions.first.answers.find(5).description %><br>
+              <%= check_box_tag "user[results_attributes][5][answer_id]", 6%><%= @questions.first.answers.find(6).description %><br>
+              <%= result.hidden_field :question_id, value: 1 %><%= result.text_field :answer %>
+
+
+
+        <h4> Q2. <%= @questions.find(2).description %> </h4><br>
+              <%= check_box_tag "user[results_attributes][6][answer_id]", 7%> <%= @questions.find(2).answers.first.description %><br>
+              <%= check_box_tag "user[results_attributes][7][answer_id]", 8%><%= @questions.find(2).answers.find(8).description %><br>
+              <%= check_box_tag "user[results_attributes][8][answer_id]", 9%><%= @questions.find(2).answers.find(9).description %><br>
+              <%= check_box_tag "user[results_attributes][9][answer_id]", 10%><%= @questions.find(2).answers.find(10).description %><br>
+              <%= check_box_tag "user[results_attributes][10][answer_id]", 11%><%= @questions.find(2).answers.find(11).description %><br>
+              <%= check_box_tag "user[results_attributes][11][answer_id]", 12%><%= @questions.find(2).answers.find(12).description %><br>
+              <%#= result.hidden_field :question_id, value: 2 %><%#= result.text_field :answer %>
+        <h4> Q3. <%= @questions.find(3).description %> </h4><br>
+              <%= check_box_tag "user[results_attributes][12][answer_id]", 13%> <%= @questions.find(3).answers.first.description %><br>
+              <%= check_box_tag "user[results_attributes][13][answer_id]", 14%><%= @questions.find(3).answers.find(14).description %><br>
+
+        <h4> Q4. <%= @questions.find(4).description %> </h4><br>
+              <%= check_box_tag "user[results_attributes][14][answer_id]", 15%> <%= @questions.find(4).answers.first.description %><br>
+              <%= check_box_tag "user[results_attributes][15][answer_id]", 16%><%= @questions.find(4).answers.find(16).description %><br>
+              <%= check_box_tag "user[results_attributes][16][answer_id]", 17%><%= @questions.find(4).answers.find(17).description %><br>
+
+        <h4> Q5. <%= @questions.find(5).description %> </h4><br>
+              <%= check_box_tag "user[results_attributes][17][answer_id]", 18%> <%= @questions.find(5).answers.first.description %><br>
+              <%= check_box_tag "user[results_attributes][18][answer_id]", 19%><%= @questions.find(5).answers.find(19).description %><br>
+              <%= check_box_tag "user[results_attributes][19][answer_id]", 20%><%= @questions.find(5).answers.find(20).description %><br>
+              <%= check_box_tag "user[results_attributes][20][answer_id]", 21%><%= @questions.find(5).answers.find(21).description %><br>
+
+        <h4> Q6. <%= @questions.find(6).description %> </h4><br>
+              <%= check_box_tag "user[results_attributes][21][answer_id]", 22%><%= @questions.find(6).answers.first.description %><br>
+              <%= check_box_tag "user[results_attributes][22][answer_id]", 23%><%= @questions.find(6).answers.find(23).description %><br>
+
+            <%= f.submit "submit", class: "btn btn-warning" %>
+        <% end %>
+        <div class="recordbutton">
+        <%= f.link_to_add "Start Quiz", :results, class: "btn btn-info new-record", id: "new_record"%>
+      </div>
+    <% end %>
+
+
+  </div>
+</div>
+
+<script>
+$(".btn-info ").click(function(){
+  $(".info ").hide();
+   $(".btn-info ").fadeOut(1000);
+
+});
+
+
+
+</script>

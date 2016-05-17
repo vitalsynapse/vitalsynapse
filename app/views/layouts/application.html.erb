@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-  <link href="css/sidebar.css" rel="stylesheet">
+  <!-- <link href="css/sidebar.css" rel="stylesheet"> -->
 
 
 </head>
@@ -25,9 +25,9 @@
   <% if user_signed_in?  %>
     <nav class="w3-sidenav w3-collapse w3-red w3-card-2 w3-animate-left" style="width:200px;">
       <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">&times;</a>
-      <h2><a href="#" id="dashboardbtn"><h2>Dashboard</h2></a>
-      <h2><a href="#" id="basichealthbtn"><h2>Basic Health</h2></a>
-      <h2> <%= link_to 'Dashboard link', dashboard_path(@user) %></h2>
+      <!-- <h2><a href="#" id="dashboardbtn"><h2>Dashboard</h2></a> -->
+      <!-- <h2><a href="#" id="basichealthbtn"><h2>Basic Health</h2></a> -->
+      <h2> <%= link_to 'Dashboard', dashboard_path(@user) %></h2>
       <h2> <%= link_to 'Health Record', health_record_path(@user) %></h2>
       <h2> <%= link_to 'Daily Update', daily_update_path(@user) %></h2>
       <h2> <%= link_to 'Health Upload', health_upload_path(@user) %></h2>
@@ -58,7 +58,10 @@
               <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
-        <% else %>
+        <% elsif admin_signed_in? %>
+        <li><%= link_to 'Log out', destroy_admin_session_path, method: :delete %></li>
+
+        <%else %>
           <li><%= link_to 'Log In', new_user_session_path %></li>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
         <% end %>

@@ -35,6 +35,7 @@ gem 'mail'
 gem 'bootstrap_form'
 gem "nested_form"
 gem 'carrierwave'
+gem 'rails_admin'
 
 #purry -fb
 gem 'omniauth-facebook'

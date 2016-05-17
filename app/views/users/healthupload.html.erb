@@ -10,33 +10,6 @@
 
 
 
-      <div class="healthupload">
-        <h3> Health Upload </h3>
-        <%if @user_health != nil  %>
-
-            <table class="table">
-              <thead>
-                <tr>
-                  <td> Subject </td>
-                  <td> Details </td>
-                  <td> Date</td>
-                  <td> File </td>
-                </tr>
-              </thead>
-
-              <tbody>
-                 <tr>
-                   <%  @user_health.all.each do |health_record| %>
-                   <td><%= health_record.subject%> </td>
-                   <td><%= health_record.details %> </td>
-                   <td><%= health_record.created_at.strftime('%v')%> </td>
-                   <td><%= image_tag(health_record.file.url, :width => 100, :height => 100)%></td>
-
-                 </tr>
-              </tbody>
-            </table>
-          <% end %>
-        <% end %>
 
         health for blood:-
        <%= nested_form_for @user do |f| %>

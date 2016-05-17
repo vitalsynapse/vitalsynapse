@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:index, :show, :edit, :update, :destroy]
 
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
   end
 
   def healthupload
@@ -14,6 +13,7 @@ class UsersController < ApplicationController
 
   def healthrecord
       @user = User.find(current_user.id)
+      @user_health = Health.where(user_id: @user.id)
 
   end
 
@@ -32,11 +32,14 @@ class UsersController < ApplicationController
     # end
     @user = User.find(current_user.id)
     @user_health = Health.where(user_id: @user.id)
-    @user_questionaire = SurveyRecord.where(user_id: @user.id)
     @questions=  Question.all
-    @user_record_two = User.find(current_user.id)
     # @first_question = @question.find(1)
 
+  end
+
+  def questionaire
+    @user = User.find(current_user.id)
+    @questions=  Question.all
   end
   # GET /users/1
   # GET /users/1.json
@@ -106,20 +109,12 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(
       :first_name, :lastname, :gender, :ethnicity, :blood_type, :occupation, :dob, :marital_status, :address, :state, :city, :postcode, :email, :height, :weight, :name,
-      bloods_attributes:[:id, :user_id, :title, :blood_file,:_destroy ],
-      urines_attributes: [:id, :user_id, :title, :urine_file, :_destroy],
-      xrays_attributes: [:id, :user_id, :title, :xray_file, :_destroy],
-      cancer_markers_attributes:[:id, :user_id, :title, :cancer_file, :_destroy],
-      scopes_attributes: [:id, :user_id, :title, :scope_file, :_destroy ],
-      ultrasounds_attributes: [:id, :user_id, :title, :ultrasound_file, :_destroy],
-      mris_attributes: [:id, :user_id, :title, :mri_file, :_destroy],
-      petscans_attributes: [:id, :user_id, :title, :petscan_file, :_destroy],
       healths_attributes: [:id, :user_id, :subject, :details, :file, :record_category_id, :_destroy],
       glucoses_attributes: [:id, :user_id, :measurement, :context, :_destroy],
       pressures_attributes: [:id, :user_id, :sbp, :dpb, :context, :_destroy],
       clinic_records_attributes: [:id, :user_id, :problem, :diagnosis, :treatment, :_destroy],
       bmis_attributes: [:id, :height, :weight, :boddymassindex,:_destroy],
-      survey_records_attributes: [:user_id, :subject, results_attributes: [:survey_record_id, :question_id, :answer]]
+       results_attributes: [:id,:user_id, :question_id, :answer_id, :answer,:_destroy, result_answers_attributes: [:id, :result_id, :answer_id, :_destroy]]
       )
     end
 

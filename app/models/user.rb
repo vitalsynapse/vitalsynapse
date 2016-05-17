@@ -6,10 +6,8 @@ class User < ActiveRecord::Base
          :omniauthable, :omniauth_providers => [:facebook]
 
   has_many :healths
-  has_many :survey_records
-  has_many :results, :through => :survey_records
-  has_many :questions, :through => :results
-  has_many :answers, :through => :results
+  has_many :results
+
   has_many :glucoses
   has_many :pressures
   has_many :clinic_records
@@ -29,6 +27,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :pressures, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :clinic_records, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :bmis, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :results, :reject_if => :all_blank, :allow_destroy => true
 
   # accepts_nested_attributes_for :bloods, :reject_if => :all_blank, :allow_destroy => true
   # accepts_nested_attributes_for :urines, :reject_if => :all_blank, :allow_destroy => true
@@ -40,11 +39,6 @@ class User < ActiveRecord::Base
   # accepts_nested_attributes_for :mris, :reject_if => :all_blank, :allow_destroy => true
   # accepts_nested_attributes_for :petscans, :reject_if => :all_blank, :allow_destroy => true
 
-
-
-
-
-  accepts_nested_attributes_for :survey_records
 
  enum gender: [ :female,:male]
  enum marital_status: [:divorced, :married, :single, :widowed]
@@ -77,4 +71,13 @@ class User < ActiveRecord::Base
    bmi = self.weight/(height*height)
    bmi.round(2)
  end
+
+ def record_name
+   user = Health.find_by_user_id(self.id)
+   record_id = user.record_category_id
+   Record.find(record_id).name
+
+ end
+
+
 end

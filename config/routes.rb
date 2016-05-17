@@ -1,16 +1,19 @@
 Rails.application.routes.draw do
+
   resources :healths
   devise_for :admins
-
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   resources :users
   root 'pages#index'
   get "dashboard" => "users#userdashboard"
   get "health_upload" => "users#healthupload"
 
-  get "health_record" => "users#healtrecord"
+  get "health_record" => "users#healthrecord"
 
   get "daily_update" => "users#dailyupdate"
+
+  get "questionaire" => "users#questionaire"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
