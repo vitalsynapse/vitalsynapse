@@ -1,87 +1,1029 @@
-<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="css/sidebar.css" rel="stylesheet"> -->
-<!-- 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-
-<div id="wrapper">
-<div class="container" id="dashboardbody">
-
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <%= value %>
-      </div>
-    <% end %>
+<div class="container">
+    <div class="row animated bounceInLeft">
+        <br>
+        <div class="legend center">
+            <span class=
+            "label label-success value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            &nbsp; <span>Normal Range</span> &nbsp; &nbsp; &nbsp; <span class=
+            "label label-danger value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> &nbsp;
+            <span>Abnormal</span>
+        </div>
+    </div>
+    <br>
 
 
-    <div class="row"  id="userdetails" >
-      <h1> <%#= @user.first_name %> </h1>
-      <div class="col-md-1">
-        <center><h3><%=   @user.gender || " " %></h3>
-      </center>
+    <div class="cards animated bounceInRight">
+        <!-- GENERAL INFO -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 pull-left center">
+                                  <%= image_tag("male.png", class: "mg-center", size: "100x100") %>
+                                </div>
+
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <span>165 cm</span><br>
+                                    <span>50 kg</span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 pull-left">
+                                    <span><b>BMI</b></span><br>
+                                    <span>Body Mass Index</span>
+                                </div>
+
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <br>
+                                    <span class="label label-success value">18.4</span>
+                                    &nbsp;
+                                    <span class="measurement">kg/m<sup>2</sup></span>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 pull-left">
+                                    <br>
+                                    <span><b>Blood Group</b></span>
+                                </div>
+
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <br>
+                                    <span class="label label-default value">A-</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end GENERAL INFO -->
+        <!-- CARDIOVASCULAR -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <img alt="" class="img-center" height="100px" src=
+                            "./images/cardiovascular.png" width="100px"><br>
+                            <span>Cardiovascular</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Blood Pressure</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class=
+                                            "label label-success value"><sup>100</sup>/<sub>90</sub></span>
+                                            <span class="measurement">mmHg</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Systolic</span>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class=
+                                            "label label-success value">100</span>
+                                            <span class="measurement">mmHg</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Diastolic</span>
+                                        </div>
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class=
+                                            "label label-success value">90</span>
+                                            <span class="measurement">mmHg</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Pulse</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class=
+                                            "label label-success value"><sup>60</sup>/<sub>100</sub></span>
+                                            <span class="measurement">Beats per minute</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end CARDIOVASCULAR -->
+        <!-- RESPIRATORY -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <img alt="" class="img-center" height="100px" src=
+                            "./images/respiratory.png" width="100px"><br>
+                            <span>Respiratory</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Respiratory Rate</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class=
+                                            "label label-success value"><sup>12</sup>/<sub>16</sub></span>
+                                            <span class="measurement">Breaths per minute</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end RESPIRATORY -->
+        <!-- BLOOD -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <img alt="" class="img-center" height="100px" src=
+                            "./images/blood.png" width="100px"><br>
+                            <span>Blood</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Haemoglobin</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">122</span>
+                                            <span class="measurement">g/L (115 - 165)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-blood">Show More</button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end BLOOD -->
+        <!-- GLUCOSE -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <img alt="" class="img-center" height="100px" src=
+                            "./images/glucose.png" width="100px"><br>
+                            <span>Glucose</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">RBS</span><br>
+                                            <span class="long_name">Random Blood Sugar</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">119</span>
+                                            <span class="measurement"> mmol/L (3.0 - 7.8)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">FBS</span><br>
+                                            <span class="long_name">Fasting Blood Sugar</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">119</span>
+                                            <span class="measurement"> mmol/L (3.0 - 7.8)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">HbA1c</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">119</span>
+                                            <span class="measurement">mmol/L (5.7 - 7.1)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end GLUCOSE -->
+        <!-- CHOLESTROL -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <img alt="" class="img-center" height="100px" src=
+                            "./images/cholestrol.png" width="100px"><br>
+                            <span>Cholesterol</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Total Cholesterol</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">4.71</span>
+                                            <span class="measurement">mmol/L (&lt; 5.20)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">HDL</span><br>
+                                            <span class="long_name">High Density Lipoprotein</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">1.22</span>
+                                            <span class="measurement">mmol/L (&gt; 1.03)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">LDL</span><br>
+                                            <span class="long_name">Low Density Lipoprotein</span>
+                                        </div>
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">3.16</span>
+                                            <span class="measurement">mmol/L (&lt; 2.58)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Triglycerides</span>
+                                        </div>
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">0.73</span>
+                                            <span class="measurement">mmol/L (&lt; 1.70)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end CHOLESTROL -->
+        <!-- KIDNEY -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <img alt="" class="img-center" height="100px" src=
+                            "./images/kidney.png" width="100px"><br>
+                            <span>Kidney</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Creatinine</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">77</span><br>
+                                            <span class="measurement">umol/L (44 - 80)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Urea</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">2.5</span><br>
+                                            <span class="measurement">mmol/L (2.8 - 8.1)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-kidney">Show More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end KIDNEY -->
+        <!-- THYROID -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <img alt="" class="img-center" height="100px" src=
+                            "./images/thyroid.png" width="100px"><br>
+                            <span>Thyroid</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">TSH</span><br>
+                                            <span class="long_name">Thyroid Stimulating Hormone</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">6.420</span>
+                                            <span class="measurement">mIU/L (0.270 - 4.200)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">T3</span><br>
+                                            <span class="long_name">Triiodothyronine</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">3.7</span>
+                                            <span class="measurement">pmol/L (3.1 - 6.8)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">T4</span><br>
+                                            <span class="long_name">Thyroxine</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">13.2</span>
+                                            <span class="measurement">pmol/L (12.0 - 22.0)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end THYROID -->
+        <!-- LIVER -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <img alt="" class="img-center" height="100px" src=
+                            "./images/liver.png" width="100px"><br>
+                            <span>Liver</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">ALT</span><br>
+                                            <span class="long_name">Alanine Aminotransferase</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">10</span>
+                                            <span class="measurement">U/L (&lt; 31)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">AST</span><br>
+                                            <span class="long_name">Aspartate Aminotransferase</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">14</span>
+                                            <span class="measurement">U/L (&lt; 32)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">ALP</span><br>
+                                            <span class="long_name">Alkaline Phosphatase</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">51</span>
+                                            <span class="measurement">U/L (30 - 120)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-liver">Show More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end LIVER -->
+        <!-- URINE -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <img alt="" class="img-center" height="100px" src=
+                            "./images/urine.png" width="100px"><br>
+                            <span>Urine</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Protein</span><br>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="label label-success value">&lt; 0.25</span>
+                                            <span class="measurement">g/L (&lt; 0.25)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-urine">Show More</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end URINE -->
+    </div>
+</div>
+
+
+
+<!-- modal -->
+<div class="modal fade" id="modal-blood" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Full Blood Count</h4>
       </div>
-      <div class="col-md-2" >
-        <center>
-        <li><h4> <%= @user.weight %> kg </h4></li>
-        <li><h4> <%= @user.height%> m </h4> </li>
-        </center>
+      <div class="modal-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td>Haemoglobin</td>
+                <td>122</td>
+                <td>g/L</td>
+                <td>115 - 165</td>
+            </tr>
+
+            <tr>
+                <td>RBC</td>
+                <td>4.48</td>
+                <td>10^12/L</td>
+                <td>3.80 - 5.80</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td>85</td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>HCT</td>
+                <td>0.38</td>
+                <td>L/L</td>
+                <td>0.38 - 0.48</td>
+            </tr>
+
+            <tr>
+                <td>MCH</td>
+                <td>27</td>
+                <td>pg</td>
+                <td>27 - 32</td>
+            </tr>
+
+        </table>
       </div>
-      <div class="col-md-3">
-        <center>
-        <h3> BMI <%= @user.weight.present? ?  @user.bmi  : " "%> </h3>
-      </center>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-      <div class="col-md-3">
-        <h3> BLOOD : <%= @user.blood_type %> </h3>
-      </div>
-      <div class="col-md-3">
-        <%= link_to 'Edit Profile', edit_user_path(@user),  class: "btn btn-lg btn-danger" %>
-      </div>
+    </div>
+
   </div>
-    <!-- <button type="button" class="btn btn-danger" id="edit_profile">EDIT</button> -->
-
-
-
-</div>
 </div>
 
-<script>
-$( document ).ready(function() {
+<div class="modal fade" id="modal-liver" role="dialog">
+  <div class="modal-dialog">
 
-  $( ".basichealth" ).hide();
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Liver Function</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td>Total Protein</td>
+                <td>122</td>
+                <td>g/L</td>
+                <td>115 - 165</td>
+            </tr>
+
+            <tr>
+                <td>RBC</td>
+                <td>4.48</td>
+                <td>10^12/L</td>
+                <td>3.80 - 5.80</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td>85</td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>HCT</td>
+                <td>0.38</td>
+                <td>L/L</td>
+                <td>0.38 - 0.48</td>
+            </tr>
+
+            <tr>
+                <td>MCH</td>
+                <td>27</td>
+                <td>pg</td>
+                <td>27 - 32</td>
+            </tr>
+
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade" id="modal-kidney" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Renal Function</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td>Haemoglobin</td>
+                <td>122</td>
+                <td>g/L</td>
+                <td>115 - 165</td>
+            </tr>
+
+            <tr>
+                <td>RBC</td>
+                <td>4.48</td>
+                <td>10^12/L</td>
+                <td>3.80 - 5.80</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td>85</td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>HCT</td>
+                <td>0.38</td>
+                <td>L/L</td>
+                <td>0.38 - 0.48</td>
+            </tr>
+
+            <tr>
+                <td>MCH</td>
+                <td>27</td>
+                <td>pg</td>
+                <td>27 - 32</td>
+            </tr>
+
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
-    $( "#dashboardbtn" ).click(function() {
-      console.log("hello basichealthbtn")
-      $( ".maindashboard" ).show();
-      $( ".basichealth" ).hide();
-    });
+<div class="modal fade" id="modal-urine" role="dialog">
+  <div class="modal-dialog">
 
-    $( "#basichealthbtn" ).click(function() {
-      $( ".maindashboard" ).hide();
-      $( ".basichealth" ).show();
-    });
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Urinalysis</h4>
+      </div>
+      <div class="modal-body">
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
 
+            <tr>
+                <td>Appeareance</td>
+                <td>clear</td>
+                <td></td>
+                <td>-</td>
+            </tr>
 
-      $( ".questionaire" ).show();
-      $( ".healthupload" ).hide();
-      $( ".surveyrecord" ).hide();
-      $( ".healthrecord" ).hide();
+            <tr>
+                <td>Color</td>
+                <td>pale yellow</td>
+                <td></td>
+                <td>-</td>
+            </tr>
 
-      $( "#basicbtn" ).click(function() {
-        $( ".questionaire" ).show();
-        $( ".healthupload" ).hide();
-      });
+            <tr>
+                <td>MCV</td>
+                <td>85</td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
 
-      $( "#healthbtn" ).click(function() {
-        $( ".questionaire" ).hide();
-        $( ".healthupload" ).show();
-      });
+            <tr>
+                <td>Bacteria</td>
+                <td>Nil</td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
 
-
-
-});
-
-
-</script>
+  </div>
+</div>
