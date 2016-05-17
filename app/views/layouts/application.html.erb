@@ -2,10 +2,10 @@
 <html>
 <head>
   <title>VitalSynapse - Modernising Your Healthcare</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%#= csrf_meta_tags %>
+  <!-- <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"> -->
   <!-- <link href="css/sidebar.css" rel="stylesheet"> -->
 
 
@@ -23,8 +23,8 @@
   <!-- </nav> -->
 
   <% if user_signed_in?  %>
-    <nav class="w3-sidenav w3-collapse w3-red w3-card-2 w3-animate-left" style="width:200px;">
-      <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">&times;</a>
+    <!-- <nav class="w3-sidenav w3-collapse w3-red w3-card-2 w3-animate-left" style="width:200px;">
+      <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">&times;</a> -->
       <!-- <h2><a href="#" id="dashboardbtn"><h2>Dashboard</h2></a> -->
       <!-- <h2><a href="#" id="basichealthbtn"><h2>Basic Health</h2></a> -->
       <h2> <%= link_to 'Dashboard', dashboard_path(@user) %></h2>

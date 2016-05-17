@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link href="css/sidebar.css" rel="stylesheet">
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 
 <div id="wrapper">
 <div class="container" id="dashboardbody">
@@ -66,7 +66,7 @@
            <%#= task_form.hidden_field :title, value: "BLOOD" %>
            sbp<%= task_form.text_field :sbp %>
            DBP<%= task_form.text_field :dpb %>
-           Remark <%= task_form.select :context, Pressure.contexts.keys.to_a %> <!-- to fill up enum values -->
+           Remark <%= task_form.select :context, Pressure .contexts.keys.to_a %> <!-- to fill up enum values -->
           <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
           <%= task_form.submit "submit", class: "btn btn-warning" %>
         <% end %>
