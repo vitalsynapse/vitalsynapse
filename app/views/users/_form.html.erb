@@ -10,7 +10,10 @@
       </ul>
     </div>
   <% end %>
-
+<%= image_tag(@user.profile_pic_url) if @user.profile_pic? %>
+  <div class="field">
+    Profile Picture <%= f.file_field :profile_pic %>
+  </div>
   <div class="field">
     <%= f.select :gender, User.genders.keys.to_a %>
   </div>
@@ -24,10 +27,10 @@
     <%= f.select :blood_type, User.blood_types.keys.to_a %>
   </div>
   <div class="field">
-    <%= f.text_field :height, placeholder: "M" %>
+    <%#= f.text_field :height, placeholder: "M" %>
   </div>
   <div class="field">
-    <%= f.text_field :weight, placeholder: "KG" %>
+    <%#= f.text_field :weight, placeholder: "KG" %>
   </div>
   <div class="field">
       <%= f.select :marital_status, User.marital_statuses.keys.to_a %>
@@ -35,7 +38,7 @@
   <div class="field">
     <%= f.text_field :address %>
   </div>
-  
+
   <div class="field">
     <<%= f.text_field :city %>
   </div>

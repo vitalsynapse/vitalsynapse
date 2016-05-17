@@ -16,7 +16,7 @@
         <%= f.fields_for :glucoses do |task_form| %>
            <%#= task_form.hidden_field :title, value: "BLOOD" %>
            Reading<%= task_form.text_field :measurement %>
-           After lunch e.g<%= task_form.text_field :context %> <!-- to fill up enum values -->
+           <%= task_form.select :context, Glucose.contexts.keys.to_a %><!-- to fill up enum values -->
           <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
           <%= task_form.submit "submit", class: "btn btn-warning" %>
         <% end %>
@@ -38,16 +38,18 @@
               </thead>
 
               <tbody>
+                <%if @user_glucose!= nil  %>
+                <%  @user_glucose.all.each do |health_record| %>
                  <tr>
-                   <%if @user_glucose!= nil  %>
-                   <%  @user_glucose.all.each do |health_record| %>
+
                    <td><%= health_record.measurement%> </td>
                    <td><%= health_record.context %> </td>
                    <td><%= health_record.created_at.strftime('%v')%> </td>
                    <td><%= health_record.created_at.strftime('%H')%></td>
-                   <% end %>
-                 <% end %>
+
                  </tr>
+                 <% end %>
+               <% end %>
               </tbody>
             </table>
           </div>
@@ -64,7 +66,7 @@
            <%#= task_form.hidden_field :title, value: "BLOOD" %>
            sbp<%= task_form.text_field :sbp %>
            DBP<%= task_form.text_field :dpb %>
-           Remark <%= task_form.text_field :context %> <!-- to fill up enum values -->
+           Remark <%= task_form.select :context, Pressure.contexts.keys.to_a %> <!-- to fill up enum values -->
           <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
           <%= task_form.submit "submit", class: "btn btn-warning" %>
         <% end %>
@@ -87,17 +89,19 @@
             </thead>
 
             <tbody>
+              <%if @user_pressure != nil  %>
+              <%  @user_pressure.all.each do |health_record| %>
                <tr>
-                 <%if @user_pressure != nil  %>
-                 <%  @user_pressure.all.each do |health_record| %>
+
                  <td><%= health_record.sbp %> </td>
                  <td><%= health_record.dpb %> </td>
                  <td><%= health_record.context %> </td>
                  <td><%= health_record.created_at.strftime('%v')%> </td>
                  <td><%= health_record.created_at.strftime('%H')%></td>
-                 <% end %>
-               <% end %>
+
                </tr>
+               <% end %>
+             <% end %>
             </tbody>
           </table>
         </div>
@@ -114,6 +118,11 @@
          PROBLEM<%= task_form.text_field :problem %>
          DIAGNOSIS<%= task_form.text_field :diagnosis %>
          TREATMENT<%= task_form.text_field :treatment %>
+         CLINICAL NAME <%= task_form.text_field :clinic_name %>
+         COST <%= task_form.text_field :cost %>
+         DATE<%= task_form.date_field :visit_date%>
+         TIME<%= task_form.time_field :visit_time%>>
+
         <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
         <%= task_form.submit "submit", class: "btn btn-warning" %>
       <% end %>
@@ -130,23 +139,29 @@
               <td> Problem </td>
               <td> Diagnosis </td>
               <td> Treatment</td>
+              <td> Clinic Name</td>
+              <td> Cost</td>
               <td> Date</td>
               <td> Time </td>
             </tr>
           </thead>
 
           <tbody>
+            <%if @user_clinics != nil  %>
+            <%  @user_clinics.all.each do |health_record| %>
              <tr>
-               <%if @user_clinic != nil  %>
-               <%  @user_clinic.all.each do |health_record| %>
+
                <td><%= health_record.problem %> </td>
                <td><%= health_record.diagnosis %> </td>
                <td><%= health_record.treatment %> </td>
-               <td><%= health_record.created_at.strftime('%v')%> </td>
-               <td><%= health_record.created_at.strftime('%H')%></td>
-               <% end %>
-             <% end %>
+               <td><%= health_record.clinic_name %> </td>
+               <td><%= health_record.cost %> </td>
+               <td><%= health_record.visit_date%> </td>
+               <td><%= health_record.visit_time%></td>
+
              </tr>
+             <% end %>
+           <% end %>
           </tbody>
         </table>
       </div>
@@ -177,25 +192,28 @@
       <table class="table">
         <thead>
           <tr>
-          <td> Height </td>
+            <td> Height </td>
             <td> Weight </td>
+            <td> BMI </td>
             <td> Date</td>
             <td> Time </td>
           </tr>
         </thead>
 
         <tbody>
+          <%if @user_bmi != nil  %>
+          <%  @user_bmi.all.each do |health_record| %>
            <tr>
-             <%if @user_bmi != nil  %>
-             <%  @user_bmi.all.each do |health_record| %>
+
              <td><%= health_record.height %> </td>
              <td><%= health_record.weight %> </td>
-
+             <td><%= health_record.bodymassindex %> </td>
              <td><%= health_record.created_at.strftime('%v')%> </td>
              <td><%= health_record.created_at.strftime('%H')%></td>
-             <% end %>
-           <% end %>
+
            </tr>
+           <% end %>
+         <% end %>
         </tbody>
       </table>
     </div>

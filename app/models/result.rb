@@ -2,8 +2,6 @@ class Result < ActiveRecord::Base
   belongs_to :users
   belongs_to :question
   belongs_to :answers
-  has_many :result_answers
-  accepts_nested_attributes_for :result_answers, :reject_if => :all_blank, :allow_destroy => true
   before_create :insert_question
 
   private

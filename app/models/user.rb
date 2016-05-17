@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable,
          :omniauthable, :omniauth_providers => [:facebook]
-
+  mount_uploader :profile_pic
   has_many :healths
   has_many :results
 
