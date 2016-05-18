@@ -10,6 +10,7 @@ class UsersController < ApplicationController
 
   def healthupload
       @user = User.find(current_user.id)
+      Rails.logger.info ">>> @user #{@user.inspect}"
   end
 
   def healthrecord
@@ -31,7 +32,6 @@ class UsersController < ApplicationController
     # if current_user != @user
     #   redirect_to root_path
     # end
-    @user = User.find(current_user.id)
     @user_health = Health.where(user_id: @user.id)
     @questions=  Question.all
     # @first_question = @question.find(1)

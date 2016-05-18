@@ -1,13 +1,15 @@
-<div id="wrapper">
-  <div class="container" id="dashboardbody">
+<!-- <div id="wrapper">
+  <div class="container" id="dashboardbody">-->
+  <script src="/assets/jquery_nested_form.js?body=1" type="text/javascript"></script>
+
     <div class="info">
       <h2> Thank you for signing up! Let's start with some exciting quiz </h2>
 
     </div>
-    <%= nested_form_for(@user,:html => {:multipart => true}) do |f| %>
-
+    <%= nested_form_for(@user) do |f| %>
+    hello wtf
         <%= f.fields_for :results do |result| %>
-
+        hello wtf
         <h4> Q1. <%= @questions.first.description %> </h4><br>
 
               <%= check_box_tag "user[results_attributes][0][answer_id]", 1%> <%= @questions.first.answers.first.description %><br>
@@ -49,21 +51,34 @@
 
             <%= f.submit "submit", class: "btn btn-warning" %>
         <% end %>
+
+          <%= f.link_to_add "Start Quiz", :results%>
         <div class="recordbutton">
-        <%= f.link_to_add "Start Quiz", :results, class: "btn btn-info new-record", id: "new_record"%>
+
       </div>
     <% end %>
 
 
-  </div>
-</div>
+  <!-- </div>
+</div> -->
 
 <script>
-$(".btn-info ").click(function(){
-  $(".info ").hide();
-   $(".btn-info ").fadeOut(1000);
 
-});
+window.nestedFormEvents.insertFields = function(content, assoc, link) {
+  return $(link).closest('form').find(assoc + '_fields').append($(content));
+}
+// $(".add_nested_fields").click(function(){
+//   console.log("hello world");
+//   var style = document.getElementById('#recordbutton');
+//   console.log("style ==", style)
+//
+//   document.getElementById('#results_fields_blueprint').style.display = "block";
+//   // $(".info ").hide();
+//   //  $(".btn-info ").fadeOut(1000);
+//
+// });
+
+// console.log("results_fields_blueprint", results_fields_blueprint);
 
 
 

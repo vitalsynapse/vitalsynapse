@@ -18,30 +18,7 @@
 <body>
   <!-- Navigation -->
   <%= render 'pages/theme/menu' %>
-  <!-- <nav class="w3-sidenav w3-red w3-card-2" style="width:200px"> -->
-
-    <!-- <div class="sidenav-details"> -->
-      <!-- <h1 color="white"><%#= current_user.first_name %></h1> -->
-      <!-- <h2 class="btn w3-border-bottom w3-border-white" color="white" id="dashboardbtn">Dashboard</h2> -->
-      <!-- <h2 class="btn w3-border-bottom w3-border-white" color="white" id="basichealthbtn">Basic Health</h2> -->
-    <!-- </div> -->
-    <!-- <p class="btn" color="white">Advance Health</p> -->
-  <!-- </nav> -->
-
-  <% if user_signed_in?  %>
-    <!-- <nav class="w3-sidenav w3-collapse w3-red w3-card-2 w3-animate-left" style="width:200px;">
-      <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">&times;</a> -->
-      <!-- <h2><a href="#" id="dashboardbtn"><h2>Dashboard</h2></a> -->
-      <!-- <h2><a href="#" id="basichealthbtn"><h2>Basic Health</h2></a> -->
-      <h2> <%= link_to 'Dashboard', dashboard_path(@user) %></h2>
-      <h2> <%= link_to 'Health Record', health_record_path(@user) %></h2>
-      <h2> <%= link_to 'Daily Update', daily_update_path(@user) %></h2>
-      <h2> <%= link_to 'Health Upload', health_upload_path(@user) %></h2>
-    </nav>
-  <% end %>
-
-
-
+  
 <!-- <nav class="navbar navbar-inverse">
   <div class="container">
     <div class="navbar-header">
@@ -90,7 +67,3 @@
 <%= render 'pages/theme/footer' %>
 </body>
 </html>
-
-
-
-

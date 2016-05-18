@@ -5,17 +5,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 
-<div id="wrapper">
-<div class="container" id="dashboardbody">
 
 
 
 
         health for blood:-
        <%= nested_form_for @user do |f| %>
-
+       <% Rails.logger.info ">>> @user at view #{@user.inspect}" %>
         <div class="healthrecord">
-          <%= f.fields_for :healths do |task_form| %>
+          <%= f.fields_for :healths, wrapper:false do |task_form| %>
              <%= task_form.hidden_field :record_category_id, value: 1 %>
              <%= task_form.file_field :file %>
             <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
@@ -180,13 +178,10 @@
 
 
 
-
-</div>
-</div>
+]
 
 <script>
 
-   $( ".healthrecord" ).hide();
 
 
 </script>

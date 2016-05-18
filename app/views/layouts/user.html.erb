@@ -46,7 +46,8 @@
           <div class="row">
             <br>
               <div class="col-md-12 hidden-xs hidden-sm">
-                <%= image_tag("img.jpg", class: "img-circle img-responsive profile_image") %>
+                <%= image_tag(current_user.profile_pic_url, class: "img-circle img-responsive profile_image") if @user.profile_pic? %>
+                <%#= image_tag("img.jpg", class: "img-circle img-responsive profile_image") %>
               </div>
           </div>
           <br>
@@ -73,7 +74,3 @@
   </div>
 </body>
 </html>
-
-
-
-
