@@ -13,8 +13,9 @@ class UsersController < ApplicationController
 
   def healthrecord
       @user = User.find(current_user.id)
+      Rails.logger.info ">>> @user #{@user.inspect}"
       @user_health = Health.where(user_id: @user.id)
-
+      Rails.logger.info ">>> @user health #{@user_health.inspect}"
   end
 
   def dailyupdate
