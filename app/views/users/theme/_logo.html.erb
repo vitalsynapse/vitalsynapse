@@ -1,0 +1,11 @@
+<p class="hidden" id="big_logo"><%= asset_path 'logo.png' %></p>
+<p class="hidden" id="small_logo"><%= asset_path 'logo.jpg' %></p>
+
+<div class="navbar nav_title" style="border: 0;">
+  <div class="logo hidden-xs hidden-sm" style="padding-top: 10px;">
+    <%= image_tag("logo.png", class: "img-responsive", size: "200x300", id: "logo") %>
+    </div>
+    <div class="logo hidden-lg hidden-md" style="padding-top: 10px;">
+      <%= image_tag("logo.jpg", class: "img-responsive", size: "100x200") %>
+  </div>
+</div>
