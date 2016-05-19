@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519201226) do
+ActiveRecord::Schema.define(version: 20160519204558) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -383,10 +383,10 @@ ActiveRecord::Schema.define(version: 20160519201226) do
     t.date     "date_taken"
     t.time     "time_taken"
     t.integer  "measurement"
-    t.integer  "index"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.integer  "user_id"
+    t.integer  "context"
   end
 
   add_index "respiratories", ["user_id"], name: "index_respiratories_on_user_id", using: :btree

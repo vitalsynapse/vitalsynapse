@@ -117,8 +117,9 @@ class UsersController < ApplicationController
       params.require(:user).permit(
       :first_name, :lastname, :gender, :profile_pic, :ethnicity, :blood_type, :occupation, :dob, :marital_status, :address, :state, :city, :postcode, :email, :height, :weight, :name,
       healths_attributes: [:id, :user_id, :subject, :details, :file, :record_category_id, :_destroy],
-      glucoses_attributes: [:id, :user_id, :measurement, :context, :_destroy],
-      pressures_attributes: [:id, :user_id, :sbp, :dpb, :context, :_destroy],
+      glucoses_attributes: [:id, :user_id, :measurement, :context,:time_taken, :date_taken, :_destroy],
+      pressures_attributes: [:id, :user_id, :sbp, :dpb, :context, :time_taken, :date_taken, :_destroy],
+      respiratories_attributes: [:id, :user_id, :context, :measurement, :date_taken, :time_taken, :_destroy],
       clinic_records_attributes: [:id, :user_id, :problem, :diagnosis, :treatment,:clinic_name, :visit_date,:visit_time, :cost, :_destroy],
       bmis_attributes: [:id, :height, :weight, :boddymassindex,:_destroy],
        results_attributes: [:id,:user_id, :question_id, :answer_id, :answer,:_destroy, result_answers_attributes: [:id, :result_id, :answer_id, :_destroy]]

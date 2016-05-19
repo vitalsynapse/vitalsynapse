@@ -6,6 +6,7 @@
 
 
     <ul class="nav side-menu">
+      <% if user_signed_in? %>
       <li class="active">
         <%= link_to '<i class="fa fa-tachometer"></i> Dashboard'.html_safe, dashboard_path(@user) %>
 
@@ -31,10 +32,14 @@
             <%= link_to 'Update Info', edit_user_path(@user)%>
           </li>
           <li>
-            <a href="change_password.html">Change Password</a>
+            <%= link_to 'Update Password', edit_user_registration_path(@user)%>
           </li>
         </ul>
       </li>
+      <li>
+         <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+      </li>
     </ul>
+    <% end %>
   </div>
 </div>
