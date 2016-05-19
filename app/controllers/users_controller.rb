@@ -76,13 +76,16 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    Rails.logger.info ">>> params #{params.inspect}"
-    Rails.logger.info ">>> params commit #{params[:commit]}"
+    Rails.logger.info ">>> params #{params[:user][:healths_attributes]}"
     respond_to do |format|
       if @user.update!(user_params)
-
-        format.html { redirect_to dashboard_path(@user), notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        if params[:user][:healths_attributes]
+          format.html { redirect_to health_upload_path(@user), notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+        else
+          format.html { redirect_to dashboard_path(@user), notice: 'User was successfully updated.' }
+          format.json { render :show, status: :ok, location: @user }
+        end
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }
