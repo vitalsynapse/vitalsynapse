@@ -5,7 +5,8 @@
 
       <div class="healthrecord">
         <%= f.fields_for :glucoses do |task_form| %>
-           <%#= task_form.hidden_field :title, value: "BLOOD" %>
+           Date Taken<%= task_form.date_field :date_taken %>
+           Time Taken<%= task_form.date_field :time_taken %>
            Reading<%= task_form.text_field :measurement %>
            <%= task_form.select :context, Glucose.contexts.keys.to_a %><!-- to fill up enum values -->
           <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
@@ -21,10 +22,11 @@
             <table class="table">
               <thead>
                 <tr>
+                  <td> Date Taken</td>
+                  <td>  Time Taken </td>
                   <td> Measurement </td>
                   <td> Index </td>
-                  <td> Date</td>
-                  <td> Time </td>
+
                 </tr>
               </thead>
 
@@ -35,8 +37,8 @@
 
                    <td><%= health_record.measurement%> </td>
                    <td><%= health_record.context %> </td>
-                   <td><%= health_record.created_at.strftime('%v')%> </td>
-                   <td><%= health_record.created_at.strftime('%H')%></td>
+                   <td><%= health_record.date_taken%> </td>
+                   <td><%= health_record.time_taken%></td>
 
                  </tr>
                  <% end %>
@@ -54,10 +56,10 @@
 
       <div class="healthrecord">
         <%= f.fields_for :pressures do |task_form| %>
-           <%#= task_form.hidden_field :title, value: "BLOOD" %>
-           sbp<%= task_form.text_field :sbp %>
+           date taken<%= task_form.date_field :date_taken %>
+           time taken<%= task_form.time_field :time_taken %>
            DBP<%= task_form.text_field :dpb %>
-           Remark <%= task_form.select :context, Pressure .contexts.keys.to_a %> <!-- to fill up enum values -->
+           Remark <%= task_form.select :context, Pressure .contexts.keys.to_a %>
           <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
           <%= task_form.submit "submit", class: "btn btn-warning" %>
         <% end %>
@@ -74,8 +76,8 @@
                 <td> sbp </td>
                 <td> dpb </td>
                 <td> Index</td>
-                <td> Date</td>
-                <td> Time </td>
+                <td> Date Taken </td>
+                <td> Time Taken </td>
               </tr>
             </thead>
 
@@ -87,8 +89,8 @@
                  <td><%= health_record.sbp %> </td>
                  <td><%= health_record.dpb %> </td>
                  <td><%= health_record.context %> </td>
-                 <td><%= health_record.created_at.strftime('%v')%> </td>
-                 <td><%= health_record.created_at.strftime('%H')%></td>
+                 <td><%= health_record.date_taken%> </td>
+                 <td><%= health_record.time_taken%></td>
 
                </tr>
                <% end %>
@@ -96,6 +98,57 @@
             </tbody>
           </table>
         </div>
+
+
+
+    Respiratory:-
+        <%= nested_form_for @user do |f| %>
+
+        <div class="healthrecord">
+          <%= f.fields_for :respiratories do |task_form| %>
+             Date Taken <%= task_form.date_taken :date_taken %>
+             Time Taken <%= task_form.text_field :time_taken %>
+             Measurement <%= task_form.text_field :measurement %>
+             Index <%= task_form.select :index, Respiratory.indexs.keys.to_a %>
+            <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+            <%= task_form.submit "submit", class: "btn btn-warning" %>
+          <% end %>
+        </div>
+
+        <%= f.link_to_add "Add a New Record", :bmis, class: "btn btn-info new-record"%>
+
+        <% end %>
+
+        <div class="healthupload">
+        <h3> Respiratory Record </h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <td> Measurement </td>
+                  <td> Index </td>
+                  <td> Time Taken </td>
+                  <td> Date Taken</td>
+                </tr>
+              </thead>
+
+              <tbody>
+                <%if @user_lungs != nil  %>
+                <%  @user_lungs.all.each do |health_record| %>
+                 <tr>
+
+                   <td><%= health_record.measurement %> </td>
+                   <td><%= health_record.index %> </td>
+                   <td><%= health_record.time_taken %> </td>
+                   <td><%= health_record.date_taken%> </td>
+
+                 </tr>
+                 <% end %>
+               <% end %>
+              </tbody>
+            </table>
+          </div>
+
+
 
 
 

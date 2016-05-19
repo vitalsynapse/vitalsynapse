@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     @user_pressure = Pressure.where(user_id: @user.id)
     @user_clinics = ClinicRecord.where(user_id: @user.id)
     @user_bmi = Bmi.where(user_id: @user.id)
+    @user_lungs = Respiratory.where(user_id: @user.id)
   end
 
   def userdashboard
