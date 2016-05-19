@@ -14,8 +14,9 @@
 
       <div class="healthrecord">
         <%= f.fields_for :glucoses do |task_form| %>
-           <%#= task_form.hidden_field :title, value: "BLOOD" %>
-           Reading<%= task_form.text_field :measurement %>
+         <%= task_form.date_field :date_taken%>
+          <%= task_form.time_field :time_taken%>
+           <%= task_form.text_field :measurement, placeholder: "measurement" %>
            <%= task_form.select :context, Glucose.contexts.keys.to_a %><!-- to fill up enum values -->
           <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
           <%= task_form.submit "submit", class: "btn btn-warning" %>
