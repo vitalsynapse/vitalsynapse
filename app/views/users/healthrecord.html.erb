@@ -1,5 +1,5 @@
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
 
+<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.11/css/jquery.dataTables.css">
 <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.11/js/jquery.dataTables.js"></script>
 
 
@@ -11,37 +11,47 @@
         <h3> Health Upload </h3>
 
 
-            <table class="healthrecordtable" id="healthtable">
-              <thead>
-                <tr>
-                  <td> Title </td>
-                  <td> Date</td>
-                  <td> File </td>
-                </tr>
-              </thead>
+        <table class="table" id="healthtable">
+          <thead>
+            <tr>
+              <td>   </td>
+              <td> Name </td>
+              <td> Download </td>
+              <td> View </td>
+            </tr>
+          </thead>
 
-              <tbody>
-                <%if @user_health != nil  %>
-                <%  @user_health.all.each do |health_record| %>
-                 <tr>
+          <tbody>
+            <%if @user_health != nil  %>
+            <%  @user_health.all.each do |health_record| %>
+             <tr>
+               <td>
+                  <%= image_tag(health_record.record_image, class: "img-center",  width:"100") %>
 
-                   <td><%= health_record.record_name%> </td>
-                   <td><%= health_record.created_at.strftime('%v')%> </td>
-                   <td><%= image_tag(health_record.file.url, :width => 100, :height => 100)%></td>
+               </td>
+               <td>
+                 <%= health_record.record_name%>
+               </td>
 
+               <td>
+                 <%= link_to 'DOWNLOAD', health_record.file.url, class: "btn btn-success btn-block" %>
+               </td>
+                <td>
+                  <%= link_to 'OPEN', health_record.file.url, :target => '_blank', class: "btn btn-success btn-block" %>
+                </td>
 
-                 </tr>
-                 <% end %>
-               <% end %>
-              </tbody>
-            </table>
+             </tr>
+             <% end %>
+           <% end %>
+          </tbody>
+        </table>
 
         </div>
 </div>
 </div>
 
 <script>
-$(document).ready(function(){
+
     $('#healthtable').DataTable();
-});
+
 </script>

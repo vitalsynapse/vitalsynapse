@@ -59,6 +59,7 @@ RecordCategory.find_or_create_by(name: "CT Scan")
 RecordCategory.find_or_create_by(name: "MRI")
 RecordCategory.find_or_create_by(name: "PetScan")
 RecordCategory.find_or_create_by(name: "Dental Profile")
+RecordCategory.find_or_create_by(name: "Others")
 
 
 Admin.create!(:email => "admin@vitalsynapse.com", :password => '12341234')

@@ -1,178 +1,291 @@
-<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="css/sidebar.css" rel="stylesheet">
+<div class="container">
+        <h3 class="center animated bounceInRight"> Upload Your Medical Record</h3>
+        <div class="medical_record animated fadeInUp">
+          <div class="row center">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                <%= image_tag("blood.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+                <%= nested_form_for @user, remote: true do |f| %>
+                 <div class="healthrecord">
+                   <%= f.fields_for :healths, remote: true do |task_form| %>
+                      <%= task_form.hidden_field :record_category_id, value: 1 %>
+                      <%= task_form.file_field :file %>
+                     <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+
+                   <% end %>
+                 </div>
+                 <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                 <%= f.submit "submit", class: "btn btn-warning", id: "submit-button" %>
+               <% end %>
+                <br><br>
+                <span><b>Blood</b></span>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                  <%= image_tag("urine.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+                  <%= nested_form_for @user do |f| %>
+
+                   <div class="healthrecord">
+                     <%= f.fields_for :healths do |task_form| %>
+                        <%= task_form.hidden_field :record_category_id, value: 2%>
+                        <%= task_form.file_field :file %>
+                       <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                       <%= task_form.submit "submit", class: "btn btn-warning" %>
+                     <% end %>
+                   </div>
+                   <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                    <%= f.submit "submit", class: "btn btn-warning" %>
+
+                 <% end %>
+                </span>
+                <br><br>
+                <span><b>Urine</b></span>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                <%= image_tag("xray.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+                <%= nested_form_for @user do |f| %>
+
+                 <div class="healthrecord">
+                   <%= f.fields_for :healths do |task_form| %>
+                      <%= task_form.hidden_field :record_category_id, value: 3%>
+                      <%= task_form.file_field :file %>
+                     <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                     <%= task_form.submit "submit", class: "btn btn-warning" %>
+                   <% end %>
+                 </div>
+                 <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                  <%= f.submit "submit", class: "btn btn-warning" %>
+
+               <% end %>
+                <br><br>
+                <span><b>X-Ray</b></span>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row center">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                <%= image_tag("ultrasound.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+                <%= nested_form_for @user do |f| %>
+
+                 <div class="healthrecord">
+                   <%= f.fields_for :healths do |task_form| %>
+                      <%= task_form.hidden_field :record_category_id, value: 6%>
+                      <%= task_form.file_field :file %>
+                     <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                     <%= task_form.submit "submit", class: "btn btn-warning" %>
+                   <% end %>
+                 </div>
+                 <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                  <%= f.submit "submit", class: "btn btn-warning" %>
+
+               <% end %>
+                <br><br>
+                <span><b>Ultrasound</b></span>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                <%= image_tag("ctscan.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+
+                  <%= nested_form_for @user do |f| %>
+
+                   <div class="healthrecord">
+                     <%= f.fields_for :healths do |task_form| %>
+                        <%= task_form.hidden_field :record_category_id, value: 7%>
+                        <%= task_form.file_field :file %>
+                       <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                       <%= task_form.submit "submit", class: "btn btn-warning" %>
+                     <% end %>
+                   </div>
+                   <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                    <%= f.submit "submit", class: "btn btn-warning" %>
+
+                 <% end %>
+
+                <br><br>
+                <span><b>CT-Scan</b></span>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                <%= image_tag("mri.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+                <%= nested_form_for @user do |f| %>
+
+                 <div class="healthrecord">
+                   <%= f.fields_for :healths do |task_form| %>
+                      <%= task_form.hidden_field :record_category_id, value: 8%>
+                      <%= task_form.file_field :file %>
+                     <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                     <%= task_form.submit "submit", class: "btn btn-warning" %>
+                   <% end %>
+                 </div>
+                 <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                  <%= f.submit "submit", class: "btn btn-warning" %>
+
+               <% end %>
+                <br><br>
+                <span><b>MRI</b></span>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row center">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                <%= image_tag("petscan.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+
+                  <%= nested_form_for @user do |f| %>
+
+                   <div class="healthrecord">
+                     <%= f.fields_for :healths do |task_form| %>
+                        <%= task_form.hidden_field :record_category_id, value: 9%>
+                        <%= task_form.file_field :file %>
+                       <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                       <%= task_form.submit "submit", class: "btn btn-warning" %>
+                     <% end %>
+                   </div>
+                   <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                    <%= f.submit "submit", class: "btn btn-warning" %>
+
+                 <% end %>
+
+                <br><br>
+                <span><b>PET scan</b></span>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                  <%= image_tag("scopes.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+                <%= nested_form_for @user do |f| %>
+
+                 <div class="healthrecord">
+                   <%= f.fields_for :healths do |task_form| %>
+                      <%= task_form.hidden_field :record_category_id, value: 5%>
+                      <%= task_form.file_field :file %>
+                     <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                     <%= task_form.submit "submit", class: "btn btn-warning" %>
+                   <% end %>
+                 </div>
+                 <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                  <%= f.submit "submit", class: "btn btn-warning" %>
+
+               <% end %>
+                <br><br>
+                <span><b>Scopes</b></span>
+              </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                <%= image_tag("cancermarker.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+                <%= nested_form_for @user do |f| %>
+
+                 <div class="healthrecord">
+                   <%= f.fields_for :healths do |task_form| %>
+                      <%= task_form.hidden_field :record_category_id, value: 4%>
+                      <%= task_form.file_field :file %>
+                     <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                     <%= task_form.submit "submit", class: "btn btn-warning" %>
+                   <% end %>
+                 </div>
+                 <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                  <%= f.submit "submit", class: "btn btn-warning" %>
+
+               <% end %>
+                <br><br>
+                <span><b>Cancer Markers</b></span>
+              </div>
+            </div>
+          </div>
+
+          <br>
+
+          <div class="row center">
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                <%= image_tag("dental.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+                <%= nested_form_for @user do |f| %>
+
+                 <div class="healthrecord">
+                   <%= f.fields_for :healths do |task_form| %>
+                      <%= task_form.hidden_field :record_category_id, value: 9%>
+                      <%= task_form.file_field :file %>
+                     <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                     <%= task_form.submit "submit", class: "btn btn-warning" %>
+                   <% end %>
+                 </div>
+                 <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                  <%= f.submit "submit", class: "btn btn-warning" %>
+
+               <% end %>
+                <br><br>
+                <span><b>Dental</b></span>
+              </div>
+            </div>
 
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
 
+            <div class="col-xs-12 col-sm-12 col-md-4">
+              <div class="well well-lg rounded shadow hover">
+                <%= image_tag("others.png", class: "img-center",  width:"100") %>
+                <br>
+                <br>
+                <%= nested_form_for @user do |f| %>
 
+                 <div class="healthrecord">
+                   <%= f.fields_for :healths do |task_form| %>
+                      <%= task_form.hidden_field :record_category_id, value: 10%>
+                      <%= task_form.file_field :file %>
+                     <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                     <%= task_form.submit "submit", class: "btn btn-warning" %>
+                   <% end %>
+                 </div>
+                 <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                  <%= f.submit "submit", class: "btn btn-warning" %>
 
-
-
-        health for blood:-
-       <%= nested_form_for @user do |f| %>
-       <% Rails.logger.info ">>> @user at view #{@user.inspect}" %>
-        <div class="healthrecord">
-          <%= f.fields_for :healths, wrapper:false do |task_form| %>
-             <%= task_form.hidden_field :record_category_id, value: 1 %>
-             <%= task_form.file_field :file %>
-            <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-            <%= task_form.submit "submit", class: "btn btn-warning" %>
-          <% end %>
+               <% end %>
+                <br><br>
+                <span><b>Others</b></span>
+              </div>
+            </div>
+          </div>
         </div>
-
-        <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-      <% end %>
-
-      health for urine:-
-     <%= nested_form_for @user do |f| %>
-
-      <div class="healthrecord">
-        <%= f.fields_for :healths do |task_form| %>
-           <%= task_form.hidden_field :record_category_id, value: 2%>
-           <%= task_form.file_field :file %>
-          <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-          <%= task_form.submit "submit", class: "btn btn-warning" %>
-        <% end %>
       </div>
-
-      <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-    <% end %>
-
-
-    health for xray
-   <%= nested_form_for @user do |f| %>
-
-    <div class="healthrecord">
-      <%= f.fields_for :healths do |task_form| %>
-         <%= task_form.hidden_field :record_category_id, value: 3%>
-         <%= task_form.file_field :file %>
-        <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-        <%= task_form.submit "submit", class: "btn btn-warning" %>
-      <% end %>
     </div>
-
-    <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-  <% end %>
-
-    health for xray
-   <%= nested_form_for @user do |f| %>
-
-    <div class="healthrecord">
-      <%= f.fields_for :healths do |task_form| %>
-         <%= task_form.hidden_field :record_category_id, value: 4%>
-         <%= task_form.file_field :file %>
-        <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-        <%= task_form.submit "submit", class: "btn btn-warning" %>
-      <% end %>
-    </div>
-
-    <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-  <% end %>
-
-  health for scopes
-  <%= nested_form_for @user do |f| %>
-
-  <div class="healthrecord">
-    <%= f.fields_for :healths do |task_form| %>
-       <%= task_form.hidden_field :record_category_id, value: 5%>
-       <%= task_form.file_field :file %>
-      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-      <%= task_form.submit "submit", class: "btn btn-warning" %>
-    <% end %>
-  </div>
-
-  <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-  <% end %>
-
-  health for ultrasound
-  <%= nested_form_for @user do |f| %>
-
-  <div class="healthrecord">
-    <%= f.fields_for :healths do |task_form| %>
-       <%= task_form.hidden_field :record_category_id, value: 6%>
-       <%= task_form.file_field :file %>
-      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-      <%= task_form.submit "submit", class: "btn btn-warning" %>
-    <% end %>
-  </div>
-
-  <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-  <% end %>
-
-
-  health for ct scan
-  <%= nested_form_for @user do |f| %>
-
-  <div class="healthrecord">
-    <%= f.fields_for :healths do |task_form| %>
-       <%= task_form.hidden_field :record_category_id, value: 7%>
-       <%= task_form.file_field :file %>
-      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-      <%= task_form.submit "submit", class: "btn btn-warning" %>
-    <% end %>
-  </div>
-
-  <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-  <% end %>
-
-
-  health for mri
-  <%= nested_form_for @user do |f| %>
-
-  <div class="healthrecord">
-    <%= f.fields_for :healths do |task_form| %>
-       <%= task_form.hidden_field :record_category_id, value: 8%>
-       <%= task_form.file_field :file %>
-      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-      <%= task_form.submit "submit", class: "btn btn-warning" %>
-    <% end %>
-  </div>
-
-  <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-  <% end %>
-
-  health for petscan
-  <%= nested_form_for @user do |f| %>
-
-  <div class="healthrecord">
-    <%= f.fields_for :healths do |task_form| %>
-       <%= task_form.hidden_field :record_category_id, value: 9%>
-       <%= task_form.file_field :file %>
-      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-      <%= task_form.submit "submit", class: "btn btn-warning" %>
-    <% end %>
-  </div>
-
-  <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-  <% end %>
-
-  health for dental profile
-  <%= nested_form_for @user do |f| %>
-
-  <div class="healthrecord">
-    <%= f.fields_for :healths do |task_form| %>
-       <%= task_form.hidden_field :record_category_id, value: 10%>
-       <%= task_form.file_field :file %>
-      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-      <%= task_form.submit "submit", class: "btn btn-warning" %>
-    <% end %>
-  </div>
-
-  <%= f.link_to_add "Add a New Record", :healths, class: "btn btn-info new-record"%>
-
-  <% end %>
-
-
 
 
 
@@ -182,6 +295,13 @@
 
 <script>
 
+  $(".btn-warning").hide();
+  $(".healthrecord").hide();
 
-$(".healthrecord").hide();
+  $(".btn-file").click(function(){
+      $(".btn-warning").show();
+  });
+
+
+
 </script>
