@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
+  root :to => redirect("/users/sign_in")
 
   resources :healths
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+
   resources :users
-  root 'pages#index'
+
   get "dashboard" => "users#userdashboard"
   get "health_upload" => "users#healthupload"
 
