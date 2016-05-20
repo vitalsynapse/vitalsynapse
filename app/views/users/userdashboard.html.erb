@@ -1453,28 +1453,45 @@
 
             <tr>
                 <td>Appeareance</td>
-                <td>clear</td>
+
+                <td>
+                    <% if @user_blood.urine_appearance.present? %>
+                      <%= @user_blood.urine_appearance %>
+                    <% end %>
+                </td>
                 <td></td>
                 <td>-</td>
             </tr>
 
             <tr>
                 <td>Color</td>
-                <td>pale yellow</td>
+                <td>
+                  <% if @user_blood.urine_colour.present? %>
+                    <%= @user_blood.urine_colour %>
+                  <% end %>
+                </td>
                 <td></td>
                 <td>-</td>
             </tr>
 
             <tr>
                 <td>MCV</td>
-                <td>85</td>
+                <td>
+                  <% if @user_blood.mcv.present? %>
+                    <%= @user_blood.mcv %>
+                  <% end %>
+                </td>
                 <td>fL</td>
                 <td>78 - 98</td>
             </tr>
 
             <tr>
                 <td>Bacteria</td>
-                <td>Nil</td>
+                <td>
+                  <% if @user_blood.bacteria.present? %>
+                    <%= @user_blood.bacteria %>
+                  <% end %>
+                </td>
                 <td></td>
                 <td></td>
             </tr>

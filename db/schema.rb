@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520075442) do
+ActiveRecord::Schema.define(version: 20160520140735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -190,6 +190,8 @@ ActiveRecord::Schema.define(version: 20160520075442) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.date     "date_taken"
+    t.time     "time_taken"
   end
 
   add_index "bmis", ["user_id"], name: "index_bmis_on_user_id", using: :btree
@@ -493,6 +495,7 @@ ActiveRecord::Schema.define(version: 20160520075442) do
     t.integer  "ethnicity"
     t.integer  "occupation"
     t.string   "profile_pic"
+    t.boolean  "pdpa"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

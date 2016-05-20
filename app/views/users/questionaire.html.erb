@@ -16,7 +16,7 @@
               <%= check_box_tag "user[results_attributes][3][answer_id]", 4%><%= @questions.first.answers.find(4).description %><br>
               <%= check_box_tag "user[results_attributes][4][answer_id]", 5%><%= @questions.first.answers.find(5).description %><br>
               <%= check_box_tag "user[results_attributes][5][answer_id]", 6%><%= @questions.first.answers.find(6).description %><br>
-              <%= result.hidden_field :question_id, value: 1 %><%= result.text_field :answer %>
+                <%= result.text_field :answer %>
 
 
 

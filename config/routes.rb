@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
 
   resources :users
-
+  get "pdpa" => "users#pdpa"
   get "dashboard" => "users#userdashboard"
   get "health_upload" => "users#healthupload"
 
