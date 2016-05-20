@@ -35,6 +35,7 @@ class UsersController < ApplicationController
     @blood_pressure = Pressure.where(user_id: @user.id).last
     @pulse = Pulse.where(user_id: @user.id).last
     @lungs = Respiratory.where(user_id: @user.id).last
+    Rails.logger.info ">>> @lungs #{@lungs.inspect}"
     @glucose = Glucose.where(user_id: @user.id)
     @random_glucose = @glucose.random_blood_sugar.last
     @fasting_glucose = @glucose.fasting_blood_sugar.last
