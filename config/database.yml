@@ -10,21 +10,27 @@
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
 # default: &default
-#   adapter: mysql2
-#   encoding: utf8
-#   pool: 5
-#   username: root
-#   password: chandima9
-#   host: localhost
-#   socket: /var/run/mysqld/mysqld.sock
-
 development:
-  adapter:    postgresql
-  database:   vital_synapse
-  pool:       10
-  timeout:    5000
-#   <<: *default
-#   database: vitalsyn_development
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: vitalsyn_development
+  username: root
+  password: chandima9
+  host: localhost
+  # socket: /var/run/mysqld/mysqld.sock
+
+
+  # socket: /var/run/mysqld/mysqld.sock
+
+# development:
+#   adapter:    postgresql
+#   database:   vital_synapse
+#   pool:       10
+#   timeout:    5000
+
+  # <<: *default
+  # database: vitalsyn_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -58,8 +64,8 @@ development:
 #   username: vitalsyn
 #   password: <%= ENV['VITALSYN_DATABASE_PASSWORD'] %>
 
-production:
-  adapter:    postgresql
-  database:   vital_synapse
-  pool:       10
-  timeout:    5000
+# production:
+#   adapter:    postgresql
+#   database:   vital_synapse
+#   pool:       10
+#   timeout:    5000
