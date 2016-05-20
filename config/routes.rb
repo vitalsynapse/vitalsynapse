@@ -5,6 +5,13 @@ Rails.application.routes.draw do
   devise_for :admins
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_scope :user do
+
+    get "/users/sign_out" => "devise/sessions#destroy"
+    get "/user/sign_out" => "devise/sessions#destroy"
+
+
+  end
 
   resources :users
   get "pdpa" => "users#pdpa"
