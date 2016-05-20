@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def healthupload
       @user = User.find(current_user.id)
-      Rails.logger.info ">>> @user #{@user.inspect}"
   end
 
   def healthrecord
@@ -36,6 +35,7 @@ class UsersController < ApplicationController
     @blood_pressure = Pressure.where(user_id: @user.id).last
     @pulse = Pulse.where(user_id: @user.id).last
     @lungs = Respiratory.where(user_id: @user.id).last
+    Rails.logger.info ">>> @lungs #{@lungs.inspect}"
     @glucose = Glucose.where(user_id: @user.id)
     @random_glucose = @glucose.random_blood_sugar.last
     @fasting_glucose = @glucose.fasting_blood_sugar.last
@@ -82,13 +82,19 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    Rails.logger.info ">>> params #{params.inspect}"
-    Rails.logger.info ">>> params commit #{params[:commit]}"
+
     respond_to do |format|
       if @user.update!(user_params)
-
-        format.html { redirect_to dashboard_path(@user), notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+          if params[:user][:healths_attributes]
+            format.html { redirect_to health_upload_path(@user), notice: 'Record was successfully uploded.' }
+            format.json { render :show, status: :ok, location: @user }
+          elsif params[:user][:glucoses_attributes] || params[:user][:pressures_attributes] || params[:user][:clinic_records_attributes]
+            format.html { redirect_to daily_update_path(@user), notice: 'Record was successfully updated.' }
+            format.json { render :show, status: :ok, location: @user }
+          else
+            format.html { redirect_to dashboard_path(@user), notice: 'User was successfully updated.' }
+            format.json { render :show, status: :ok, location: @user }
+          end
       else
         format.html { render :edit }
         format.json { render json: @user.errors, status: :unprocessable_entity }

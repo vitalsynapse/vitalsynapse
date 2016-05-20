@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520024124) do
+ActiveRecord::Schema.define(version: 20160520224650) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              limit: 255, default: "", null: false
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 20160520024124) do
     t.integer  "user_id",               limit: 4
     t.date     "report_date"
     t.date     "specimen_collected"
-<<<<<<< HEAD
     t.text     "clinic_name",           limit: 65535
     t.string   "blood_type",            limit: 255
     t.string   "text",                  limit: 255
@@ -92,7 +91,6 @@ ActiveRecord::Schema.define(version: 20160520024124) do
     t.float    "urea",                  limit: 24
     t.float    "uric_acid",             limit: 24
     t.float    "creatinine",            limit: 24
-    t.float    "egfe",                  limit: 24
     t.text     "urine_note",            limit: 65535
     t.float    "calcium",               limit: 24
     t.float    "corrected_calcium",     limit: 24
@@ -100,7 +98,6 @@ ActiveRecord::Schema.define(version: 20160520024124) do
     t.float    "total_protein",         limit: 24
     t.float    "albumin",               limit: 24
     t.float    "globulin",              limit: 24
-    t.text     "bilirubin",             limit: 65535
     t.float    "alkaline_phosphate",    limit: 24
     t.float    "ggt",                   limit: 24
     t.float    "aspartate_transferase", limit: 24
@@ -120,7 +117,6 @@ ActiveRecord::Schema.define(version: 20160520024124) do
     t.float    "specific_gravity",      limit: 24
     t.text     "leucocytes",            limit: 65535
     t.text     "nitrite",               limit: 65535
-    t.text     "protein",               limit: 65535
     t.text     "urine_glucose",         limit: 65535
     t.text     "ketones",               limit: 65535
     t.text     "urobilinogen",          limit: 65535
@@ -130,70 +126,11 @@ ActiveRecord::Schema.define(version: 20160520024124) do
     t.text     "others",                limit: 65535
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
-=======
-    t.text     "clinic_name"
-    t.string   "blood_type"
-    t.string   "text"
-    t.float    "haemoglobin"
-    t.float    "rbc"
-    t.float    "mcv"
-    t.float    "hct"
-    t.float    "mch"
-    t.float    "mchc"
-    t.float    "rdw_cv"
-    t.float    "neutrophils"
-    t.float    "lymphocytes"
-    t.float    "monocytes"
-    t.float    "eosinophills"
-    t.float    "basophils"
-    t.float    "platelet_count"
-    t.float    "esr"
-    t.text     "blood_film_comment"
-    t.float    "sodium"
-    t.float    "pottasium"
-    t.float    "chloride"
-    t.float    "urea"
-    t.float    "uric_acid"
-    t.float    "creatinine"
-    t.float    "egfe"
-    t.text     "urine_note"
-    t.float    "calcium"
-    t.float    "corrected_calcium"
-    t.float    "phosphate"
-    t.float    "total_protein"
-    t.float    "albumin"
-    t.float    "globulin"
-    t.text     "bilirubin"
-    t.float    "alkaline_phosphate"
-    t.float    "ggt"
-    t.float    "aspartate_transferase"
-    t.float    "alanine_transaminase"
-    t.float    "total_cholestrol"
-    t.float    "triglycerides"
-    t.float    "hdl_cholestrol"
-    t.float    "ldl_cholestrol"
-    t.float    "total_cholestrol_hdl"
-    t.float    "glucose"
-    t.float    "tsh"
-    t.float    "ft4"
-    t.float    "ft3"
-    t.text     "rheumatoid_factor"
-    t.string   "urine_appearance"
-    t.string   "urine_colour"
-    t.float    "specific_gravity"
-    t.text     "leucocytes"
-    t.text     "nitrite"
-    t.text     "urine_glucose"
-    t.text     "ketones"
-    t.text     "urobilinogen"
-    t.text     "blood"
-    t.text     "epithelial_cell_count"
-    t.text     "bacteria"
-    t.text     "others"
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
-    t.integer  "protein"
->>>>>>> 8b3d9fa978d47d9f7c3df72cf52ae0cde764494a
+    t.integer  "protein",               limit: 4
+    t.float    "hba1c",                 limit: 24
+    t.float    "bilirubin_urinalysis",  limit: 24
+    t.float    "bilirubin_total",       limit: 24
+    t.float    "egfr",                  limit: 24
   end
 
   add_index "clinical_blood_records", ["user_id"], name: "index_clinical_blood_records_on_user_id", using: :btree
@@ -204,6 +141,8 @@ ActiveRecord::Schema.define(version: 20160520024124) do
     t.integer  "context",     limit: 4
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
+    t.date     "date_taken"
+    t.time     "time_taken"
   end
 
   add_index "glucoses", ["user_id"], name: "index_glucoses_on_user_id", using: :btree

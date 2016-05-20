@@ -3,6 +3,7 @@
       <!-- main content -->
 
       <div class="container">
+        <p id="notice"><%= notice %></p>
 
         <h2 class="animated bounceInRight">Health Diary</h2>
         <ul class="nav nav-tabs">
@@ -24,13 +25,13 @@
                 <div class="healthrecord">
                   <%= f.fields_for :glucoses do |task_form| %>
                   <div class="col-xs-12 col-sm-12 col-md-2">
-                     <%= task_form.date_field :date_taken, class:"form-control", placeholder:"Date" %>
+                     <%= task_form.date_field :date_taken,required: true, class:"form-control", placeholder:"Date" %>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-2">
-                     <%= task_form.date_field :time_taken,class:"form-control", placeholder:"Time" %>
+                     <%= task_form.time_field :time_taken,required: true,class:"form-control", placeholder:"Time" %>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
-                     <%= task_form.text_field :measurement,class:"form-control", placeholder: "Measurement" %>
+                     <%= task_form.text_field :measurement,required: true,class:"form-control", placeholder: "Measurement" %>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-2">
                      <%= task_form.select :context, Glucose.contexts.keys.to_a, class:"form-control" %>
@@ -90,14 +91,14 @@
                 <div class="healthrecord">
                   <%= f.fields_for :pressures do |task_form| %>
                   <div class="col-xs-12 col-sm-12 col-md-2">
-                     <%= task_form.date_field :date_taken, class:"form-control", placeholder:"Date" %>
+                     <%= task_form.date_field :date_taken,required: true, class:"form-control", placeholder:"Date" %>
                    </div>
                    <div class="col-xs-12 col-sm-12 col-md-2">
-                     <%= task_form.time_field :time_taken, class:"form-control", placeholder: "Time" %>
+                     <%= task_form.time_field :time_taken,required: true, class:"form-control", placeholder: "Time" %>
                    </div>
                    <div class="col-xs-12 col-sm-12 col-md-2">
-                     <%= task_form.text_field :sbp, class:"form-control", placeholder: "SBP (mmHg)" %>
-                     <%= task_form.text_field :dpb,class:"form-control", placeholder: "DBP (mmHg)" %>
+                     <%= task_form.text_field :sbp,required: true, class:"form-control", placeholder: "SBP (mmHg)" %>
+                     <%= task_form.text_field :dpb, required: true, class:"form-control", placeholder: "DBP (mmHg)" %>
                    </div>
                    <div class="col-xs-12 col-sm-12 col-md-3">
                      <%= task_form.select :context, Pressure .contexts.keys.to_a, class:"form-control" %>
@@ -218,23 +219,23 @@
                 <div class="healthrecord">
                   <%= f.fields_for :clinic_records do |task_form| %>
                   <div class="col-xs-12 col-sm-12 col-md-4">
-                     <%= task_form.date_field :visit_date, class:"form-control", placeholder:"Date"%>
+                     <%= task_form.date_field :visit_date,required: true, class:"form-control", placeholder:"Date"%>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
-                     <%= task_form.time_field :visit_time, class:"form-control", placeholder:"Time"%>
+                     <%= task_form.time_field :visit_time,required: true, class:"form-control", placeholder:"Time"%>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
-                     <%= task_form.text_field :clinic_name, class:"form-control", placeholder:"Clinic Name" %>
+                     <%= task_form.text_field :clinic_name,required: true,class:"form-control", placeholder:"Clinic Name" %>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
-                     <%= task_form.text_field :problem, class:"form-control", placeholder:"Problem (e.g: Fever)" %>
+                     <%= task_form.text_field :problem,required: true,  class:"form-control", placeholder:"Problem (e.g: Fever)" %>
                   </div>
 
                   <div class="col-xs-12 col-sm-12 col-md-4">
-                     <%= task_form.text_field :treatment, class:"form-control", placeholder:"Treatment (e.g: Antibiotic)" %>
+                     <%= task_form.text_field :treatment,required: true, class:"form-control", placeholder:"Treatment (e.g: Antibiotic)" %>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-4">
-                     <%= task_form.text_field :cost,class:"form-control", placeholder:"Cost (RM)" %>
+                     <%= task_form.text_field :cost,required: true, class:"form-control", placeholder:"Cost (RM)" %>
                   </div>
 
 

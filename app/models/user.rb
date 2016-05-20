@@ -53,6 +53,18 @@ class User < ActiveRecord::Base
 	# def send_devise_notification(notification, *args)
  #  		devise_mailer.send(notification, self, *args).deliver_later
 	# end
+  def has_answered_quiz
+    array = Array.new
+     ques=  Result.where(user_id: self.id)
+     if ques.present?
+      array << ques.pluck(:question_id)
+      new_array = array.flatten.compact.uniq!
+      new_array.length == 6
+      return true
+    else
+      return false
+    end
+ end
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.email = auth.info.email
