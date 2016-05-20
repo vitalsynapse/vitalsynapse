@@ -46,14 +46,16 @@
             <%= link_to 'Update Info', edit_user_path(@user)%>
           </li>
           <li>
-            <!-- <a rel="nofollow" data-method="delete" href="/user/sign_out">Logout</a> -->
-            <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
-
+            <%= link_to 'Update Password', edit_user_registration_path(@user)%>
           </li>
+
         </ul>
       </li>
       <li>
-         <%= link_to('Logout', '/user/sign_out', :method => :delete) %>
+        <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+      </li>
+      <li>
+        <a href="mailto:admin@vitalsynapse.com?Subject=Enquiries" target="_top">Contact Us</a>
       </li>
     </ul>
     <% end %>
