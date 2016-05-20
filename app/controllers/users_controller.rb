@@ -102,7 +102,7 @@ class UsersController < ApplicationController
             format.html { redirect_to daily_update_path(@user), notice: 'Record was successfully updated.' }
             format.json { render :show, status: :ok, location: @user }
           elsif params[:user][:pdpa]
-            format.html { redirect_to health_upload_path(@user), notice: 'Record was successfully updated.' }
+            format.html { redirect_to health_upload_path(@user), notice: 'Thank you!You may proceed with uploading your health records' }
             format.json { render :show, status: :ok, location: @user }
           else
             format.html { redirect_to dashboard_path(@user), notice: 'User was successfully updated.' }
