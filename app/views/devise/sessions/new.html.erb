@@ -22,7 +22,10 @@
 
                       <% end%>
                       <br>
-                      <p>Not yet a member? <%= link_to "Sign up", new_registration_path(resource_name) %>for free!</p>
+                      <%= render "devise/shared/links" %>
+
+
+                      <p>Not yet a member? <%#= link_to "Sign up", new_registration_path(resource_name) %>for free!</p>
                       <br>
                       <%= link_to "SIGNUP / LOGIN FACEBOOK", user_omniauth_authorize_path(:facebook), class:"btn btn-primary btn-block" %>
 

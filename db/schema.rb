@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160519204558) do
+ActiveRecord::Schema.define(version: 20160520024124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -275,7 +275,6 @@ ActiveRecord::Schema.define(version: 20160519204558) do
     t.float    "specific_gravity"
     t.text     "leucocytes"
     t.text     "nitrite"
-    t.text     "protein"
     t.text     "urine_glucose"
     t.text     "ketones"
     t.text     "urobilinogen"
@@ -285,6 +284,7 @@ ActiveRecord::Schema.define(version: 20160519204558) do
     t.text     "others"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
+    t.integer  "protein"
   end
 
   add_index "clinical_blood_records", ["user_id"], name: "index_clinical_blood_records_on_user_id", using: :btree
