@@ -6,3 +6,10 @@ development:
 production:
   FB_APP_ID: 				"1032668920145714"
   FB_APP_SECRET: 			"585f6bf04d0cdd62309f383c85f07c87"
+
+
+
+S3_BUCKET: 				"vital_synapse_files"
+S3_ACCESS_KEY: 			"AKIAJO3Q3D3IOYIOT4SQ"
+S3_SECRET_KEY: 			"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"
+APP_URL:				"http://localhost:3000/"
