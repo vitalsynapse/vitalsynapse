@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160520224650) do
+=======
+ActiveRecord::Schema.define(version: 20160520140735) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+>>>>>>> 60a949fed81721add8bcb3a51341e2ac98b80299
 
   create_table "admins", force: :cascade do |t|
     t.string   "email",              limit: 255, default: "", null: false
@@ -38,12 +45,23 @@ ActiveRecord::Schema.define(version: 20160520224650) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "bmis", force: :cascade do |t|
+<<<<<<< HEAD
     t.integer  "height",        limit: 4
     t.integer  "weight",        limit: 4
     t.float    "bodymassindex", limit: 24
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
     t.integer  "user_id",       limit: 4
+=======
+    t.integer  "height"
+    t.integer  "weight"
+    t.float    "bodymassindex"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.date     "date_taken"
+    t.time     "time_taken"
+>>>>>>> 60a949fed81721add8bcb3a51341e2ac98b80299
   end
 
   add_index "bmis", ["user_id"], name: "index_bmis_on_user_id", using: :btree
@@ -245,6 +263,7 @@ ActiveRecord::Schema.define(version: 20160520224650) do
     t.integer  "failed_attempts",        limit: 4,   default: 0,     null: false
     t.string   "unlock_token",           limit: 255
     t.datetime "locked_at"
+<<<<<<< HEAD
     t.datetime "created_at",                                         null: false
     t.datetime "updated_at",                                         null: false
     t.boolean  "admin",                              default: false
@@ -258,6 +277,22 @@ ActiveRecord::Schema.define(version: 20160520224650) do
     t.integer  "ethnicity",              limit: 4
     t.integer  "occupation",             limit: 4
     t.string   "profile_pic",            limit: 255
+=======
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "admin",                  default: false
+    t.string   "provider"
+    t.string   "uid"
+    t.float    "height"
+    t.float    "weight"
+    t.integer  "blood_type"
+    t.integer  "gender"
+    t.integer  "marital_status"
+    t.integer  "ethnicity"
+    t.integer  "occupation"
+    t.string   "profile_pic"
+    t.boolean  "pdpa"
+>>>>>>> 60a949fed81721add8bcb3a51341e2ac98b80299
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree

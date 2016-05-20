@@ -9,8 +9,9 @@
         <ul class="nav nav-tabs">
           <li class="active"><a data-toggle="tab" href="#menu1">Glucose</a></li>
           <li><a data-toggle="tab" href="#menu2">Blood Pressure</a></li>
-          <!-- <li><a data-toggle="tab" href="#menu3">Pulse</a></li> -->
+          <li><a data-toggle="tab" href="#menu3">Pulse</a></li>
           <li><a data-toggle="tab" href="#menu4">Clinic Visit</a></li>
+          <li><a data-toggle="tab" href="#menu5">BMI</a></li>
         </ul>
 
         <br><br>
@@ -148,65 +149,75 @@
 
             </div>
           </div>
+          <!----------------------------------------->
 
-<!-- pulse -->
+<!---------------- PULSE START -------------------------------------->
+<!---------------- PULSE START -------------------------------------->
+<!---------------- PULSE START -------------------------------------->
+<!---------------- PULSE START -------------------------------------->
+<!---------------- PULSE START -------------------------------------->
+<!---------------- PULSE START -------------------------------------->
+
           <div id="menu3" class="tab-pane fade">
             <div class="daily_update_pulse">
               <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-2">
-                  <input type="date" class="form-control" id="date" placeholder="Date">
-                  <br>
-                </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-2">
-                  <input type="time" class="form-control" id="time" placeholder="Time">
-                  <br>
-                </div>
+                <%= nested_form_for @user do |f| %>
 
-                <div class="col-xs-12 col-sm-12 col-md-3">
-                  <input type="text" class="form-control" id="sbp" placeholder="Measurement (Beats per minute)">
-                  <br>
-                </div>
+               <div class="healthrecord">
+                 <%= f.fields_for :pulses do |task_form| %>
+                   <div class="col-xs-12 col-sm-12 col-md-2">
+                    <%= task_form.date_field :date_taken,required: true, class:"form-control", id:"date", placeholder:"Date" %>
+                    </br>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-2">
+                    <%= task_form.time_field :time_taken, required: true, class:"form-control", id:"date", placeholder: "Date" %>
+                  </br>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <%= task_form.text_field :measurement, required: true, class:"form-control", id:"measurement", placeholder:"Measurement (Beats per minute)" %>
+                  </br>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-3">
+                    <%= task_form.select :context, Pulse.contexts.keys.to_a, class: "form-control" %>
+                  </br>
+                  </div>
+                   <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                   <%= task_form.submit "submit", class: "btn btn-warning" %>
+                 <% end %>
+               </div>
 
-                <div class="col-xs-12 col-sm-12 col-md-3">
-                  <select class="form-control" id="context">
-                    <option>At Rest</option>
-                    <option>After Activity</option>
-                  </select>
-                  <br>
-                </div>
+               <%= f.link_to_add "Add a New Record", :pulses, class: "btn btn-info new-record"%>
 
+               <% end %>
 
-                <div class="col-xs-12 col-sm-12 col-md-2">
-                  <button class="btn btn-primary">Update</button>
-                  <br>
-                </div>
-              </div>
-
-              <br>
-
-              <table class="table table-bordered custom">
+             </div>
+            <table class="table table-bordered custom">
+              <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Time</th>
-                  <th>Measurement (Beats per minute)</th>
-                  <th>Remarks</th>
+                  <td> Measurement </td>
+                  <td> Index </td>
+                  <td> Time Taken </td>
+                  <td> Date Taken</td>
                 </tr>
+              </thead>
 
-                <tr>
-                  <td>04/05/2016</td>
-                  <td>2:06 PM</td>
-                  <td>70</td>
-                  <td>After Activity</td>
-                </tr>
+              <tbody>
+                <%if @user_lungs != nil  %>
+                <%  @user_lungs.all.each do |health_record| %>
+                 <tr>
 
-                <tr>
-                  <td>11/05/2016</td>
-                  <td>9:30 AM</td>
-                  <td>90</td>
-                  <td>At Rest</td>
-                </tr>
-              </table>
+                   <td><%= health_record.measurement %> </td>
+                   <td><%= health_record.index %> </td>
+                   <td><%= health_record.time_taken %> </td>
+                   <td><%= health_record.date_taken%> </td>
+
+                 </tr>
+                 <% end %>
+               <% end %>
+              </tbody>
+            </table>
+
             </div>
           </div>
 
@@ -287,6 +298,77 @@
 
             </div>
           </div>
+
+<!----------------------------->
+
+      <div id="menu5" class="tab-pane fade ">
+        <div class="daily_bmi_update">
+
+          <div class="row">
+            hellooo
+            <%= nested_form_for @user, class: "form-control" do |f| %>
+
+            <div class="healthrecord">
+              <%= f.fields_for :bmis do |task_form| %>
+              <div class="col-xs-12 col-sm-12 col-md-2">
+                 <%= task_form.date_field :date_taken,required: true, class:"form-control", placeholder:"Date" %>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2">
+                 <%= task_form.time_field :time_taken,required: true,class:"form-control", placeholder:"Time" %>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-4">
+                 <%= task_form.text_field :height,required: true,class:"form-control", placeholder: "Height(metre)" %>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2">
+                 <%= task_form.text_field :weight,required: true,class:"form-control", placeholder: "Weight(metre)" %>
+              </div>
+              <div class="col-xs-12 col-sm-12 col-md-2">
+                <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+
+              </div>
+              <% end %>
+            </div>
+
+            <%= f.link_to_add "Add a New Record", :glucoses, class: "btn btn-primary"%>
+              <%= f.submit "submit", class: "btn btn-warning" %>
+            <% end %>
+
+          </div>
+
+          <br>
+          <table class="table table-bordered custom">
+            <thead>
+              <tr>
+                <td> Date Taken</td>
+                <td> Time Taken </td>
+                <td> Height </td>
+                <td> Weight </td>
+                <td> Boddy Mass Index </td>
+
+              </tr>
+            </thead>
+
+            <tbody>
+              <%if @user_bmi!= nil  %>
+              <%  @user_bmi.all.each do |health_record| %>
+               <tr>
+                 <td><%= health_record.date_taken%> </td>
+                 <td><%= health_record.time_taken%></td>
+                 <td><%= health_record.weight%> </td>
+                 <td><%= health_record.height %> </td>
+                 <td><%= health_record.bodymassindex %> </td>
+
+               </tr>
+               <% end %>
+             <% end %>
+            </tbody>
+          </table>
+
+
+        </div>
+      </div>
+
+
         </div>
       </div>
     </div>

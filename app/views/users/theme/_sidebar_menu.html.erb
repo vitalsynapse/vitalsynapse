@@ -12,32 +12,50 @@
 
       </li>
       <li>
-        <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
+        <% if current_user.has_answered_quiz?  %>
+          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
+        <% elsif current_user.pdpa == nil || false %>
+          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, pdpa_path(@user) %>
+        <% else %>
+          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, questionaire_path(@user) %>
+        <% end %>
 
       </li>
       <li>
+      <% if current_user.has_answered_quiz? %>
         <%= link_to '<i class="fa fa-folder-open"></i> Health Record'.html_safe, health_record_path(@user)%>
+      <% else %>
+          <%= link_to '<i class="fa fa-folder-open"></i> Health Record'.html_safe, questionaire_path(@user)%>
+      <% end %>
 
       </li>
+
       <li>
-        <%= link_to '<i class="fa fa-pencil-square-o"></i> Health Diary'.html_safe, daily_update_path(@user)%>
-        <!-- <a href="daily_update.html"><i class="fa fa-pencil-square-o"></i> Health Diary</a> -->
+        <% if current_user.has_answered_quiz? %>
+          <%= link_to '<i class="fa fa-pencil-square-o"></i> Health Diary'.html_safe, daily_update_path(@user)%>
+        <% else %>
+          <%= link_to '<i class="fa fa-pencil-square-o"></i> Health Diary'.html_safe, questionaire_path(@user)%>
+        <% end %>
       </li>
       <li>
         <a><i class="fa fa-user"></i> Account <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu" style="display: none;">
           <li>
             <!-- edit_user_path -->
-            <!-- <a href="update_info.html">Update Info</a> -->
+
             <%= link_to 'Update Info', edit_user_path(@user)%>
           </li>
           <li>
             <%= link_to 'Update Password', edit_user_registration_path(@user)%>
           </li>
+
         </ul>
       </li>
       <li>
-         <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+      </li>
+      <li>
+        <a href="mailto:admin@vitalsynapse.com?Subject=Enquiries" target="_top">Contact Us</a>
       </li>
     </ul>
     <% end %>

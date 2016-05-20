@@ -6,15 +6,23 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
+
   end
 
   def healthupload
+
       @user = User.find(current_user.id)
+      if @user.pdpa == false || nil
+        redirect_to pdpa_path(@user)
+      end
   end
 
   def healthrecord
       @user = User.find(current_user.id)
+
+
       @user_health = Health.where(user_id: @user.id)
+
 
   end
 
@@ -24,18 +32,17 @@ class UsersController < ApplicationController
     @user_pressure = Pressure.where(user_id: @user.id)
     @user_clinics = ClinicRecord.where(user_id: @user.id)
     @user_bmi = Bmi.where(user_id: @user.id)
-    @user_lungs = Respiratory.where(user_id: @user.id)
+    @user_lungs = Pulse.where(user_id: @user.id)
   end
 
   def userdashboard
-    @user = User.find(current_user.id)
+    @user = current_user
     @user_health = Health.where(user_id: @user.id)
     @user_bmi = Bmi.where(user_id: @user.id).last
     @user_blood = ClinicalBloodRecord.where(user_id: @user.id).last
     @blood_pressure = Pressure.where(user_id: @user.id).last
     @pulse = Pulse.where(user_id: @user.id).last
-    @lungs = Respiratory.where(user_id: @user.id).last
-    Rails.logger.info ">>> @lungs #{@lungs.inspect}"
+    @lungs = Pulse.where(user_id: @user.id).last
     @glucose = Glucose.where(user_id: @user.id)
     @random_glucose = @glucose.random_blood_sugar.last
     @fasting_glucose = @glucose.fasting_blood_sugar.last
@@ -53,6 +60,9 @@ class UsersController < ApplicationController
   def show
   end
 
+  def pdpa
+    @user = User.find(current_user.id)
+  end
   # GET /users/new
   def new
     @user = User.new
@@ -88,8 +98,11 @@ class UsersController < ApplicationController
           if params[:user][:healths_attributes]
             format.html { redirect_to health_upload_path(@user), notice: 'Record was successfully uploded.' }
             format.json { render :show, status: :ok, location: @user }
-          elsif params[:user][:glucoses_attributes] || params[:user][:pressures_attributes] || params[:user][:clinic_records_attributes]
+          elsif params[:user][:glucoses_attributes] || params[:user][:pressures_attributes] || params[:user][:clinic_records_attributes] || params[:user][:pulses_attributes]
             format.html { redirect_to daily_update_path(@user), notice: 'Record was successfully updated.' }
+            format.json { render :show, status: :ok, location: @user }
+          elsif params[:user][:pdpa]
+            format.html { redirect_to health_upload_path(@user), notice: 'Thank you!You may proceed with uploading your health records' }
             format.json { render :show, status: :ok, location: @user }
           else
             format.html { redirect_to dashboard_path(@user), notice: 'User was successfully updated.' }
@@ -121,11 +134,11 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(
-      :first_name, :lastname, :gender, :profile_pic, :ethnicity, :blood_type, :occupation, :dob, :marital_status, :address, :state, :city, :postcode, :email, :height, :weight, :name,
+      :first_name, :lastname, :gender, :profile_pic, :ethnicity, :blood_type, :occupation, :dob, :marital_status, :address, :state, :city, :postcode, :email, :height, :weight, :name,:pdpa,
       healths_attributes: [:id, :user_id, :subject, :details, :file, :record_category_id, :_destroy],
       glucoses_attributes: [:id, :user_id, :measurement, :context,:time_taken, :date_taken, :_destroy],
       pressures_attributes: [:id, :user_id, :sbp, :dpb, :context, :time_taken, :date_taken, :_destroy],
-      respiratories_attributes: [:id, :user_id, :context, :measurement, :date_taken, :time_taken, :_destroy],
+      pulses_attributes: [:id, :user_id, :context, :measurement, :date_taken, :time_taken, :_destroy],
       clinic_records_attributes: [:id, :user_id, :problem, :diagnosis, :treatment,:clinic_name, :visit_date,:visit_time, :cost, :_destroy],
       bmis_attributes: [:id, :height, :weight, :boddymassindex,:_destroy],
        results_attributes: [:id,:user_id, :question_id, :answer_id, :answer,:_destroy, result_answers_attributes: [:id, :result_id, :answer_id, :_destroy]]

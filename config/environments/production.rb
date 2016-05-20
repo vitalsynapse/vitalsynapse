@@ -1,5 +1,7 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  ENV["DATABASE_URL"] = "postgres://bhaduyvgmlgyse:rQomnlHt_sPFoQiOdDEhIYB8fG@ec2-50-19-251-199.compute-1.amazonaws.com:5432/d1336c2c795p15"
+
 
   # Code is not reloaded between requests.
   config.cache_classes = true

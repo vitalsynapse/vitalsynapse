@@ -1555,6 +1555,7 @@
             </tr>
 
             <tr>
+
                 <td>Blood</td>
                 <td>
                 <% if @user_blood.blood.present? %>
@@ -1562,8 +1563,16 @@
                 <% end %>
                 </td>
                 <td></td>
+
+              
+              <td>Appeareance</td>
+                <td>
+                    <% if @user_blood.urine_appearance.present? %>
+                      <%= @user_blood.urine_appearance %>
+                    <% end %>
+                </td>
                 <td></td>
-            </tr>
+            </tr> 
 
             <tr>
                 <td>Epihelial Cell Count</td>
@@ -1573,6 +1582,13 @@
                 <% end %>
                 </td>
                 <td></td>
+
+                <td>Color</td>
+                <td>
+                  <% if @user_blood.urine_colour.present? %>
+                    <%= @user_blood.urine_colour %>
+                  <% end %>
+                </td>
                 <td></td>
             </tr>
 
@@ -1593,12 +1609,27 @@
                 <% if @user_blood.others.present? %>
                   <%= @user_blood.others %>
                 <% end %>
+
+                <td>MCV</td>
+                <td>
+                  <% if @user_blood.mcv.present? %>
+                    <%= @user_blood.mcv %>
+                  <% end %>
+                </td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>Bacteria</td>
+                <td>
+                  <% if @user_blood.bacteria.present? %>
+                    <%= @user_blood.bacteria %>
+                  <% end %>
                 </td>
                 <td></td>
                 <td></td>
             </tr>
-            
-
         </table>
         <% end %>
       </div>
