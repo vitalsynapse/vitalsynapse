@@ -6,3 +6,4 @@ development:
 production:
   FB_APP_ID: 				"1032668920145714"
   FB_APP_SECRET: 			"585f6bf04d0cdd62309f383c85f07c87"
+        
