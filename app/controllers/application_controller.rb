@@ -15,6 +15,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def after_sign_out_path_for(resource_or_scope)
+    if resource_or_scope == :user
+      # puts "USER LOGGED OUT ================"
+      new_user_session_path
+    elsif resource_or_scope == :admin
+      # puts "ADMIN LOGGED OUT ================"
+      new_admin_session_path
+    end
+  end
+  
   def user_or_admin
     if !(@user == current_user || current_admin)
       puts "ACCESS DENIED - WRONG USER"

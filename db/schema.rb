@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160517182426) do
+ActiveRecord::Schema.define(version: 20160520140735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,6 +40,139 @@ ActiveRecord::Schema.define(version: 20160517182426) do
 
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
+  create_table "blood_clinic_records", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "report_date"
+    t.date     "specimen_collected"
+    t.text     "clinic_name"
+    t.float    "haemoglobin"
+    t.float    "rbc"
+    t.float    "mcv"
+    t.float    "hct"
+    t.float    "mch"
+    t.float    "mchc"
+    t.float    "rdw_cv"
+    t.float    "neutrophils"
+    t.float    "lymphocytes"
+    t.float    "monocytes"
+    t.float    "eosinophills"
+    t.float    "basophils"
+    t.float    "platelet_count"
+    t.float    "esr"
+    t.text     "blood_film_comment"
+    t.float    "sodium"
+    t.float    "pottasium"
+    t.float    "chloride"
+    t.float    "urea"
+    t.float    "uric_acid"
+    t.float    "creatinine"
+    t.float    "egfe"
+    t.text     "urine_note"
+    t.float    "calcium"
+    t.float    "corrected_calcium"
+    t.float    "phosphate"
+    t.float    "total_protein"
+    t.float    "albumin"
+    t.float    "globulin"
+    t.text     "bilirubin"
+    t.float    "alkaline_phosphate"
+    t.float    "ggt"
+    t.float    "aspartate_transferase"
+    t.float    "alanine_transaminase"
+    t.float    "total_cholestrol"
+    t.float    "triglycerides"
+    t.float    "hdl_cholestrol"
+    t.float    "ldl_cholestrol"
+    t.float    "total_cholestrol_hdl"
+    t.float    "glucose"
+    t.float    "tsh"
+    t.float    "ft4"
+    t.float    "ft3"
+    t.text     "rheumatoid_factor"
+    t.string   "urine_appearance"
+    t.string   "urine_colour"
+    t.float    "specific_gravity"
+    t.text     "leucocytes"
+    t.text     "nitrite"
+    t.text     "protein"
+    t.text     "urine_glucose"
+    t.text     "ketones"
+    t.text     "urobilinogen"
+    t.text     "blood"
+    t.text     "epithelial_cell_count"
+    t.text     "bacteria"
+    t.text     "others"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "blood_clinic_records", ["user_id"], name: "index_blood_clinic_records_on_user_id", using: :btree
+
+  create_table "blood_health_records", force: :cascade do |t|
+    t.date     "report_date"
+    t.date     "specimen_collected"
+    t.text     "clinic_name"
+    t.float    "haemoglobin"
+    t.float    "rbc"
+    t.float    "mcv"
+    t.float    "hct"
+    t.float    "mch"
+    t.float    "mchc"
+    t.float    "rdw_cv"
+    t.float    "neutrophils"
+    t.float    "lymphocytes"
+    t.float    "monocytes"
+    t.float    "eosinophills"
+    t.float    "basophils"
+    t.float    "platelet_count"
+    t.float    "esr"
+    t.text     "blood_film_comment"
+    t.float    "sodium"
+    t.float    "pottasium"
+    t.float    "chloride"
+    t.float    "urea"
+    t.float    "uric_acid"
+    t.float    "creatinine"
+    t.float    "egfe"
+    t.text     "urine_note"
+    t.float    "calcium"
+    t.float    "corrected_calcium"
+    t.float    "phosphate"
+    t.float    "total_protein"
+    t.float    "albumin"
+    t.float    "globulin"
+    t.text     "bilirubin"
+    t.float    "alkaline_phosphate"
+    t.float    "ggt"
+    t.float    "aspartate_transferase"
+    t.float    "alanine_transaminase"
+    t.float    "total_cholestrol"
+    t.float    "triglycerides"
+    t.float    "hdl_cholestrol"
+    t.float    "ldl_cholestrol"
+    t.float    "total_cholestrol_hdl"
+    t.float    "glucose"
+    t.float    "tsh"
+    t.float    "ft4"
+    t.float    "ft3"
+    t.text     "rheumatoid_factor"
+    t.string   "urine_appearance"
+    t.string   "urine_colour"
+    t.float    "specific_gravity"
+    t.text     "leucocytes"
+    t.text     "nitrite"
+    t.text     "protein"
+    t.text     "urine_glucose"
+    t.text     "ketones"
+    t.text     "urobilinogen"
+    t.text     "blood"
+    t.text     "epithelial_cell_count"
+    t.text     "bacteria"
+    t.text     "others"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "bloods", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -57,6 +190,8 @@ ActiveRecord::Schema.define(version: 20160517182426) do
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "user_id"
+    t.date     "date_taken"
+    t.time     "time_taken"
   end
 
   add_index "bmis", ["user_id"], name: "index_bmis_on_user_id", using: :btree
@@ -86,6 +221,77 @@ ActiveRecord::Schema.define(version: 20160517182426) do
 
   add_index "clinic_records", ["user_id"], name: "index_clinic_records_on_user_id", using: :btree
 
+  create_table "clinical_blood_records", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "report_date"
+    t.date     "specimen_collected"
+    t.text     "clinic_name"
+    t.string   "blood_type"
+    t.string   "text"
+    t.float    "haemoglobin"
+    t.float    "rbc"
+    t.float    "mcv"
+    t.float    "hct"
+    t.float    "mch"
+    t.float    "mchc"
+    t.float    "rdw_cv"
+    t.float    "neutrophils"
+    t.float    "lymphocytes"
+    t.float    "monocytes"
+    t.float    "eosinophills"
+    t.float    "basophils"
+    t.float    "platelet_count"
+    t.float    "esr"
+    t.text     "blood_film_comment"
+    t.float    "sodium"
+    t.float    "pottasium"
+    t.float    "chloride"
+    t.float    "urea"
+    t.float    "uric_acid"
+    t.float    "creatinine"
+    t.float    "egfe"
+    t.text     "urine_note"
+    t.float    "calcium"
+    t.float    "corrected_calcium"
+    t.float    "phosphate"
+    t.float    "total_protein"
+    t.float    "albumin"
+    t.float    "globulin"
+    t.text     "bilirubin"
+    t.float    "alkaline_phosphate"
+    t.float    "ggt"
+    t.float    "aspartate_transferase"
+    t.float    "alanine_transaminase"
+    t.float    "total_cholestrol"
+    t.float    "triglycerides"
+    t.float    "hdl_cholestrol"
+    t.float    "ldl_cholestrol"
+    t.float    "total_cholestrol_hdl"
+    t.float    "glucose"
+    t.float    "tsh"
+    t.float    "ft4"
+    t.float    "ft3"
+    t.text     "rheumatoid_factor"
+    t.string   "urine_appearance"
+    t.string   "urine_colour"
+    t.float    "specific_gravity"
+    t.text     "leucocytes"
+    t.text     "nitrite"
+    t.text     "urine_glucose"
+    t.text     "ketones"
+    t.text     "urobilinogen"
+    t.text     "blood"
+    t.text     "epithelial_cell_count"
+    t.text     "bacteria"
+    t.text     "others"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.integer  "protein"
+    t.float    "hba1c"
+  end
+
+  add_index "clinical_blood_records", ["user_id"], name: "index_clinical_blood_records_on_user_id", using: :btree
+
   create_table "ctscans", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -102,6 +308,8 @@ ActiveRecord::Schema.define(version: 20160517182426) do
     t.integer  "context"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.date     "date_taken"
+    t.time     "time_taken"
   end
 
   add_index "glucoses", ["user_id"], name: "index_glucoses_on_user_id", using: :btree
@@ -144,9 +352,23 @@ ActiveRecord::Schema.define(version: 20160517182426) do
     t.integer  "context"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.date     "date_taken"
+    t.time     "time_taken"
   end
 
   add_index "pressures", ["user_id"], name: "index_pressures_on_user_id", using: :btree
+
+  create_table "pulses", force: :cascade do |t|
+    t.integer  "user_id"
+    t.date     "date_taken"
+    t.time     "time_taken"
+    t.integer  "measurement"
+    t.integer  "index"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "pulses", ["user_id"], name: "index_pulses_on_user_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.text     "description"
@@ -159,6 +381,18 @@ ActiveRecord::Schema.define(version: 20160517182426) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "respiratories", force: :cascade do |t|
+    t.date     "date_taken"
+    t.time     "time_taken"
+    t.integer  "measurement"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "context"
+  end
+
+  add_index "respiratories", ["user_id"], name: "index_respiratories_on_user_id", using: :btree
 
   create_table "result_answers", force: :cascade do |t|
     t.integer  "result_id"
@@ -261,6 +495,7 @@ ActiveRecord::Schema.define(version: 20160517182426) do
     t.integer  "ethnicity"
     t.integer  "occupation"
     t.string   "profile_pic"
+    t.boolean  "pdpa"
   end
 
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
@@ -279,10 +514,12 @@ ActiveRecord::Schema.define(version: 20160517182426) do
   add_index "xrays", ["user_id"], name: "index_xrays_on_user_id", using: :btree
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "blood_clinic_records", "users"
   add_foreign_key "bloods", "users"
   add_foreign_key "bmis", "users"
   add_foreign_key "cancer_markers", "users"
   add_foreign_key "clinic_records", "users"
+  add_foreign_key "clinical_blood_records", "users"
   add_foreign_key "ctscans", "users"
   add_foreign_key "glucoses", "users"
   add_foreign_key "healths", "record_categories"
@@ -290,6 +527,8 @@ ActiveRecord::Schema.define(version: 20160517182426) do
   add_foreign_key "mris", "users"
   add_foreign_key "petscans", "users"
   add_foreign_key "pressures", "users"
+  add_foreign_key "pulses", "users"
+  add_foreign_key "respiratories", "users"
   add_foreign_key "result_answers", "results"
   add_foreign_key "results", "answers"
   add_foreign_key "results", "questions"

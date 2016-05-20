@@ -1,74 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <!-- Meta, title, CSS, favicons, etc. -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>VitalSynapse - Modernising Your Healthcare</title>
-  <%#= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%#= csrf_meta_tags %>
-  <!-- <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css"> -->
-  <!-- <link href="css/sidebar.css" rel="stylesheet"> -->
 
-
+  <!-- Bootstrap core CSS  + font awesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-  <!-- <nav class="w3-sidenav w3-red w3-card-2" style="width:200px"> -->
+  <!-- Navigation -->
+  <%= render 'pages/theme/menu' %>
 
-    <!-- <div class="sidenav-details"> -->
-      <!-- <h1 color="white"><%#= current_user.first_name %></h1> -->
-      <!-- <h2 class="btn w3-border-bottom w3-border-white" color="white" id="dashboardbtn">Dashboard</h2> -->
-      <!-- <h2 class="btn w3-border-bottom w3-border-white" color="white" id="basichealthbtn">Basic Health</h2> -->
-    <!-- </div> -->
-    <!-- <p class="btn" color="white">Advance Health</p> -->
-  <!-- </nav> -->
-
-  <% if user_signed_in?  %>
-    <!-- <nav class="w3-sidenav w3-collapse w3-red w3-card-2 w3-animate-left" style="width:200px;">
-      <a href="javascript:void(0)" onclick="w3_close()" class="w3-closenav w3-large w3-hide-large">&times;</a> -->
-      <!-- <h2><a href="#" id="dashboardbtn"><h2>Dashboard</h2></a> -->
-      <!-- <h2><a href="#" id="basichealthbtn"><h2>Basic Health</h2></a> -->
-      <h2> <%= link_to 'Dashboard', dashboard_path(@user) %></h2>
-      <h2> <%= link_to 'Health Record', health_record_path(@user) %></h2>
-      <h2> <%= link_to 'Daily Update', daily_update_path(@user) %></h2>
-      <h2> <%= link_to 'Health Upload', health_upload_path(@user) %></h2>
-    </nav>
-  <% end %>
-
-
-
-<nav class="navbar navbar-inverse">
-  <div class="container">
-    <div class="navbar-header">
-      <%= link_to 'VitalSynapse', root_path, class: 'navbar-brand' %>
-    </div>
-    <div id="navbar">
-      <ul class="nav navbar-nav">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'About', root_path %></li>
-      </ul>
-      <ul class="nav navbar-nav pull-right">
-        <% if user_signed_in? %>
-          <li class="dropdown">
-            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-              Hi <%#= current_user.first_name || current_user.name %>!
-              <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu" role="menu">
-              <li><%= link_to 'Profile', edit_user_registration_path %></li>
-              <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
-            </ul>
-          </li>
-        <% elsif admin_signed_in? %>
-        <li><%= link_to 'Log out', destroy_admin_session_path, method: :delete %></li>
-
-        <%else %>
-          <li><%= link_to 'Log In', new_user_session_path %></li>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-</nav>
 
 
 
@@ -78,6 +28,7 @@
     <h1><%= yield :header %></h1>
   <%= yield %>
 </div>
-
+<!-- Footer -->
+<%= render 'pages/theme/footer' %>
 </body>
 </html>

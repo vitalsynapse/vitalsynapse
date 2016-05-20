@@ -1,87 +1,1507 @@
-<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link href="css/sidebar.css" rel="stylesheet"> -->
-<!-- 
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script> -->
-
-<div id="wrapper">
-<div class="container" id="dashboardbody">
-
-    <% flash.each do |key, value| %>
-      <div class="alert alert-<%= key %>">
-        <%= value %>
-      </div>
-    <% end %>
+<div class="container">
+    <div class="row animated bounceInLeft">
+        <br>
+        <div class="legend center">
+            <span class=
+            "label label-success value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+            &nbsp; <span>Normal Range</span> &nbsp; &nbsp; &nbsp; <span class=
+            "label label-danger value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> &nbsp;
+            <span>Abnormal</span>
+        </div>
+    </div>
+    <br>
 
 
-    <div class="row"  id="userdetails" >
-      <h1> <%#= @user.first_name %> </h1>
-      <div class="col-md-1">
-        <center><h3><%=   @user.gender || " " %></h3>
-      </center>
+    <div class="cards animated bounceInRight">
+        <!-- GENERAL INFO -->
+        <p id="notice"><%= notice %></p>
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 pull-left center">
+                                  <%= image_tag("male.png", class: "mg-center", size: "100x100") %>
+                                </div>
+
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                  <% if @user_bmi.present? %>
+                                    <span><%= @user.height %>m</span><br>
+                                    <span><%= @user.weight%> kg</span>
+                                    <% else%>
+                                    <span>0 m</span><br>
+                                    <span>0 kg</span>
+                                  <% end %>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 pull-left">
+                                    <span><b>BMI</b></span><br>
+                                    <span>Body Mass Index</span>
+                                </div>
+
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <br>
+                                    <% if @user_bmi.present? %>
+                                    <span class="label label-success value"><%= @user_bmi.bodymassindex %></span>
+                                    &nbsp;
+                                    <% else %>
+                                      <span class="label label-danger value">0</span>
+                                    <% end %>
+                                    <span class="measurement">kg/m<sup>2</sup></span>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-12 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6 pull-left">
+                                    <br>
+                                    <span><b>Blood Group</b></span>
+                                </div>
+
+
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <br>
+                                    <% if @user_blood.blood_type.present? %>
+                                    <span class="label label-default value"><%= @user_blood.blood_type %></span>
+                                    <% else %>
+                                    <span class="label label-danger value">-</span>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end GENERAL INFO -->
+
+        <!-- Link -->
+
+          <div class="legend center">
+              <div class="row">
+                <%= link_to "Upload Medical Record", health_upload_path(@user), class:"btn btn-primary" %>
+
+              </div>
+          </div>
+          <br>
+        <!-- /link -->
+        <!-- CARDIOVASCULAR -->
+
+
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="well well-lg rounded">
+                      <div class="row">
+                          <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                              <%= image_tag("cardiovascular.png", class: "img-center", height: "100", width:"100") %>
+
+                              <span>Cardiovascular</span><br>
+                              <br>
+                          </div>
+
+
+                          <div class="col-xs-12 col-sm-5 col-md-5">
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-12 col-md-12">
+                                      <div class="row">
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                              <span class="item">Blood Pressure</span>
+                                          </div>
+
+
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <% if @blood_pressure.present? %>
+                                              <% if @blood_pressure.sbp > 100 || @blood_pressure.dpb > 90 %>
+                                                  <span class=
+                                                "label label-danger value"><sup><%=@blood_pressure.sbp%></sup>/<sub><%=@blood_pressure.dpb%></sub></span>
+                                                <% else %>
+                                                  <span class=
+                                                "label label-success value"><sup><%=@blood_pressure.sbp%></sup>/<sub><%=@blood_pressure.dpb%></sub></span>
+
+                                                <% end %>
+                                              <% else %>
+                                                <span class="label label-danger value"><sup>0/<sub>0</sub></span>
+                                            <% end %>
+                                              <span class="measurement">mmHg (100-140 / 60-90)</span>
+
+                                          </div>
+                                      </div>
+                                      <br>
+                                  </div>
+                              </div>
+
+
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-12 col-md-12">
+                                      <div class="row">
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                              <span class="item">Pulse</span>
+                                          </div>
+
+
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <% if @pulse.measurement.present? %>
+                                                <% if @pulse.measurement > 100 || @pulse.measurement < 60 %>
+                                                  <span class="label label-danger value"><%= @pulse.measurement %></span>
+                                                <% else %>
+                                                  <span class="label label-success value"><%= @pulse.measurement %></span>
+                                                <% end %>
+                                                <% else %>
+                                                <span class="label label-danger value">0</span>
+                                              <% end %>
+                                              <span class="measurement">Beats per minute (60-100)</span>
+                                          </div>
+                                      </div>
+                                      <br>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                          <!-- <div class="col-xs-12 col-sm-5 col-md-5">
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-12 col-md-12">
+                                      <div class="graph"><img alt="" class="img-responsive" src=
+                                      "http://placehold.it/200x200">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div> -->
+                      </div>
+                  </div>
+              </div>
+          </div>
+        <!-- end CARDIOVASCULAR -->
+
+
+
+        <!-- RESPIRATORY -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                              <%= image_tag("respiratory.png", class: "iimg-center", height: "100", width:"100") %>
+                            <span>Respiratory</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5 mid">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Respiratory Rate</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @lungs != nil %>
+                                            <% if @lungs.measurement < 12 || @lungs.measurement > 16 %>
+                                            <span class=
+                                            "label label-danger value"><%= @lungs.measurement %></span>
+                                            <% else %>
+                                            <span class=
+                                            "label label-success value"><%= @lungs.measurement %></span>
+
+                                            <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+                                            <% end %>
+                                            <span class="measurement">Breaths per minute (12 - 16)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end RESPIRATORY -->
+        <!-- BLOOD -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <%= image_tag("blood.png", class: "img-center", height: "100", width:"100") %><br>
+
+                            <span>Blood</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12 mid">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Haemoglobin</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @user_blood.haemoglobin.present? %>
+                                           <% if @user_blood.haemoglobin < 155 || @user_blood.haemoglobin > 165 %>
+                                              <span class="label label-danger value"><%= @user_blood.haemoglobin %></span>
+                                           <% else %>
+                                              <span class="label label-success value"><%= @user_blood.haemoglobin %></span>
+                                           <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
+
+
+                                          <% end %>
+                                            <span class="measurement">g/L (115 - 165)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-blood">Show More</button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="col-xs-12 col-sm-5 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end BLOOD -->
+        <!-- GLUCOSE -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <%= image_tag("glucose.png", class: "iimg-center", height: "100", width:"100") %>
+
+                            <span>Glucose</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">RBS</span><br>
+                                            <span class="long_name">Random Blood Sugar</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @random_glucose.present? %>
+                                            <% if @random_glucose.measurement < 3.0  || @random_glucose.measurement > 7.8 %>
+                                              <span class="label label-danger value"><%= @random_glucose.measurement %></span>
+                                            <% else %>
+                                              <span class="label label-success value"><%= @random_glucose.measurement %></span>
+                                            <% end %>
+                                            <% else%>
+                                            <span class="label label-danger value">0</span>
+
+                                          <% end %>
+
+                                            <span class="measurement"> mmol/L (3.0 - 7.8)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">FBS</span><br>
+                                            <span class="long_name">Fasting Blood Sugar</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @fasting_glucose.present? %>
+                                            <% if @fasting_glucose.measurement < 3.0  || @fasting_glucose.measurement > 7.8 %>
+                                              <span class="label label-danger value"><%= @fasting_glucose.measurement %></span>
+                                            <% else %>
+                                              <span class="label label-success value"><%= @fasting_glucose.measurement %></span>
+                                            <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
+                                          <% end %>
+                                            <span class="measurement"> mmol/L (3.0 - 7.8)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">HbA1c</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @user_blood.hba1c.present? %>
+                                            <% if @user_blood.hba1c.measurement < 5.7 || @user_blood.hba1c.measurement > 7.1 %>
+                                              <span class="label label-danger value"><%= @user_blood.hba1c %></span>
+                                            <% else %>
+                                              <span class="label label-success value"><%= @user_blood.hba1c %></span>
+                                            <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
+                                          <% end %>
+                                            <span class="measurement">mmol/L (5.7 - 7.1)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end GLUCOSE -->
+        <!-- CHOLESTROL -->
+
+
+          <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12">
+                  <div class="well well-lg rounded">
+                      <div class="row">
+                          <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                              <%= image_tag("cholestrol.png", class: "iimg-center", height: "100", width:"100") %><br>
+                              <span>Cholesterol</span><br>
+                              <br>
+                          </div>
+
+
+                          <div class="col-xs-12 col-sm-5 col-md-5">
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-12 col-md-12">
+                                      <div class="row">
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                              <span class="item">Total Cholesterol</span>
+                                          </div>
+
+
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <% if @user_blood.total_cholestrol.present? %>
+                                              <% if @user_blood.total_cholestrol > 5.20 %>
+                                                <span class="label label-danger value"><%= @user_blood.total_cholestrol %></span>
+
+                                              <% else %>
+                                                <span class="label label-success value"><%= @user_blood.total_cholestrol %></span>
+                                              <% end %>
+                                              <% else %>
+                                              <span class="label label-danger value">0</span>
+
+                                            <% end %>
+                                              <span class="measurement">mmol/L (&lt; 5.20)</span>
+                                          </div>
+                                      </div>
+                                      <br>
+                                  </div>
+                              </div>
+
+
+
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-12 col-md-12">
+                                      <div class="row">
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                              <span class="item">HDL</span><br>
+                                              <span class="long_name">High Density Lipoprotein</span>
+                                          </div>
+
+
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <% if @user_blood.hdl_cholestrol.present? %>
+                                              <% if @user_blood.hdl_cholestrol < 1.03 %>
+                                                <span class="label label-danger value"><%= @user_blood.hdl_cholestrol %></span>
+
+                                              <% else %>
+                                                <span class="label label-success value"><%= @user_blood.hdl_cholestrol %></span>
+                                              <% end %>
+                                              <% else %>
+                                              <span class="label label-danger value">0</span>
+
+                                            <% end %>
+                                              <span class="measurement">mmol/L (&gt; 1.03)</span>
+                                          </div>
+                                      </div>
+                                      <br>
+                                  </div>
+                              </div>
+
+
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-12 col-md-12">
+                                      <div class="row">
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                              <span class="item">LDL</span><br>
+                                              <span class="long_name">Low Density Lipoprotein</span>
+                                          </div>
+
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <% if @user_blood.ldl_cholestrol.present? %>
+                                              <% if @user_blood.ldl_cholestrol > 2.58 %>
+                                                <span class="label label-danger value"><%= @user_blood.ldl_cholestrol %></span>
+
+                                              <% else %>
+                                                <span class="label label-success value"><%= @user_blood.ldl_cholestrol %></span>
+                                              <% end %>
+                                              <% else %>
+                                              <span class="label label-danger value">0</span>
+
+                                            <% end %>
+                                              <span class="measurement">mmol/L (&lt; 2.58)</span>
+                                          </div>
+                                      </div>
+                                      <br>
+                                  </div>
+                              </div>
+
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-12 col-md-12">
+                                      <div class="row">
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                              <span class="item">Triglycerides</span>
+                                          </div>
+
+                                          <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <% if @user_blood.triglycerides.present? %>
+                                              <% if @user_blood.triglycerides >1.70%>
+                                                <span class="label label-danger value"><%= @user_blood.triglycerides%></span>
+
+                                              <% else %>
+                                                <span class="label label-success value"><%= @user_blood.triglycerides %></span>
+                                              <% end %>
+                                              <% else %>
+                                              <span class="label label-danger value">0</span>
+
+                                            <% end %>
+                                              <span class="measurement">mmol/L (&lt; 1.70)</span>
+                                          </div>
+                                      </div>
+                                      <br>
+                                  </div>
+                              </div>
+                          </div>
+
+
+                          <!-- <div class="col-xs-12 col-sm-5 col-md-5">
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-12 col-md-12">
+                                      <div class="graph"><img alt="" class="img-responsive" src=
+                                      "http://placehold.it/200x200">
+                                      </div>
+                                  </div>
+                              </div>
+                          </div> -->
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <!-- end CHOLESTROL -->
+        <!-- KIDNEY -->
+
+
+        <!-- KIDNEY -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                            <%= image_tag("kidney.png", class: "iimg-center", height: "100", width:"100") %>
+                            <br>
+                            <span>Kidney</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Creatinine</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @user_blood.creatinine.present? %>
+                                            <% if @user_blood.creatinine > 80 || @user_blood.creatinine < 44%>
+                                              <span class="label label-danger value"><%= @user_blood.creatinine%></span>
+
+                                            <% else %>
+                                              <span class="label label-success value"><%= @user_blood.creatinine%></span>
+                                            <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
+                                          <% end %>
+                                            <span class="measurement">umol/L (44 - 80)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">Urea</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @user_blood.urea.present? %>
+                                            <% if @user_blood.urea > 8.1|| @user_blood.urea < 2.8 %>
+                                              <span class="label label-danger value"><%= @user_blood.urea%></span>
+
+                                            <% else %>
+                                              <span class="label label-success value"><%= @user_blood.urea %></span>
+                                            <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
+                                          <% end %>
+                                            <span class="measurement">mmol/L (2.8 - 8.1)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-kidney">Show More</button>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- <div class="col-xs-12 col-sm-5 col-md-4">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end KIDNEY -->
+
+<!-- THYROID -->
+
+
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="well well-lg rounded">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                              <%= image_tag("thyroid.png", class: "iimg-center", height: "100", width:"100") %>
+                            <span>Thyroid</span><br>
+                            <br>
+                        </div>
+
+
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">TSH</span><br>
+                                            <span class="long_name">Thyroid Stimulating Hormone</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @user_blood.tsh.present? %>
+                                            <% if @user_blood.tsh > 4.2|| @user_blood.tsh < 0.27 %>
+                                              <span class="label label-danger value"><%= @user_blood.tsh%></span>
+
+                                            <% else %>
+                                              <span class="label label-success value"><%= @user_blood.tsh %></span>
+                                            <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
+                                          <% end %>
+                                            <span class="measurement">mIU/L (0.270 - 4.200)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">T3</span><br>
+                                            <span class="long_name">Triiodothyronine</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @user_blood.ft3.present? %>
+                                            <% if @user_blood.ft3 > 6.8 || @user_blood.ft3 < 3.1 %>
+                                              <span class="label label-danger value"><%= @user_blood.ft3%></span>
+
+                                            <% else %>
+                                              <span class="label label-success value"><%= @user_blood.ft3 %></span>
+                                            <% end %>
+
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
+                                          <% end %>
+                                            <span class="measurement">pmol/L (3.1 - 6.8)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+
+
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="row">
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                            <span class="item">T4</span><br>
+                                            <span class="long_name">Thyroxine</span>
+                                        </div>
+
+
+                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <% if @user_blood.ft4.present? %>
+                                            <% if @user_blood.ft4 > 22 || @user_blood.ft4 < 12 %>
+                                              <span class="label label-danger value"><%= @user_blood.ft4%></span>
+
+                                            <% else %>
+                                              <span class="label label-success value"><%= @user_blood.ft4 %></span>
+                                            <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
+                                          <% end %>
+                                            <span class="measurement">pmol/L (12.0 - 22.0)</span>
+                                        </div>
+                                    </div>
+                                    <br>
+                                </div>
+                            </div>
+                        </div>
+
+<!--
+                        <div class="col-xs-12 col-sm-5 col-md-5">
+                            <div class="row">
+                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                    "http://placehold.it/200x200">
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end THYROID -->
+<!-- LIVER -->
+
+
+      <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+              <div class="well well-lg rounded">
+                  <div class="row">
+                      <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                          <%= image_tag("liver.png", class: "iimg-center", height: "100", width:"100") %><br>
+                          <span>Liver</span><br>
+                          <br>
+                      </div>
+
+
+                      <div class="col-xs-12 col-sm-5 col-md-5">
+                          <div class="row">
+                              <div class="col-xs-12 col-sm-12 col-md-12">
+                                  <div class="row">
+                                      <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <span class="item">ALT</span><br>
+                                          <span class="long_name">Alanine Aminotransferase</span>
+                                      </div>
+
+
+                                      <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <% if @user_blood.alanine_transaminase.present? %>
+                                          <% if @user_blood.alanine_transaminase >31 %>
+                                            <span class="label label-danger value"><%= @user_blood.alanine_transaminase%></span>
+
+                                          <% else %>
+                                            <span class="label label-success value"><%= @user_blood.alanine_transaminase %></span>
+                                          <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
+
+                                        <% end %>
+                                          <span class="measurement">U/L (&lt; 31)</span>
+                                      </div>
+                                  </div>
+                                  <br>
+                              </div>
+                          </div>
+
+
+                          <div class="row">
+                              <div class="col-xs-12 col-sm-12 col-md-12">
+                                  <div class="row">
+                                      <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <span class="item">AST</span><br>
+                                          <span class="long_name">Aspartate Aminotransferase</span>
+                                      </div>
+
+
+                                      <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <% if @user_blood.aspartate_transferase.present? %>
+                                          <% if @user_blood.aspartate_transferase >31 %>
+                                            <span class="label label-danger value"><%= @user_blood.aspartate_transferase%></span>
+
+                                          <% else %>
+                                            <span class="label label-success value"><%= @user_blood.aspartate_transferase %></span>
+                                          <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
+
+                                        <% end %>
+                                          <span class="measurement">U/L (&lt; 32)</span>
+                                      </div>
+                                  </div>
+                                  <br>
+                              </div>
+                          </div>
+
+
+                          <div class="row">
+                              <div class="col-xs-12 col-sm-12 col-md-12">
+                                  <div class="row">
+                                      <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <span class="item">ALP</span><br>
+                                          <span class="long_name">Alkaline Phosphatase</span>
+                                      </div>
+
+
+                                      <div class="col-xs-6 col-sm-6 col-md-6">
+                                        <% if @user_blood.alkaline_phosphate.present? %>
+                                          <% if @user_blood.alkaline_phosphate > 120 || @user_blood.alkaline_phosphate < 30 %>
+                                            <span class="label label-danger value"><%= @user_blood.alkaline_phosphate%></span>
+
+                                          <% else %>
+                                            <span class="label label-success value"><%= @user_blood.alkaline_phosphate %></span>
+                                          <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
+
+                                        <% end %>
+                                          <span class="measurement">U/L (30 - 120)</span>
+                                      </div>
+                                  </div>
+                                  <br>
+                                  <div class="row">
+                                      <div class="col-xs-6 col-sm-6 col-md-6">
+                                          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-liver">Show More</button>
+                                      </div>
+                                  </div>
+                                  <br>
+                              </div>
+                          </div>
+                      </div>
+
+
+                      <!-- <div class="col-xs-12 col-sm-5 col-md-4">
+                          <div class="row">
+                              <div class="col-xs-12 col-sm-12 col-md-12">
+                                  <div class="graph"><img alt="" class="img-responsive" src=
+                                  "http://placehold.it/200x200">
+                                  </div>
+                              </div>
+                          </div>
+                      </div> -->
+                  </div>
+              </div>
+          </div>
       </div>
-      <div class="col-md-2" >
-        <center>
-        <li><h4> <%= @user.weight %> kg </h4></li>
-        <li><h4> <%= @user.height%> m </h4> </li>
-        </center>
+      <!-- end LIVER -->
+        <!-- URINE -->
+
+
+        <div class="row">
+                            <div class="col-xs-12 col-sm-12 col-md-12">
+                                <div class="well well-lg rounded">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
+                                              <%= image_tag("urine.png", class: "iimg-center", height: "100", width:"100") %><br>
+                                            <span>Urine</span><br>
+                                            <br>
+                                        </div>
+
+
+                                        <div class="col-xs-12 col-sm-5 col-md-5">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                                    <div class="row">
+                                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                                            <span class="item">Protein</span><br>
+                                                        </div>
+
+
+                                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                                          <% if @user_blood.protein.present? %>
+                                                            <% if @user_blood.protein > 0.25 %>
+                                                              <span class="label label-danger value"><%= @user_blood.protein%></span>
+
+                                                            <% else %>
+                                                              <span class="label label-success value"><%= @user_blood.protein%></span>
+                                                            <% end %>
+                                                            <% else %>
+                                                            <span class="label label-danger value">0</span>
+
+                                                          <% end %>
+                                                            <span class="measurement">g/L (&lt; 0.25)</span>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+
+                                                    <div class="row">
+                                                        <div class="col-xs-6 col-sm-6 col-md-6">
+                                                            <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#modal-urine">Show More</button>
+                                                        </div>
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- <div class="col-xs-12 col-sm-5 col-md-4">
+                                            <div class="row">
+                                                <div class="col-xs-12 col-sm-12 col-md-12">
+                                                    <div class="graph"><img alt="" class="img-responsive" src=
+                                                    "http://placehold.it/200x200">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+        <!-- end URINE -->
+    </div>
+</div>
+
+
+
+<!-- modal -->
+<div class="modal fade" id="modal-blood" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Full Blood Count</h4>
       </div>
-      <div class="col-md-3">
-        <center>
-        <h3> BMI <%= @user.weight.present? ?  @user.bmi  : " "%> </h3>
-      </center>
+      <div class="modal-body">
+        <% if @user_blood.present? %>
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td><%= @user_blood.haemoglobin %></td>
+                <td>122</td>
+                <td>g/L</td>
+                <td>115 - 165</td>
+            </tr>
+
+            <tr>
+                <td>RBC</td>
+                <td><%= @user_blood.rbc%></td>
+                <td>10^12/L</td>
+                <td>3.80 - 5.80</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td><%= @user_blood.mcv%></td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>HCT</td>
+                <td><%= @user_blood.hct%></td>
+                <td>L/L</td>
+                <td>0.38 - 0.48</td>
+            </tr>
+
+            <tr>
+                <td>MCH</td>
+                <td><%= @user_blood.mch%></td>
+                <td>pg</td>
+                <td>27 - 32</td>
+            </tr>
+
+        </table>
+        <% end %>
       </div>
-      <div class="col-md-3">
-        <h3> BLOOD : <%= @user.blood_type %> </h3>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
       </div>
-      <div class="col-md-3">
-        <%= link_to 'Edit Profile', edit_user_path(@user),  class: "btn btn-lg btn-danger" %>
-      </div>
+    </div>
+
   </div>
-    <!-- <button type="button" class="btn btn-danger" id="edit_profile">EDIT</button> -->
-
-
-
-</div>
 </div>
 
-<script>
-$( document ).ready(function() {
+<div class="modal fade" id="modal-liver" role="dialog">
+  <div class="modal-dialog">
 
-  $( ".basichealth" ).hide();
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Liver Function</h4>
+      </div>
+      <div class="modal-body">
+        <% if @user_blood.present? %>
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td>Total Protein</td>
+                <td><%= @user_blood.total_protein%></td>
+                <td>g/L</td>
+                <td>115 - 165</td>
+            </tr>
+
+            <tr>
+                <td>RBC</td>
+                <td><%= @user_blood.rbc%></td>
+                <td>10^12/L</td>
+                <td>3.80 - 5.80</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td><%= @user_blood.mcv%></td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>HCT</td>
+                <td><%= @user_blood.hct%></td>
+                <td>L/L</td>
+                <td>0.38 - 0.48</td>
+            </tr>
+
+            <tr>
+                <td>MCH</td>
+                <td><%= @user_blood.mch%></td>
+                <td>pg</td>
+                <td>27 - 32</td>
+            </tr>
+
+        </table>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade" id="modal-kidney" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Renal Function</h4>
+      </div>
+      <div class="modal-body">
+        <% if @user_blood.present? %>
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td>Haemoglobin</td>
+                <td><%= @user_blood.haemoglobin%></td>
+                <td>g/L</td>
+                <td>115 - 165</td>
+            </tr>
+
+            <tr>
+                <td>RBC</td>
+                <td>4.48</td>
+                <td>10^12/L</td>
+                <td>3.80 - 5.80</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td>85</td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>HCT</td>
+                <td>0.38</td>
+                <td>L/L</td>
+                <td>0.38 - 0.48</td>
+            </tr>
+
+            <tr>
+                <td>MCH</td>
+                <td>27</td>
+                <td>pg</td>
+                <td>27 - 32</td>
+            </tr>
+
+        </table>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
-    $( "#dashboardbtn" ).click(function() {
-      console.log("hello basichealthbtn")
-      $( ".maindashboard" ).show();
-      $( ".basichealth" ).hide();
-    });
+<div class="modal fade" id="modal-urine" role="dialog">
+  <div class="modal-dialog">
 
-    $( "#basichealthbtn" ).click(function() {
-      $( ".maindashboard" ).hide();
-      $( ".basichealth" ).show();
-    });
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Urinalysis</h4>
+      </div>
+      <div class="modal-body">
+        <% if @user_blood.present? %>
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td>Appeareance</td>
+                <td>clear</td>
+                <td></td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>Color</td>
+                <td>pale yellow</td>
+                <td></td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td>85</td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>Bacteria</td>
+                <td>Nil</td>
+                <td></td>``
+                <td></td>
+            </tr>
+        </table>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
-      $( ".questionaire" ).show();
-      $( ".healthupload" ).hide();
-      $( ".surveyrecord" ).hide();
-      $( ".healthrecord" ).hide();
+<div class="modal fade" id="modal-liver" role="dialog">
+  <div class="modal-dialog">
 
-      $( "#basicbtn" ).click(function() {
-        $( ".questionaire" ).show();
-        $( ".healthupload" ).hide();
-      });
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Liver Function</h4>
+      </div>
+      <div class="modal-body">
+        <% if @user_blood.present? %>
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
 
-      $( "#healthbtn" ).click(function() {
-        $( ".questionaire" ).hide();
-        $( ".healthupload" ).show();
-      });
+            <tr>
+                <td>Total Protein</td>
+                <td>122</td>
+                <td>g/L</td>
+                <td>115 - 165</td>
+            </tr>
+
+            <tr>
+                <td>RBC</td>
+                <td>4.48</td>
+                <td>10^12/L</td>
+                <td>3.80 - 5.80</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td>85</td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>HCT</td>
+                <td>0.38</td>
+                <td>L/L</td>
+                <td>0.38 - 0.48</td>
+            </tr>
+
+            <tr>
+                <td>MCH</td>
+                <td>27</td>
+                <td>pg</td>
+                <td>27 - 32</td>
+            </tr>
+
+        </table>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
+<div class="modal fade" id="modal-liver" role="dialog">
+  <div class="modal-dialog">
 
-});
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Liver Function</h4>
+      </div>
+      <div class="modal-body">
+        <% if @user_blood.present? %>
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td>Total Protein</td>
+                <td>122</td>
+                <td>g/L</td>
+                <td>115 - 165</td>
+            </tr>
+
+            <tr>
+                <td>RBC</td>
+                <td>4.48</td>
+                <td>10^12/L</td>
+                <td>3.80 - 5.80</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td>85</td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>HCT</td>
+                <td>0.38</td>
+                <td>L/L</td>
+                <td>0.38 - 0.48</td>
+            </tr>
+
+            <tr>
+                <td>MCH</td>
+                <td>27</td>
+                <td>pg</td>
+                <td>27 - 32</td>
+            </tr>
+
+        </table>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="modal fade" id="modal-kidney" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Renal Function</h4>
+      </div>
+
+      <div class="modal-body">
+        <% if @user_blood.present? %>
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td>Haemoglobin</td>
+                <td>122</td>
+                <td>g/L</td>
+                <td>115 - 165</td>
+            </tr>
+
+            <tr>
+                <td>RBC</td>
+                <td>4.48</td>
+                <td>10^12/L</td>
+                <td>3.80 - 5.80</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td>85</td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>HCT</td>
+                <td>0.38</td>
+                <td>L/L</td>
+                <td>0.38 - 0.48</td>
+            </tr>
+
+            <tr>
+                <td>MCH</td>
+                <td>27</td>
+                <td>pg</td>
+                <td>27 - 32</td>
+            </tr>
+
+        </table>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
-</script>
+<div class="modal fade" id="modal-urine" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Urinalysis</h4>
+      </div>
+      <div class="modal-body">
+        <% if @user_blood.present? %>
+        <table class="table table-bordered">
+            <tr>
+                <th>Parameter</th>
+                <th>Result</th>
+                <th>Unit</th>
+                <th>Range</th>
+            </tr>
+
+            <tr>
+                <td>Appeareance</td>
+
+                <td>
+                    <% if @user_blood.urine_appearance.present? %>
+                      <%= @user_blood.urine_appearance %>
+                    <% end %>
+                </td>
+                <td></td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>Color</td>
+                <td>
+                  <% if @user_blood.urine_colour.present? %>
+                    <%= @user_blood.urine_colour %>
+                  <% end %>
+                </td>
+                <td></td>
+                <td>-</td>
+            </tr>
+
+            <tr>
+                <td>MCV</td>
+                <td>
+                  <% if @user_blood.mcv.present? %>
+                    <%= @user_blood.mcv %>
+                  <% end %>
+                </td>
+                <td>fL</td>
+                <td>78 - 98</td>
+            </tr>
+
+            <tr>
+                <td>Bacteria</td>
+                <td>
+                  <% if @user_blood.bacteria.present? %>
+                    <%= @user_blood.bacteria %>
+                  <% end %>
+                </td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
