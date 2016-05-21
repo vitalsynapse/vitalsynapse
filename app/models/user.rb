@@ -28,7 +28,10 @@ class User < ActiveRecord::Base
  enum gender: [ :female,:male]
  enum marital_status: [:divorced, :married, :single, :widowed]
  enum blood_type: [:a, :ab, :b, :o]
- enum ethnicity: [:african,:caribbean,:caucasian,:chinese,:indian, :malay,:orang_asal ]
+ enum ethnicity: [:melayu, :bugis, :banjar, :jawa, :jawi_pekan, :minangkabau, :cina, :india, :malayali, :punjabi, :sikh, :tamil, :telegu, :india_muslim,
+                    :pakistani, :srilanka, :tamil_srilanka, :melayu_srilanka, :sinhalese, :indonesian, :bumiputera_sabah, :bajau, :dusun, :murut, :sino_native
+                    :suluk, :bisaya, :brunei, :kedayan, :lundayeh, :melanau, :melayu_sabah, :rungus, :sungai, :bumiputera_sarawak, :melayu_sarawak, :iban, :bidayuh,
+                    :kayan, :kenyah, :kelabit, :penan, :bisayah, :berawan, :orang_asli, :jakun, :negrito, :sakai, :senoi, :others_asian, :eurasian, :filipinos, :others ]
  enum occupation: [ :executive, :professional, :student, :unemployed]
 
 	# def send_devise_notification(notification, *args)
