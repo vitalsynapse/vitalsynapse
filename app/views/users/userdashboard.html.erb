@@ -143,10 +143,10 @@
                                             <% if @blood_pressure.present? %>
                                               <% if @blood_pressure.sbp > 100 || @blood_pressure.dpb > 90 %>
                                                   <span class=
-                                                "label label-danger value"><sup><%=@blood_pressure.sbp%></sup>/<sub><%=@blood_pressure.dpb%></sub></span>
+                                                "label label-danger value"><sup><%=@blood_pressure.sbp.to_f.ceil%></sup>/<sub><%=@blood_pressure.dpb.to_f.ceil%></sub></span>
                                                 <% else %>
                                                   <span class=
-                                                "label label-success value"><sup><%=@blood_pressure.sbp%></sup>/<sub><%=@blood_pressure.dpb%></sub></span>
+                                                "label label-success value"><sup><%=@blood_pressure.sbp.to_f.ceil%></sup>/<sub><%=@blood_pressure.dpb.to_f.ceil%></sub></span>
 
                                                 <% end %>
                                               <% else %>

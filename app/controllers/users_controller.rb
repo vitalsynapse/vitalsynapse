@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     @user_blood = ClinicalBloodRecord.where(user_id: @user.id).last
     @blood_pressure = Pressure.where(user_id: @user.id).last
     @pulse = Pulse.where(user_id: @user.id).last
-    @lungs = Pulse.where(user_id: @user.id).last
+    @lungs = Pulse.where(user_id: 100001).last
     @glucose = Glucose.where(user_id: @user.id)
     @random_glucose = @glucose.random_blood_sugar.last
     @fasting_glucose = @glucose.fasting_blood_sugar.last
