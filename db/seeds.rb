@@ -23,6 +23,7 @@ Answer.find_or_create_by(question_id: 1, description:  "Hypertension")
 Answer.find_or_create_by(question_id: 1, description:  "Heart Disease")
 Answer.find_or_create_by(question_id: 1, description:  "Bronchial Asthma")
 Answer.find_or_create_by(question_id: 1, description:  "Cancer")
+Answer.find_or_create_by(question_id: 1, description:  "None")
 Answer.find_or_create_by(question_id: 1, description:  "Others")
 
 Answer.find_or_create_by(question_id: 2, description:  "Mother")
@@ -35,6 +36,7 @@ Answer.find_or_create_by(question_id: 2, description:  "None")
 
 Answer.find_or_create_by(question_id: 3, description:  "Smoke")
 Answer.find_or_create_by(question_id: 3, description:  "Consume Alcohol")
+Answer.find_or_create_by(question_id: 3, description:  "None")
 
 Answer.find_or_create_by(question_id: 4, description:  "Yes, most of the time")
 Answer.find_or_create_by(question_id: 4, description:  "Yes, some of the time")
@@ -44,6 +46,7 @@ Answer.find_or_create_by(question_id: 5, description:  "Drugs")
 Answer.find_or_create_by(question_id: 5, description:  "Food")
 Answer.find_or_create_by(question_id: 5, description:  "Dust")
 Answer.find_or_create_by(question_id: 5, description:  "Others")
+Answer.find_or_create_by(question_id: 5, description:  "None")
 
 Answer.find_or_create_by(question_id: 6, description:  "No")
 Answer.find_or_create_by(question_id: 6, description:  "Yes")
