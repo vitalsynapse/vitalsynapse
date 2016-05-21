@@ -54,10 +54,10 @@
               <table class="table table-bordered custom">
                 <thead>
                   <tr>
-                    <td> Date Taken</td>
-                    <td>  Time Taken </td>
-                    <td> Measurement </td>
-                    <td> Index </td>
+                    <td>Date Taken</td>
+                    <td>Time Taken</td>
+                    <td>Measurement </td>
+                    <td>Remarks</td>
 
                   </tr>
                 </thead>
@@ -66,12 +66,10 @@
                   <%if @user_glucose!= nil  %>
                   <%  @user_glucose.all.each do |health_record| %>
                    <tr>
-
                      <td><%= health_record.date_taken%></td>
-                      <td><%= health_record.time_taken%></td>
+                    <td><%= health_record.time_taken%></td>
                      <td><%= health_record.measurement%> </td>
                      <td><%= health_record.context %> </td>
-
 
 
                    </tr>
@@ -79,8 +77,6 @@
                  <% end %>
                 </tbody>
               </table>
-
-
             </div>
           </div>
 
@@ -123,11 +119,11 @@
               <table class="table table-bordered custom">
                 <thead>
                   <tr>
-                    <td> sbp </td>
-                    <td> dpb </td>
-                    <td> Index</td>
                     <td> Date Taken </td>
                     <td> Time Taken </td>
+                    <td>SBP</td>
+                    <td>DBP</td>
+                    <td>Remarks</td>
                   </tr>
                 </thead>
 
@@ -135,13 +131,11 @@
                   <%if @user_pressure != nil  %>
                   <%  @user_pressure.all.each do |health_record| %>
                    <tr>
-
+                     <td><%= health_record.date_taken%> </td>
+                     <td><%= health_record.time_taken%></td>
                      <td><%= health_record.sbp %> </td>
                      <td><%= health_record.dpb %> </td>
                      <td><%= health_record.context %> </td>
-                     <td><%= health_record.date_taken%> </td>
-                     <td><%= health_record.time_taken%></td>
-
                    </tr>
                    <% end %>
                  <% end %>
@@ -151,14 +145,6 @@
 
             </div>
           </div>
-          <!----------------------------------------->
-
-<!---------------- PULSE START -------------------------------------->
-<!---------------- PULSE START -------------------------------------->
-<!---------------- PULSE START -------------------------------------->
-<!---------------- PULSE START -------------------------------------->
-<!---------------- PULSE START -------------------------------------->
-<!---------------- PULSE START -------------------------------------->
 
           <div id="menu3" class="tab-pane fade">
             <div class="daily_update_pulse">
@@ -198,10 +184,10 @@
             <table class="table table-bordered custom">
               <thead>
                 <tr>
-                  <td> Measurement </td>
-                  <td> Index </td>
-                  <td> Time Taken </td>
                   <td> Date Taken</td>
+                  <td> Time Taken </td>
+                  <td> Measurement </td>
+                  <td> Remarks </td>
                 </tr>
               </thead>
 
@@ -209,12 +195,10 @@
                 <%if @user_lungs != nil  %>
                 <%  @user_lungs.all.each do |health_record| %>
                  <tr>
-
+                   <td><%= health_record.date_taken%> </td>
+                   <td><%= health_record.time_taken %> </td>
                    <td><%= health_record.measurement %> </td>
                    <td><%= health_record.context %> </td>
-                   <td><%= health_record.time_taken %> </td>
-                   <td><%= health_record.date_taken%> </td>
-
                  </tr>
                  <% end %>
                <% end %>
