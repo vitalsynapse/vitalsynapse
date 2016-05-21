@@ -56,9 +56,15 @@
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <br>
-                                    <% if @user_bmi.present? %>
-                                    <span class="label label-success value"><%= @user_bmi.bodymassindex %></span>
-                                    &nbsp;
+                                    <% if @user_bmi.bodymassindex.present? %>
+                                      <% if @user_bmi.bodymassindex < 18.5 || @user_bmi.bodymassindex > 24.9 %>
+                                        <span class="label label-danger value"><%= @user_bmi.bodymassindex %></span>
+                                        &nbsp;
+                                        <% else %>
+                                        <span class="label label-success value"><%= @user_bmi.bodymassindex %></span>
+                                        &nbsp;
+                                        <% end %>
+
                                     <% else %>
                                       <span class="label label-danger value">0</span>
                                     <% end %>

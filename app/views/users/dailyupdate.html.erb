@@ -133,8 +133,8 @@
                    <tr>
                      <td><%= health_record.date_taken%> </td>
                      <td><%= health_record.time_taken.strftime("%I.%M%p")%></td>
-                     <td><%= health_record.sbp %> </td>
-                     <td><%= health_record.dpb %> </td>
+                     <td><%= health_record.sbp.to_f.ceil %> </td>
+                     <td><%= health_record.dpb.to_f.ceil %> </td>
                      <td><%= health_record.context %> </td>
                    </tr>
                    <% end %>
