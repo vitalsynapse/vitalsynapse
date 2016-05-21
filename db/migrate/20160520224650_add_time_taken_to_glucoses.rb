@@ -1,5 +1,5 @@
 class AddTimeTakenToGlucoses < ActiveRecord::Migration
   def change
-    add_column :glucoses, :time_taken, :time
+    # add_column :glucoses, :time_taken, :time
   end
 end

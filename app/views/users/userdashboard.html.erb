@@ -81,10 +81,10 @@
                                     <br>
                                     <% if @user_blood.present? %>
                                       <% if @user_blood.blood_type.present? %>
-                                      <span class="label label-default value"><%= @user_blood.blood_type %></span>
+                                        <span class="label label-default value"><%= @user_blood.blood_type %></span>
+                                        <% end %>
                                       <% else %>
-                                      <span class="label label-danger value">-</span>
-                                      <% end %>
+                                        <span class="label label-danger value">-</span>
                                     <% end %>
                                 </div>
                             </div>
@@ -118,7 +118,6 @@
                               <span>Cardiovascular</span><br>
                               <br>
                           </div>
-
 
                           <div class="col-xs-12 col-sm-5 col-md-5">
                               <div class="row">
@@ -283,18 +282,17 @@
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                         <%if  @user_blood.present? %>
                                           <% if @user_blood.haemoglobin.present? %>
-                                           <% if @user_blood.haemoglobin < 115 || @user_blood.haemoglobin > 165 %>
-                                              <span class="label label-danger value"><%= @user_blood.haemoglobin %></span>
-                                           <% else %>
-                                              <span class="label label-success value"><%= @user_blood.haemoglobin %></span>
-                                           <% end %>
-                                          <% else %>
-                                          <span class="label label-danger value">0</span>
-
-
+                                             <% if @user_blood.haemoglobin < 115 || @user_blood.haemoglobin > 165 %>
+                                                <span class="label label-danger value"><%= @user_blood.haemoglobin %></span>
+                                             <% else %>
+                                                <span class="label label-success value"><%= @user_blood.haemoglobin %></span>
+                                             <% end %>
                                           <% end %>
-                                            <span class="measurement">g/L (115 - 165)</span>
+                                          <% else %>
+                                            <span class="label label-danger value">0</span>
                                         <% end %>
+                                        <span class="measurement">g/L (115 - 165)</span>
+
                                         </div>
                                     </div>
                                     <br>
@@ -406,16 +404,15 @@
 
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                         <% if @user_blood.present? %>
-                                          <% if @user_blood.hba1c.present? %>
-                                            <% if @user_blood.hba1c.measurement < 5.7 || @user_blood.hba1c.measurement > 7.1 %>
-                                              <span class="label label-danger value"><%= @user_blood.hba1c %></span>
-                                            <% else %>
-                                              <span class="label label-success value"><%= @user_blood.hba1c %></span>
+                                            <% if @user_blood.hba1c.present? %>
+                                                <% if @user_blood.hba1c.measurement < 5.7 || @user_blood.hba1c.measurement > 7.1 %>
+                                                  <span class="label label-danger value"><%= @user_blood.hba1c %></span>
+                                                <% else %>
+                                                  <span class="label label-success value"><%= @user_blood.hba1c %></span>
+                                                <% end %>
                                             <% end %>
-                                            <% else %>
-                                            <span class="label label-danger value">0</span>
-
-                                          <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
                                         <% end %>
                                             <span class="measurement">mmol/L (5.7 - 7.1)</span>
                                         </div>
@@ -472,10 +469,11 @@
                                               <% else %>
                                                 <span class="label label-success value"><%= @user_blood.total_cholestrol %></span>
                                               <% end %>
-                                              <% else %>
-                                              <span class="label label-danger value">0</span>
 
                                             <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
                                           <% end %>
                                               <span class="measurement">mmol/L (&lt; 5.20)</span>
                                           </div>
@@ -504,10 +502,11 @@
                                               <% else %>
                                                 <span class="label label-success value"><%= @user_blood.hdl_cholestrol %></span>
                                               <% end %>
-                                              <% else %>
-                                              <span class="label label-danger value">0</span>
 
                                             <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
                                           <% end %>
                                               <span class="measurement">mmol/L (&gt; 1.03)</span>
                                           </div>
@@ -534,10 +533,11 @@
                                               <% else %>
                                                 <span class="label label-success value"><%= @user_blood.ldl_cholestrol %></span>
                                               <% end %>
-                                              <% else %>
-                                              <span class="label label-danger value">0</span>
+
 
                                             <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
                                           <% end %>
                                               <span class="measurement">mmol/L (&lt; 2.58)</span>
                                           </div>
@@ -562,10 +562,11 @@
                                               <% else %>
                                                 <span class="label label-success value"><%= @user_blood.triglycerides %></span>
                                               <% end %>
-                                              <% else %>
-                                              <span class="label label-danger value">0</span>
 
                                             <% end %>
+                                            <% else %>
+                                            <span class="label label-danger value">0</span>
+
                                           <% end %>
                                               <span class="measurement">mmol/L (&lt; 1.70)</span>
                                           </div>
@@ -626,10 +627,10 @@
                                             <% else %>
                                               <span class="label label-success value"><%= @user_blood.creatinine%></span>
                                             <% end %>
-                                            <% else %>
-                                            <span class="label label-danger value">0</span>
 
                                           <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
                                         <% end %>
                                             <span class="measurement">umol/L (44 - 80)</span>
                                         </div>
@@ -656,10 +657,11 @@
                                             <% else %>
                                               <span class="label label-success value"><%= @user_blood.urea %></span>
                                             <% end %>
-                                            <% else %>
-                                            <span class="label label-danger value">0</span>
 
                                           <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
+
                                         <% end %>
                                             <span class="measurement">mmol/L (2.8 - 8.1)</span>
                                         </div>
@@ -725,10 +727,9 @@
                                             <% else %>
                                               <span class="label label-success value"><%= @user_blood.tsh %></span>
                                             <% end %>
-                                            <% else %>
-                                            <span class="label label-danger value">0</span>
-
                                           <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
                                         <% end %>
                                             <span class="measurement">mIU/L (0.270 - 4.200)</span>
                                         </div>
@@ -757,10 +758,9 @@
                                               <span class="label label-success value"><%= @user_blood.ft3 %></span>
                                             <% end %>
 
-                                            <% else %>
-                                            <span class="label label-danger value">0</span>
-
                                           <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
                                         <% end %>
                                             <span class="measurement">pmol/L (3.1 - 6.8)</span>
                                         </div>
@@ -788,10 +788,9 @@
                                             <% else %>
                                               <span class="label label-success value"><%= @user_blood.ft4 %></span>
                                             <% end %>
-                                            <% else %>
-                                            <span class="label label-danger value">0</span>
-
                                           <% end %>
+                                          <% else %>
+                                          <span class="label label-danger value">0</span>
                                         <% end %>
                                             <span class="measurement">pmol/L (12.0 - 22.0)</span>
                                         </div>
@@ -849,10 +848,10 @@
                                           <% else %>
                                             <span class="label label-success value"><%= @user_blood.alanine_transaminase %></span>
                                           <% end %>
-                                          <% else %>
-                                          <span class="label label-danger value">0</span>
 
                                         <% end %>
+                                        <% else %>
+                                        <span class="label label-danger value">0</span>
                                       <% end %>
                                           <span class="measurement">U/L (&lt; 31)</span>
                                       </div>
@@ -880,10 +879,11 @@
                                           <% else %>
                                             <span class="label label-success value"><%= @user_blood.aspartate_transferase %></span>
                                           <% end %>
-                                          <% else %>
-                                          <span class="label label-danger value">0</span>
 
                                         <% end %>
+                                        <% else %>
+                                        <span class="label label-danger value">0</span>
+
                                       <% end %>
                                           <span class="measurement">U/L (&lt; 32)</span>
                                       </div>
@@ -911,10 +911,9 @@
                                           <% else %>
                                             <span class="label label-success value"><%= @user_blood.alkaline_phosphate %></span>
                                           <% end %>
-                                          <% else %>
-                                          <span class="label label-danger value">0</span>
-
                                         <% end %>
+                                        <% else %>
+                                        <span class="label label-danger value">0</span>
                                       <% end %>
                                           <span class="measurement">U/L (30 - 120)</span>
                                       </div>
@@ -977,10 +976,11 @@
                                                             <% else %>
                                                               <span class="label label-success value"><%= @user_blood.protein%></span>
                                                             <% end %>
-                                                            <% else %>
-                                                            <span class="label label-danger value">0</span>
 
                                                           <% end %>
+                                                          <% else %>
+                                                          <span class="label label-danger value">0</span>
+
                                                         <% end %>
                                                             <span class="measurement">g/L (&lt; 0.25)</span>
                                                         </div>
@@ -1044,7 +1044,7 @@
                   <%= @user_blood.haemoglobin %>
                 <% end %>
                 </td>
-                
+
                 <td>g/L</td>
                 <td>115 - 165</td>
             </tr>
@@ -1564,7 +1564,7 @@
                 </td>
                 <td></td>
 
-              
+
               <td>Appeareance</td>
                 <td>
                     <% if @user_blood.urine_appearance.present? %>
@@ -1572,7 +1572,7 @@
                     <% end %>
                 </td>
                 <td></td>
-            </tr> 
+            </tr>
 
             <tr>
                 <td>Epihelial Cell Count</td>
@@ -1640,6 +1640,3 @@
 
   </div>
 </div>
-
-    
-
