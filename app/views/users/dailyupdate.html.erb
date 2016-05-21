@@ -67,7 +67,7 @@
                   <%  @user_glucose.all.each do |health_record| %>
                    <tr>
                      <td><%= health_record.date_taken%></td>
-                    <td><%= health_record.time_taken%></td>
+                    <td><%= health_record.time_taken.strftime("%I.%M%p")%></td>
                      <td><%= health_record.measurement%> </td>
                      <td><%= health_record.context %> </td>
 
@@ -132,7 +132,7 @@
                   <%  @user_pressure.all.each do |health_record| %>
                    <tr>
                      <td><%= health_record.date_taken%> </td>
-                     <td><%= health_record.time_taken%></td>
+                     <td><%= health_record.time_taken.strftime("%I.%M%p")%></td>
                      <td><%= health_record.sbp %> </td>
                      <td><%= health_record.dpb %> </td>
                      <td><%= health_record.context %> </td>
@@ -196,7 +196,7 @@
                 <%  @user_lungs.all.each do |health_record| %>
                  <tr>
                    <td><%= health_record.date_taken%> </td>
-                   <td><%= health_record.time_taken %> </td>
+                   <td><%= health_record.time_taken.strftime("%I.%M%p") %> </td>
                    <td><%= health_record.measurement %> </td>
                    <td><%= health_record.context %> </td>
                  </tr>
@@ -253,12 +253,13 @@
               <table class="table table-bordered custom">
                 <thead>
                   <tr>
+                    <td> Date</td>
+                    <td> Time </td>
                     <td> Problem </td>
                     <td> Treatment</td>
                     <td> Clinic Name</td>
                     <td> Cost</td>
-                    <td> Date</td>
-                    <td> Time </td>
+
                   </tr>
                 </thead>
 
@@ -266,13 +267,13 @@
                   <%if @user_clinics != nil  %>
                   <%  @user_clinics.all.each do |health_record| %>
                    <tr>
-
+                     <td><%= health_record.visit_date%> </td>
+                     <td><%= health_record.visit_time.strftime("%I.%M%p")%></td>
                      <td><%= health_record.problem %> </td>
                      <td><%= health_record.treatment %> </td>
                      <td><%= health_record.clinic_name %> </td>
                      <td><%= health_record.cost %> </td>
-                     <td><%= health_record.visit_date%> </td>
-                     <td><%= health_record.visit_time%></td>
+
 
                    </tr>
                    <% end %>
@@ -339,7 +340,7 @@
               <%  @user_bmi.all.each do |health_record| %>
                <tr>
                  <td><%= health_record.date_taken%> </td>
-                 <td><%= health_record.time_taken%></td>
+                 <td><%= health_record.time_taken.strftime("%I.%M%p")%></td>
                  <td><%= health_record.user_weigh%> </td>
                  <td><%= health_record.height %> </td>
                  <td><%= health_record.bodymassindex %> </td>
