@@ -15,7 +15,9 @@
           <thead>
             <tr>
               <td>   </td>
+              <td>  Date </td>
               <td> Name </td>
+
               <td> Download </td>
               <td> View </td>
             </tr>
@@ -27,17 +29,18 @@
              <tr>
                <td>
                   <%= image_tag(health_record.record_image, class: "img-center",  width:"100") %>
-
+               </td>
+               <td>
+                 <%= health_record.created_at.strftime("%x")%>
                </td>
                <td>
                  <%= health_record.record_name%>
                </td>
-
                <td>
-                 <%= link_to 'DOWNLOAD', health_record.file.url, class: "btn btn-success btn-block" %>
+                 <%= link_to 'DOWNLOAD', health_record.file.url, class: "btn btn-success " %>
                </td>
                 <td>
-                  <%= link_to 'OPEN', health_record.file.url, :target => '_blank', class: "btn btn-success btn-block" %>
+                  <%= link_to 'OPEN', health_record.file.url, :target => '_blank', class: "btn btn-success" %>
                 </td>
 
              </tr>
