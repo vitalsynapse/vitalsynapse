@@ -304,66 +304,7 @@
       <div id="menu5" class="tab-pane fade ">
         <div class="daily_bmi_update">
 
-          <div class="row">
-
-            <%= nested_form_for @user, class: "form-control" do |f| %>
-
-          <div class="healthrecord">
-            <%= f.fields_for :bmis do |task_form| %>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-
-               <%= task_form.date_field :date_taken,required: true, class:"form-control", placeholder:"Date" %>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-               <%= task_form.time_field :time_taken,required: true,class:"form-control", placeholder:"Time" %>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-4">
-               <%= task_form.text_field :height,required: true,class:"form-control", placeholder: "Height(metre)" %>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-               <%= task_form.text_field :user_weigh,required: true,class:"form-control", placeholder: "Weight(kg)" %>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-2">
-              <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
-
-            </div>
-            <% end %>
-          </div>
-
-          <%= f.link_to_add "Add a New Record", :bmis, class: "btn btn-primary"%>
-            <%= f.submit "submit", class: "btn btn-warning" %>
-          <% end %>
-
-          </div>
-
-          <br>
-          <table class="table table-bordered custom">
-            <thead>
-              <tr>
-                <td> Date Taken</td>
-                <td> Time Taken </td>
-                <td> Height </td>
-                <td> Weight </td>
-                <td> Boddy Mass Index </td>
-
-              </tr>
-            </thead>
-
-            <tbody>
-              <%if @user_bmi!= nil  %>
-              <%  @user_bmi.all.each do |health_record| %>
-               <tr>
-                 <td><%= health_record.date_taken%> </td>
-                 <td><%= health_record.time_taken%></td>
-                 <td><%= health_record.user_weigh%> </td>
-                 <td><%= health_record.height %> </td>
-                 <td><%= health_record.bodymassindex %> </td>
-
-               </tr>
-               <% end %>
-             <% end %>
-            </tbody>
-          </table>
+          
 
 
         </div>
