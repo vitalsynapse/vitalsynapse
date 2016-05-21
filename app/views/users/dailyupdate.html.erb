@@ -57,7 +57,7 @@
                     <td>Date Taken</td>
                     <td>Time Taken</td>
                     <td>Measurement </td>
-                    <td>Index </td>
+                    <td>Remarks</td>
 
                   </tr>
                 </thead>
@@ -66,19 +66,15 @@
                   <%if @user_glucose!= nil  %>
                   <%  @user_glucose.all.each do |health_record| %>
                    <tr>
-
-                     <td><%= health_record.measurement%> </td>
-                     <td><%= health_record.context %> </td>
                      <td><%= health_record.date_taken%> </td>
                      <td><%= health_record.time_taken%></td>
-
+                     <td><%= health_record.measurement%> </td>
+                     <td><%= health_record.context %> </td>
                    </tr>
                    <% end %>
                  <% end %>
                 </tbody>
               </table>
-
-
             </div>
           </div>
 
