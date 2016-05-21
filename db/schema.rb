@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521095425) do
+ActiveRecord::Schema.define(version: 20160521114813) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -184,14 +184,14 @@ ActiveRecord::Schema.define(version: 20160521095425) do
   add_index "bloods", ["user_id"], name: "index_bloods_on_user_id", using: :btree
 
   create_table "bmis", force: :cascade do |t|
-    t.integer  "height"
-    t.integer  "weight"
     t.float    "bodymassindex"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "user_id"
     t.date     "date_taken"
     t.time     "time_taken"
+    t.float    "user_weigh"
+    t.float    "height"
   end
 
   add_index "bmis", ["user_id"], name: "index_bmis_on_user_id", using: :btree
