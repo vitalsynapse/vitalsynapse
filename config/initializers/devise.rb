@@ -19,7 +19,7 @@ Devise.setup do |config|
 
   ## facebook omnitauth key and secret for staging/production
 
-  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"], url("/auth/facebook/callback")
+  config.omniauth :facebook, ENV["FACEBOOK_APP_ID"], ENV["FACEBOOK_SECRET"],callback_url: "/auth/facebook/callback"
 
   ## facebook omnitauth key and secret for development
   # config.omniauth :facebook,
