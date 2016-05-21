@@ -141,7 +141,7 @@
 
                                           <div class="col-xs-6 col-sm-6 col-md-6">
                                             <% if @blood_pressure.present? %>
-                                              <% if @blood_pressure.sbp > 100 || @blood_pressure.dpb > 90 %>
+                                              <% if @blood_pressure.sbp < 100 || @blood_pressure.sbp > 140 || @blood_pressure.dpb > 90 || @blood_pressure.dpb < 60 %>
                                                   <span class=
                                                 "label label-danger value"><sup><%=@blood_pressure.sbp.to_f.ceil%></sup>/<sub><%=@blood_pressure.dpb.to_f.ceil%></sub></span>
                                                 <% else %>
