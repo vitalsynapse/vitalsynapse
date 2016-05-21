@@ -25,5 +25,6 @@ module Vitalsyn
     config.active_record.raise_in_transactional_callbacks = true
 
     # config.active_job.queue_adapter = :delayed_job
+
   end
 end
