@@ -18,7 +18,7 @@ Devise.setup do |config|
   # config.mailer = 'Devise::Mailer'
 
   ## facebook omnitauth key and secret for staging/production
-  config.omniauth :facebook, "1678224502440442" , "3da730a469752f8b51055e5fdc7f72f9", callback_url: "/auth/facebook/callback"
+  config.omniauth :facebook, "1678224502440442" , "3da730a469752f8b51055e5fdc7f72f9"
 
   ## facebook omnitauth key and secret for development
   # config.omniauth :facebook,
