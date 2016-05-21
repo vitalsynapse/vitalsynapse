@@ -66,10 +66,21 @@
                   <%if @user_glucose!= nil  %>
                   <%  @user_glucose.all.each do |health_record| %>
                    <tr>
+<<<<<<< HEAD
                      <td><%= health_record.date_taken%> </td>
                      <td><%= health_record.time_taken%></td>
                      <td><%= health_record.measurement%> </td>
                      <td><%= health_record.context %> </td>
+=======
+
+                     <td><%= health_record.date_taken%></td>
+                      <td><%= health_record.time_taken%></td>
+                     <td><%= health_record.measurement%> </td>
+                     <td><%= health_record.context %> </td>
+
+
+
+>>>>>>> 2615d103c6ac6a2eeeba3f7a2b343786aff9bf07
                    </tr>
                    <% end %>
                  <% end %>
@@ -165,7 +176,7 @@
                   </br>
                   </div>
                   <div class="col-xs-12 col-sm-12 col-md-3">
-                    <%= task_form.select :context, Pulse.contexts.keys.to_a, class: "form-control" %>
+                    <%#= task_form.select :index, Pulse.id.keys.to_a, class: "form-control" %>
                   </br>
                   </div>
                    <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
@@ -251,7 +262,6 @@
                 <thead>
                   <tr>
                     <td> Problem </td>
-                    <td> Diagnosis </td>
                     <td> Treatment</td>
                     <td> Clinic Name</td>
                     <td> Cost</td>
@@ -266,7 +276,6 @@
                    <tr>
 
                      <td><%= health_record.problem %> </td>
-                     <td><%= health_record.diagnosis %> </td>
                      <td><%= health_record.treatment %> </td>
                      <td><%= health_record.clinic_name %> </td>
                      <td><%= health_record.cost %> </td>
@@ -305,7 +314,7 @@
                <%= task_form.text_field :height,required: true,class:"form-control", placeholder: "Height(metre)" %>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
-               <%= task_form.text_field :weight,required: true,class:"form-control", placeholder: "Weight(metre)" %>
+               <%= task_form.text_field :user_weigh,required: true,class:"form-control", placeholder: "Weight(kg)" %>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
               <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
