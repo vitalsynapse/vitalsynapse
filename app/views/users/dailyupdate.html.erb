@@ -318,7 +318,7 @@
                <%= task_form.time_field :time_taken,required: true,class:"form-control", placeholder:"Time" %>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-4">
-               <%= task_form.text_field :height,required: true,class:"form-control", placeholder: "Height(metre)" %>
+               <%= task_form.text_field :user_height,required: true,class:"form-control", placeholder: "Height(metre)" %>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-2">
                <%= task_form.text_field :user_weigh,required: true,class:"form-control", placeholder: "Weight(kg)" %>
@@ -355,7 +355,7 @@
                <tr>
                  <td><%= health_record.date_taken%> </td>
                  <td><%= health_record.time_taken%></td>
-                 <td><%= health_record.weight%> </td>
+                 <td><%= health_record.user_weigh%> </td>
                  <td><%= health_record.height %> </td>
                  <td><%= health_record.bodymassindex %> </td>
 
