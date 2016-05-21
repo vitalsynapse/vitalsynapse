@@ -140,7 +140,7 @@ class UsersController < ApplicationController
       pressures_attributes: [:id, :user_id, :sbp, :dpb, :context, :time_taken, :date_taken, :_destroy],
       pulses_attributes: [:id, :user_id, :context, :measurement, :date_taken, :time_taken, :_destroy],
       clinic_records_attributes: [:id, :user_id, :problem, :diagnosis, :treatment,:clinic_name, :visit_date,:visit_time, :cost, :_destroy],
-      bmis_attributes: [:id, :height, :weight, :boddymassindex,:_destroy],
+      bmis_attributes: [:id, :height, :weight, :boddymassindex,:date_taken, :time_taken,:_destroy],
        results_attributes: [:id,:user_id, :question_id, :answer_id, :answer,:_destroy, result_answers_attributes: [:id, :result_id, :answer_id, :_destroy]]
       )
     end
