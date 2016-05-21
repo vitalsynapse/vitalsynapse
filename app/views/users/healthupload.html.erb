@@ -15,11 +15,12 @@
                       <%= task_form.hidden_field :record_category_id, value: 1 %>
                       <%= task_form.file_field :file %>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                     <%= tak_form.submit "submit", class: "btn btn-warning", id: "submit-button" %>
 
                    <% end %>
                  </div>
                  <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
-                 <%= f.submit "submit", class: "btn btn-warning", id: "submit-button" %>
+                 <%#= f.submit "submit", class: "btn btn-warning", id: "submit-button" %>
                <% end %>
                 <br><br>
                 <span><b>Blood</b></span>
@@ -39,9 +40,10 @@
                         <%= task_form.file_field :file %>
                        <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                        <%= task_form.submit "submit", class: "btn btn-warning" %>
+                       <%= task_form.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
                      <% end %>
                    </div>
-                   <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                   <%#= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
                     <%= f.submit "submit", class: "btn btn-warning" %>
 
                  <% end %>
@@ -64,6 +66,7 @@
                       <%= task_form.file_field :file %>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
+                     <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
                    <% end %>
                  </div>
                  <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
