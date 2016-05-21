@@ -80,9 +80,14 @@
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <br>
                                     <% if @user_blood.present? %>
-                                      <% if @user_blood.blood_type.present? %>
-                                        <span class="label label-default value"><%= @user_blood.blood_type %></span>
+                                        <% if @user_blood.blood_type.present? %>
+                                          <span class="label label-default value"><%= @user_blood.blood_type %></span>
                                         <% end %>
+
+                                      <% elsif @user.blood_group.present? %>
+
+                                        <span class="label label-default value"><%= @user.blood_group %></span>
+
                                       <% else %>
                                         <span class="label label-danger value">-</span>
                                     <% end %>

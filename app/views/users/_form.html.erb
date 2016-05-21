@@ -24,8 +24,9 @@
     <%= f.date_field(:dob) %>
   </div>
   <div class="field">
-    <%= f.select :blood_type, User.blood_types.keys.to_a %>
+    <%= f.select :blood_group, ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]%>
   </div>
+
   <div class="field">
     <%#= f.text_field :height, placeholder: "M" %>
   </div>

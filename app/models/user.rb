@@ -27,7 +27,9 @@ class User < ActiveRecord::Base
 
  enum gender: [ :female,:male]
  enum marital_status: [:divorced, :married, :single, :widowed]
- enum blood_type: [:a, :ab, :b, :o]
+  # enum blood_type: [:a+, :a-]
+ # enum blood_type: [:aplus => "A+", :ab, :b, :o]
+ # "A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"
  # enum ethnicity: [:african,:caribbean,:caucasian,:chinese,:indian, :malay,:orang_asal ]
  enum occupation: [ :executive, :professional, :student, :unemployed]
  enum ethnicity: [:melayu, :bugis, :banjar, :jawa, :jawi_pekan, :minangkabau, :cina, :india, :malayali, :punjabi, :sikh, :tamil, :telegu, :india_muslim,
