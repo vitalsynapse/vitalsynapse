@@ -34,8 +34,8 @@
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                   <% if @user_bmi.present? %>
-                                    <span><%= @user.height %>m</span><br>
-                                    <span><%= @user.weight%> kg</span>
+                                    <span><%= @user_bmi.height %>m</span><br>
+                                    <span><%= @user_bmi.user_weigh %> kg</span>
                                     <% else%>
                                     <span>0 m</span><br>
                                     <span>0 kg</span>

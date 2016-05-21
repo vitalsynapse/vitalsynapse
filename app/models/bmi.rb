@@ -7,7 +7,7 @@ class Bmi < ActiveRecord::Base
 
 	def bmi_value
 		height = self.height
-    bmi = self.weight/(height*height)
+    bmi = self.user_weigh/(height*height)
    	bmi_figure =   bmi.round(2)
 	 	self.bodymassindex  = bmi_figure
 
