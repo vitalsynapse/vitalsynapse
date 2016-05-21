@@ -15,6 +15,12 @@
     <%= f.file_field :profile_pic %>
   </div>
   <div class="field">
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
     <%= f.select :gender, User.genders.keys.to_a %>
   </div>
   <div class="field">
