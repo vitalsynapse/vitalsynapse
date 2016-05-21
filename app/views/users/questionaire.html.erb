@@ -29,12 +29,13 @@
               <%= check_box_tag "user[results_attributes][10][answer_id]", 9%><%= @questions.find(2).answers.find(9).description %><br>
               <%= check_box_tag "user[results_attributes][11][answer_id]", 10%><%= @questions.find(2).answers.find(10).description %><br>
               <%= check_box_tag "user[results_attributes][12][answer_id]", 11%><%= @questions.find(2).answers.find(11).description %><br>
-              <%= check_box_tag "user[results_attributes][13][answer_id]", 25%><%= @questions.find(2).answers.find(25).description %><br>
 
               <%#= result.hidden_field :question_id, value: 2 %><%#= result.text_field :answer %>
         <h4> Q3. <%= @questions.find(3).description %> </h4><br>
               <%= check_box_tag "user[results_attributes][14][answer_id]", 12%> <%= @questions.find(3).answers.first.description %><br>
               <%= check_box_tag "user[results_attributes][15][answer_id]", 13%><%= @questions.find(3).answers.find(13).description %><br>
+              <%= check_box_tag "user[results_attributes][13][answer_id]", 25%><%= @questions.find(3).answers.find(25).description %><br>
+
 
         <h4> Q4. <%= @questions.find(4).description %> </h4><br>
               <%= check_box_tag "user[results_attributes][16][answer_id]", 14%> <%= @questions.find(4).answers.first.description %><br>
