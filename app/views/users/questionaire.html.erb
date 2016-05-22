@@ -10,7 +10,7 @@
         <div class="questionaire">
           <h4> Q1. <%= @questions.first.description %> </h4><br>
 
-                <%= check_box_tag "user[results_attributes][0][answer_id]", 27%> <%= @questions.first.answers.first.description %><br>
+                <%= check_box_tag "user[results_attributes][0][answer_id]",27%> <%= @questions.first.answers.first.description %><br>
                 <%= check_box_tag "user[results_attributes][1][answer_id]", 28%><%= @questions.first.answers.find(28).description %><br>
                 <%= check_box_tag "user[results_attributes][2][answer_id]", 29%><%= @questions.first.answers.find(29).description %><br>
                 <%= check_box_tag "user[results_attributes][3][answer_id]", 30%><%= @questions.first.answers.find(30).description %><br>

@@ -13,7 +13,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths, remote: true do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 1 %>
-                      <%= task_form.file_field :file , required: true %>
+                      <%= task_form.file_field :file %>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
 
                    <% end %>
@@ -61,7 +61,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 3%>
-                      <%= task_form.file_field :file, required: true %>
+                      <%= task_form.file_field :file %>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
                    <% end %>
@@ -89,7 +89,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 6%>
-                      <%= task_form.file_field :file, required: true %>
+                      <%= task_form.file_field :file%>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
                    <% end %>
@@ -114,7 +114,7 @@
                    <div class="healthrecord">
                      <%= f.fields_for :healths do |task_form| %>
                         <%= task_form.hidden_field :record_category_id, value: 7%>
-                        <%= task_form.file_field :file, required: true %>
+                        <%= task_form.file_field :file %>
                        <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                        <%= task_form.submit "submit", class: "btn btn-warning" %>
                      <% end %>
@@ -139,7 +139,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 8%>
-                      <%= task_form.file_field :file, required: true %>
+                      <%= task_form.file_field :file %>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
                    <% end %>
@@ -168,7 +168,7 @@
                    <div class="healthrecord">
                      <%= f.fields_for :healths do |task_form| %>
                         <%= task_form.hidden_field :record_category_id, value: 9%>
-                        <%= task_form.file_field :file, required: true %>
+                        <%= task_form.file_field :file %>
                        <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                        <%= task_form.submit "submit", class: "btn btn-warning" %>
                      <% end %>
@@ -193,7 +193,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 5%>
-                      <%= task_form.file_field :file, required: true %>
+                      <%= task_form.file_field :file %>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
                    <% end %>
@@ -217,7 +217,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 4%>
-                      <%= task_form.file_field :file, required: true%>
+                      <%= task_form.file_field :file%>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
                    <% end %>
@@ -245,7 +245,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 9%>
-                      <%= task_form.file_field :file, required: true %>
+                      <%= task_form.file_field :file %>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
                    <% end %>
@@ -271,7 +271,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 10%>
-                      <%= task_form.file_field :file, required: true %>
+                      <%= task_form.file_field :file %>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
                    <% end %>
