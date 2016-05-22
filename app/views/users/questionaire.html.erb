@@ -39,8 +39,10 @@
 
 
           <h4> Q4. <%= @questions.find(4).description %> </h4><br>
-                <%= check_box_tag "user[results_attributes][16][answer_id]", 44%> <%= @questions.find(4).answers.first.description %><br>
-                <%= check_box_tag "user[results_attributes][17][answer_id]", 45%><%= @questions.find(4).answers.find(45).description %><br>
+            <%= radio_button_tag "user[results_attributes][16][answer_id]", 44%><%= @questions.find(4).answers.first.description %><br>
+            <%= radio_button_tag "user[results_attributes][16][answer_id]", 45%><%= @questions.find(4).answers.find(45).description %><br>
+                <%#= check_box_tag "user[results_attributes][16][answer_id]", 44%> <%#= @questions.find(4).answers.first.description %><br>
+                <%#= check_box_tag "user[results_attributes][17][answer_id]", 45%><%#= @questions.find(4).answers.find(45).description %><br>
 
           <h4> Q5. <%= @questions.find(5).description %> </h4><br>
                 <%= check_box_tag "user[results_attributes][19][answer_id]", 46%><%= @questions.find(5).answers.first.description %><br>
@@ -52,8 +54,10 @@
 
 
           <h4> Q6. <%= @questions.find(6).description %> </h4><br>
-                <%= check_box_tag "user[results_attributes][24][answer_id]", 51%><%= @questions.find(6).answers.first.description %><br>
-                <%= check_box_tag "user[results_attributes][25][answer_id]", 52%><%= @questions.find(6).answers.find(52).description %><br>
+                <%#= check_box_tag "user[results_attributes][24][answer_id]", 51%><%#= @questions.find(6).answers.first.description %><br>
+                <%#= check_box_tag "user[results_attributes][25][answer_id]", 52%><%#= @questions.find(6).answers.find(52).description %><br>
+                <%= radio_button_tag "user[results_attributes][24][answer_id]", 51%><%= @questions.find(6).answers.first.description %><br>
+                <%= radio_button_tag "user[results_attributes][24][answer_id]", 52%><%x= @questions.find(6).answers.find(52).description %><br>
 
               <%= f.submit "submit", class: "btn btn-warning btn-block" %>
 
