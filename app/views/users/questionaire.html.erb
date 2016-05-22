@@ -8,58 +8,58 @@
     </div>
     <%= nested_form_for(@user) do |f| %>
         <%= f.fields_for :results do |result| %>
-        <h4> Q1. <%= @questions.first.description %> </h4><br>
+        <div class="questionaire">
+          <h4> Q1. <%= @questions.first.description %> </h4><br>
 
-              <%= check_box_tag "user[results_attributes][0][answer_id]", 27%> <%= @questions.first.answers.first.description %><br>
-              <%= check_box_tag "user[results_attributes][1][answer_id]", 28%><%= @questions.first.answers.find(28).description %><br>
-              <%= check_box_tag "user[results_attributes][2][answer_id]", 29%><%= @questions.first.answers.find(29).description %><br>
-              <%= check_box_tag "user[results_attributes][3][answer_id]", 30%><%= @questions.first.answers.find(30).description %><br>
-              <%= check_box_tag "user[results_attributes][4][answer_id]", 31%><%= @questions.first.answers.find(31).description %><br>
-              <%= check_box_tag "user[results_attributes][6][answer_id]", 32%><%= @questions.first.answers.find(32).description %><br>
-              <%= check_box_tag "user[results_attributes][5][answer_id]", 33%><%= @questions.first.answers.find(33).description %><br>
-              <%= result.text_field :answer, placeholder: "Please specify"   %>
-
-
-
-        <h4> Q2. <%= @questions.find(2).description %> </h4><br>
-              <%= check_box_tag "user[results_attributes][7][answer_id]", 34%> <%= @questions.find(2).answers.first.description %><br>
-              <%= check_box_tag "user[results_attributes][8][answer_id]", 35%><%= @questions.find(2).answers.find(35).description %><br>
-              <%= check_box_tag "user[results_attributes][9][answer_id]", 36%><%= @questions.find(2).answers.find(36).description %><br>
-              <%= check_box_tag "user[results_attributes][10][answer_id]", 37%><%= @questions.find(2).answers.find(37).description %><br>
-              <%= check_box_tag "user[results_attributes][11][answer_id]", 38%><%= @questions.find(2).answers.find(38).description %><br>
-              <%= check_box_tag "user[results_attributes][12][answer_id]", 39%><%= @questions.find(2).answers.find(39).description %><br>
-              <%= check_box_tag "user[results_attributes][12][answer_id]", 40%><%= @questions.find(2).answers.find(40).description %><br>
-              <%= result.text_field :answer, placeholder: "Please specify"  %>
-
-              <%#= result.hidden_field :question_id, value: 2 %><%#= result.text_field :answer %>
-        <h4> Q3. <%= @questions.find(3).description %> </h4><br>
-              <%= check_box_tag "user[results_attributes][14][answer_id]", 41%> <%= @questions.find(3).answers.first.description %><br>
-              <%= check_box_tag "user[results_attributes][15][answer_id]", 42%><%= @questions.find(3).answers.find(42).description %><br>
-              <%= check_box_tag "user[results_attributes][13][answer_id]", 43%><%= @questions.find(3).answers.find(43).description %><br>
+                <%= check_box_tag "user[results_attributes][0][answer_id]", 27%> <%= @questions.first.answers.first.description %><br>
+                <%= check_box_tag "user[results_attributes][1][answer_id]", 28%><%= @questions.first.answers.find(28).description %><br>
+                <%= check_box_tag "user[results_attributes][2][answer_id]", 29%><%= @questions.first.answers.find(29).description %><br>
+                <%= check_box_tag "user[results_attributes][3][answer_id]", 30%><%= @questions.first.answers.find(30).description %><br>
+                <%= check_box_tag "user[results_attributes][4][answer_id]", 31%><%= @questions.first.answers.find(31).description %><br>
+                <%= check_box_tag "user[results_attributes][6][answer_id]", 32%><%= @questions.first.answers.find(32).description %><br>
+                <%= check_box_tag "user[results_attributes][5][answer_id]", 33%><%= @questions.first.answers.find(33).description %><br>
+                <%= result.text_field :answer, placeholder: "Please specify"   %>
 
 
-        <h4> Q4. <%= @questions.find(4).description %> </h4><br>
-              <%= check_box_tag "user[results_attributes][16][answer_id]", 44%> <%= @questions.find(4).answers.first.description %><br>
-              <%= check_box_tag "user[results_attributes][17][answer_id]", 45%><%= @questions.find(4).answers.find(45).description %><br>
 
-        <h4> Q5. <%= @questions.find(5).description %> </h4><br>
-              <%= check_box_tag "user[results_attributes][19][answer_id]", 46%><%= @questions.find(5).answers.first.description %><br>
-              <%= check_box_tag "user[results_attributes][20][answer_id]", 47%><%= @questions.find(5).answers.find(47).description %><br>
-              <%= check_box_tag "user[results_attributes][21][answer_id]", 48%><%= @questions.find(5).answers.find(48).description %><br>
-              <%= check_box_tag "user[results_attributes][22][answer_id]", 49%><%= @questions.find(5).answers.find(49).description %><br>
-              <%= check_box_tag "user[results_attributes][23][answer_id]", 50%><%= @questions.find(5).answers.find(50).description %><br>
-              <%= result.text_field :answer, placeholder: "Please specify"  %>
+          <h4> Q2. <%= @questions.find(2).description %> </h4><br>
+                <%= check_box_tag "user[results_attributes][7][answer_id]", 34%> <%= @questions.find(2).answers.first.description %><br>
+                <%= check_box_tag "user[results_attributes][8][answer_id]", 35%><%= @questions.find(2).answers.find(35).description %><br>
+                <%= check_box_tag "user[results_attributes][9][answer_id]", 36%><%= @questions.find(2).answers.find(36).description %><br>
+                <%= check_box_tag "user[results_attributes][10][answer_id]", 37%><%= @questions.find(2).answers.find(37).description %><br>
+                <%= check_box_tag "user[results_attributes][11][answer_id]", 38%><%= @questions.find(2).answers.find(38).description %><br>
+                <%= check_box_tag "user[results_attributes][12][answer_id]", 39%><%= @questions.find(2).answers.find(39).description %><br>
+                <%= check_box_tag "user[results_attributes][12][answer_id]", 40%><%= @questions.find(2).answers.find(40).description %><br>
+                <%= result.text_field :answer, placeholder: "Please specify"  %>
+
+                <%#= result.hidden_field :question_id, value: 2 %><%#= result.text_field :answer %>
+          <h4> Q3. <%= @questions.find(3).description %> </h4><br>
+                <%= check_box_tag "user[results_attributes][14][answer_id]", 41%> <%= @questions.find(3).answers.first.description %><br>
+                <%= check_box_tag "user[results_attributes][15][answer_id]", 42%><%= @questions.find(3).answers.find(42).description %><br>
+                <%= check_box_tag "user[results_attributes][13][answer_id]", 43%><%= @questions.find(3).answers.find(43).description %><br>
 
 
-        <h4> Q6. <%= @questions.find(6).description %> </h4><br>
-              <%= check_box_tag "user[results_attributes][24][answer_id]", 51%><%= @questions.find(6).answers.first.description %><br>
-              <%= check_box_tag "user[results_attributes][25][answer_id]", 52%><%= @questions.find(6).answers.find(52).description %><br>
+          <h4> Q4. <%= @questions.find(4).description %> </h4><br>
+                <%= check_box_tag "user[results_attributes][16][answer_id]", 44%> <%= @questions.find(4).answers.first.description %><br>
+                <%= check_box_tag "user[results_attributes][17][answer_id]", 45%><%= @questions.find(4).answers.find(45).description %><br>
 
-            <%= f.submit "submit", class: "btn btn-warning btn-block" %>
-            <br>
-            <br>
+          <h4> Q5. <%= @questions.find(5).description %> </h4><br>
+                <%= check_box_tag "user[results_attributes][19][answer_id]", 46%><%= @questions.find(5).answers.first.description %><br>
+                <%= check_box_tag "user[results_attributes][20][answer_id]", 47%><%= @questions.find(5).answers.find(47).description %><br>
+                <%= check_box_tag "user[results_attributes][21][answer_id]", 48%><%= @questions.find(5).answers.find(48).description %><br>
+                <%= check_box_tag "user[results_attributes][22][answer_id]", 49%><%= @questions.find(5).answers.find(49).description %><br>
+                <%= check_box_tag "user[results_attributes][23][answer_id]", 50%><%= @questions.find(5).answers.find(50).description %><br>
+                <%= result.text_field :answer, placeholder: "Please specify"  %>
+
+
+          <h4> Q6. <%= @questions.find(6).description %> </h4><br>
+                <%= check_box_tag "user[results_attributes][24][answer_id]", 51%><%= @questions.find(6).answers.first.description %><br>
+                <%= check_box_tag "user[results_attributes][25][answer_id]", 52%><%= @questions.find(6).answers.find(52).description %><br>
+
+              <%= f.submit "submit", class: "btn btn-warning btn-block" %>
+
         <% end %>
-
+      </div>
           <%= f.link_to_add "Start", :results, class:"btn btn-info btn-block"%>
 
     <% end %>
@@ -70,9 +70,14 @@
 
 <script>
 
+  $(".questionaire ").hide();
+
+
 $( ".btn-info" ).click(function() {
+  $(".questionaire ").show();
   $(".info ").hide();
    $(".btn-info ").fadeOut(1000);
 });
+
 
 </script>
