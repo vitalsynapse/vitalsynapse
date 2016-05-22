@@ -1,11 +1,10 @@
-<!-- <div id="wrapper">
-  <div class="container" id="dashboardbody">-->
-  <!-- <script src="/assets/jquery_nested_form.js?body=1" type="text/javascript"></script> -->
 
+<div class="container">
     <div class="info">
       <h2> Thank you for signing up! Let's start by answering some questions: </h2>
 
-    </div>
+     </div>
+
     <%= nested_form_for(@user) do |f| %>
         <%= f.fields_for :results do |result| %>
         <div class="questionaire">
@@ -64,9 +63,7 @@
 
     <% end %>
 
-
-  <!-- </div>
-</div> -->
+</div>
 
 <script>
 
