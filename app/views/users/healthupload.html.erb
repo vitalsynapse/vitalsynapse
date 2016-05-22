@@ -13,7 +13,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths, remote: true do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 1 %>
-                      <%= task_form.file_field :file %>
+                      <%= task_form.file_field :file , required: true %>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
 
                    <% end %>
