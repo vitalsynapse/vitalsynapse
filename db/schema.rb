@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160521121117) do
+ActiveRecord::Schema.define(version: 20160522054059) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -326,6 +326,19 @@ ActiveRecord::Schema.define(version: 20160521121117) do
   add_index "healths", ["record_category_id"], name: "index_healths_on_record_category_id", using: :btree
   add_index "healths", ["user_id"], name: "index_healths_on_user_id", using: :btree
 
+  create_table "lung_rates", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "rate"
+    t.date     "date_taken"
+    t.time     "time_taken"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "context"
+    t.string   "context_two"
+  end
+
+  add_index "lung_rates", ["user_id"], name: "index_lung_rates_on_user_id", using: :btree
+
   create_table "mris", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -527,6 +540,7 @@ ActiveRecord::Schema.define(version: 20160521121117) do
   add_foreign_key "glucoses", "users"
   add_foreign_key "healths", "record_categories"
   add_foreign_key "healths", "users"
+  add_foreign_key "lung_rates", "users"
   add_foreign_key "mris", "users"
   add_foreign_key "petscans", "users"
   add_foreign_key "pressures", "users"

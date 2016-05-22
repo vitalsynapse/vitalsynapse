@@ -218,12 +218,12 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                           <% if @lungs != nil %>
-                                            <% if @lungs.measurement < 12 || @lungs.measurement > 16 %>
+                                            <% if @lungs.rate < 12 || @lungs.rate > 16 %>
                                             <span class=
-                                            "label label-danger value"><%= @lungs.measurement %></span>
+                                            "label label-danger value"><%= @lungs.rate %></span>
                                             <% else %>
                                             <span class=
-                                            "label label-success value"><%= @lungs.measurement %></span>
+                                            "label label-success value"><%= @lungs.rate %></span>
 
                                             <% end %>
                                             <% else %>

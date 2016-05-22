@@ -12,6 +12,7 @@
           <li><a data-toggle="tab" href="#menu3">Pulse</a></li>
           <li><a data-toggle="tab" href="#menu4">Clinic Visit</a></li>
           <li><a data-toggle="tab" href="#menu5">BMI</a></li>
+          <li><a data-toggle="tab" href="#menu6">Respiratory Rate</a></li>
         </ul>
 
         <br><br>
@@ -285,7 +286,7 @@
             </div>
           </div>
 
-<!----------------------------->
+<!--------------bmi--------------->
 
       <div id="menu5" class="tab-pane fade ">
         <div class="daily_bmi_update">
@@ -355,7 +356,77 @@
         </div>
       </div>
 
+<!---  end --->
 
+<!-- respiratory rate -->
+          <div id="menu6" class="tab-pane fade ">
+            <div class="daily_bmi_update">
+
+              <div class="row">
+
+                <%= nested_form_for @user, class: "form-control" do |f| %>
+
+                  <div class="healthrecord">
+                      <%= f.fields_for :lung_rates do |task_form| %>
+                          <div class="col-xs-12 col-sm-12 col-md-2">
+
+                             <%= task_form.date_field :date_taken,required: true, class:"form-control", placeholder:"Date" %>
+                          </div>
+                          <div class="col-xs-12 col-sm-12 col-md-2">
+                             <%= task_form.time_field :time_taken,required: true,class:"form-control", placeholder:"Time" %>
+                          </div>
+                          <div class="col-xs-12 col-sm-12 col-md-2">
+                             <%= task_form.text_field :rate,required: true,class:"form-control", placeholder: "Breathes Per Minute(bpm)" %>
+                          </div>
+                          <div class="col-xs-12 col-sm-12 col-md-3">
+
+                            <%= task_form.select :context_two, ["At Rest", "After Activity"],class: "form-control"%>
+                          </br>
+                        </div>
+                          <div class="col-xs-12 col-sm-12 col-md-2">
+                            <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
+                          </div>
+                      <% end %>
+                  </div>
+
+                <%= f.link_to_add "Add a New Record", :lung_rates, class: "btn btn-primary"%>
+                <%= f.submit "submit", class: "btn btn-warning" %>
+              <% end %>
+
+              </div>
+
+              <br>
+              <table class="table table-bordered custom">
+                <thead>
+                  <tr>
+                    <td> Date Taken</td>
+                    <td> Time Taken </td>
+                    <td> Rate</td>
+                    <td> Index </td>
+
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <%if @user_resp_rate!= nil  %>
+                  <%  @user_resp_rate.all.each do |health_record| %>
+                   <tr>
+                     <td><%= health_record.date_taken%> </td>
+                     <td><%= health_record.time_taken.strftime("%I.%M%p")%></td>
+                     <td><%= health_record.rate%> </td>
+                     <td><%= health_record.context_two %> </td>
+
+                   </tr>
+                   <% end %>
+                 <% end %>
+                </tbody>
+              </table>
+
+
+            </div>
+          </div>
+
+<!--- end -->
         </div>
       </div>
     </div>

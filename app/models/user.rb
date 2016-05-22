@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :bmis
   has_many :clinical_blood_records
   has_many :pulses
+  has_many :lung_rates
 
   accepts_nested_attributes_for :healths, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :glucoses, :reject_if => :all_blank, :allow_destroy => true
@@ -22,6 +23,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :bmis, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :results, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :pulses, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :lung_rates, :reject_if => :all_blank, :allow_destroy => true
+
 
 
 
