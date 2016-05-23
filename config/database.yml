@@ -9,15 +9,15 @@
 # And be sure to use new-style password hashing:
 #   http://dev.mysql.com/doc/refman/5.0/en/old-client.html
 #
-# default: &default
-# development:
-#   adapter: mysql2
-#   encoding: utf8
-#   pool: 5
-#   database: vitalsyn_development
-#   username: root
-#   password: chandima9
-#   host: localhost
+default: &default
+development:
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  database: vitalsyn_development
+  username: root
+  password: chandima9
+  host: localhost
   # socket: /var/run/mysqld/mysqld.sock
 
 
@@ -64,18 +64,18 @@
 #   username: vitalsyn
 #   password: <%= ENV['VITALSYN_DATABASE_PASSWORD'] %>
 
-development:
-    adapter:    postgresql
-    database:   vital_synapse
-    pool:       10
-    timeout:    5000
-staging:
-  adapter:    postgresql
-  database:   vital_synapse
-  pool:       10
-  timeout:    5000
-production:
-  adapter:    postgresql
-  database:   vital_synapse
-  pool:       10
-  timeout:    5000
+# development:
+#     adapter:    postgresql
+#     database:   vital_synapse
+#     pool:       10
+#     timeout:    5000
+# staging:
+#   adapter:    postgresql
+#   database:   vital_synapse
+#   pool:       10
+#   timeout:    5000
+# production:
+#   adapter:    postgresql
+#   database:   vital_synapse
+#   pool:       10
+#   timeout:    5000

@@ -62,7 +62,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> in views
-  # gem 'mysql2', '>= 0.3.13', '< 0.5'
+  gem 'mysql2', '>= 0.3.13', '< 0.5'
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
@@ -71,6 +71,6 @@ end
 
 
 group :production do
-   gem 'pg', '0.15.1'
+  # gem 'pg', '0.15.1'
   gem 'rails_12factor'
 end

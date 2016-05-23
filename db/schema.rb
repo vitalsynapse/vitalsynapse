@@ -38,14 +38,14 @@ ActiveRecord::Schema.define(version: 20160521114813) do
   add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
 
   create_table "bmis", force: :cascade do |t|
-    t.float    "bodymassindex"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "user_id"
+    t.float    "bodymassindex", limit: 24
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.integer  "user_id",       limit: 4
     t.date     "date_taken"
     t.time     "time_taken"
-    t.float    "user_weigh"
-    t.float    "height"
+    t.float    "user_weigh",    limit: 24
+    t.float    "height",        limit: 24
   end
 
   add_index "bmis", ["user_id"], name: "index_bmis_on_user_id", using: :btree
