@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable, :lockable, :zxcvbnable,
          :omniauthable, :omniauth_providers => [:facebook]
-  mount_uploader :profile_pic
+  mount_uploader :profile_pic, ProfilePicUploader
   has_many :healths
   has_many :results
 
@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :pulses
   has_many :lung_rates
 
-  accepts_nested_attributes_for :healths, :reject_if => :all_blank, :allow_destroy => true
+  # accepts_nested_attributes_for :healths, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :glucoses, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :pressures, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :clinic_records, :reject_if => :all_blank, :allow_destroy => true
@@ -24,6 +24,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :results, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :pulses, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :lung_rates, :reject_if => :all_blank, :allow_destroy => true
+  accepts_nested_attributes_for :healths, :reject_if => proc { |attributes| attributes['file'].blank? }
 
 
 

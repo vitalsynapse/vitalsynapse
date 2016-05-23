@@ -35,6 +35,7 @@ gem 'mail'
 gem 'bootstrap_form'
 gem "nested_form"
 gem 'carrierwave'
+gem "rmagick"
 gem 'rails_admin'
 gem 'fog'
 

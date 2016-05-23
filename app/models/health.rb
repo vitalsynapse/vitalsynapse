@@ -1,5 +1,5 @@
 class Health < ActiveRecord::Base
-  mount_uploader :file
+  mount_uploader :file, HealthRecordUploader
   belongs_to :user
   belongs_to :record_category
 
