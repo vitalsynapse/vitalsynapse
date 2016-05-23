@@ -11,17 +11,17 @@
         <%= link_to '<i class="fa fa-tachometer"></i> Dashboard'.html_safe, dashboard_path(@user) %>
 
       </li>
-      <!-- <li> -->
-        <%# if current_user.has_answered_quiz?  %>
-          <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
-        <%# elsif current_user.pdpa == nil || false %>
-          <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, pdpa_path(@user) %>
-        <%# else %>
-          <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
+      <li>
+        <% if current_user.has_answered_quiz?  %>
+          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
+        <% elsif current_user.pdpa == nil || false %>
+          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, pdpa_path(@user) %>
+        <% else %>
+          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
           <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, questionaire_path(@user) %>
-        <%# end %>
+        <% end %>
 
-      <!-- </li> -->
+      </li>
       <li>
       <% if current_user.has_answered_quiz? %>
         <%= link_to '<i class="fa fa-folder-open"></i> Health Record'.html_safe, health_record_path(@user)%>

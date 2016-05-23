@@ -32,9 +32,10 @@ class Health < ActiveRecord::Base
         "mri.png"
       elsif self.record_category_id == 9
         "petscan.png"
-      else self.record_category_id == 10
-        "others.png"
-
+      elsif self.record_category_id == 10
+        "dental.png"
+      else
+          "others.png"
     end
   end
 end
