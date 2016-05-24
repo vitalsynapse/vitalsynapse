@@ -15,6 +15,12 @@
     <%= f.file_field :profile_pic %>
   </div>
   <div class="field">
+    <%= f.text_field :first_name %>
+  </div>
+  <div class="field">
+    <%= f.text_field :last_name %>
+  </div>
+  <div class="field">
     <%= f.select :gender, User.genders.keys.to_a %>
   </div>
   <div class="field">
@@ -27,12 +33,6 @@
     <%= f.select :blood_group, ["A+", "A-", "B+", "B-", "AB+", "AB-", "O+", "O-"]%>
   </div>
 
-  <div class="field">
-    <%#= f.text_field :height, placeholder: "M" %>
-  </div>
-  <div class="field">
-    <%#= f.text_field :weight, placeholder: "KG" %>
-  </div>
   <div class="field">
       <%= f.select :marital_status, User.marital_statuses.keys.to_a %>
   </div>

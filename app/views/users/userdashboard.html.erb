@@ -2,6 +2,8 @@
     <div class="row animated bounceInLeft">
         <br>
         <div class="legend center">
+          <h4 style="font-style:italic;margin-bottom:20px;border-style: ridge;padding:10px;border-color: red;"> Note : <%= link_to "Health Uploads", health_upload_path(@user)%> is back! If you don't happen to find your uploads , kindly re-upload your records. We truly appologise for the inconvience caused.</h4>
+
             <span class=
             "label label-success value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
             &nbsp; <span>Normal Range</span> &nbsp; &nbsp; &nbsp; <span class=
@@ -34,8 +36,8 @@
 
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                   <% if @user_bmi.present? %>
-                                    <span><%= @user.height %>m</span><br>
-                                    <span><%= @user.weight%> kg</span>
+                                    <span><%= @user_bmi.height %>m</span><br>
+                                    <span><%= @user_bmi.user_weigh %> kg</span>
                                     <% else%>
                                     <span>0 m</span><br>
                                     <span>0 kg</span>
@@ -57,8 +59,14 @@
                                 <div class="col-xs-6 col-sm-6 col-md-6">
                                     <br>
                                     <% if @user_bmi.present? %>
-                                    <span class="label label-success value"><%= @user_bmi.bodymassindex %></span>
-                                    &nbsp;
+                                      <% if @user_bmi.bodymassindex < 18.5 || @user_bmi.bodymassindex > 24.9 %>
+                                        <span class="label label-danger value"><%= @user_bmi.bodymassindex %></span>
+                                        &nbsp;
+                                        <% else %>
+                                        <span class="label label-success value"><%= @user_bmi.bodymassindex %></span>
+                                        &nbsp;
+                                        <% end %>
+
                                     <% else %>
                                       <span class="label label-danger value">0</span>
                                     <% end %>
@@ -135,12 +143,12 @@
 
                                           <div class="col-xs-6 col-sm-6 col-md-6">
                                             <% if @blood_pressure.present? %>
-                                              <% if @blood_pressure.sbp > 100 || @blood_pressure.dpb > 90 %>
+                                              <% if @blood_pressure.sbp < 100 || @blood_pressure.sbp > 140 || @blood_pressure.dpb > 90 || @blood_pressure.dpb < 60 %>
                                                   <span class=
-                                                "label label-danger value"><sup><%=@blood_pressure.sbp%></sup>/<sub><%=@blood_pressure.dpb%></sub></span>
+                                                "label label-danger value"><sup><%=@blood_pressure.sbp.to_f.ceil%></sup>/<sub><%=@blood_pressure.dpb.to_f.ceil%></sub></span>
                                                 <% else %>
                                                   <span class=
-                                                "label label-success value"><sup><%=@blood_pressure.sbp%></sup>/<sub><%=@blood_pressure.dpb%></sub></span>
+                                                "label label-success value"><sup><%=@blood_pressure.sbp.to_f.ceil%></sup>/<sub><%=@blood_pressure.dpb.to_f.ceil%></sub></span>
 
                                                 <% end %>
                                               <% else %>
@@ -212,12 +220,12 @@
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
                                           <% if @lungs != nil %>
-                                            <% if @lungs.measurement < 12 || @lungs.measurement > 16 %>
+                                            <% if @lungs.rate < 12 || @lungs.rate > 16 %>
                                             <span class=
-                                            "label label-danger value"><%= @lungs.measurement %></span>
+                                            "label label-danger value"><%= @lungs.rate %></span>
                                             <% else %>
                                             <span class=
-                                            "label label-success value"><%= @lungs.measurement %></span>
+                                            "label label-success value"><%= @lungs.rate %></span>
 
                                             <% end %>
                                             <% else %>
@@ -1003,6 +1011,9 @@
                             </div>
                         </div>
         <!-- end URINE -->
+        <%# if @user.has_answered_quiz? == false %>
+        <%#= link_to "questionaire", questionaire_path(@user) %>
+        <%# end %>
     </div>
 </div>
 

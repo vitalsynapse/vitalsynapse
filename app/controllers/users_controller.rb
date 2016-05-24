@@ -33,6 +33,7 @@ class UsersController < ApplicationController
     @user_clinics = ClinicRecord.where(user_id: @user.id)
     @user_bmi = Bmi.where(user_id: @user.id)
     @user_lungs = Pulse.where(user_id: @user.id)
+    @user_resp_rate = LungRate.where(user_id: @user.id)
   end
 
   def userdashboard
@@ -42,7 +43,7 @@ class UsersController < ApplicationController
     @user_blood = ClinicalBloodRecord.where(user_id: @user.id).last
     @blood_pressure = Pressure.where(user_id: @user.id).last
     @pulse = Pulse.where(user_id: @user.id).last
-    @lungs = Pulse.where(user_id: @user.id).last
+    @lungs = LungRate.where(user_id: @user.id).last
     @glucose = Glucose.where(user_id: @user.id)
     @random_glucose = @glucose.random_blood_sugar.last
     @fasting_glucose = @glucose.fasting_blood_sugar.last
@@ -98,7 +99,7 @@ class UsersController < ApplicationController
           if params[:user][:healths_attributes]
             format.html { redirect_to health_upload_path(@user), notice: 'Record was successfully uploaded.' }
             format.json { render :show, status: :ok, location: @user }
-          elsif params[:user][:glucoses_attributes] || params[:user][:pressures_attributes] || params[:user][:clinic_records_attributes] || params[:user][:pulses_attributes]
+          elsif params[:user][:glucoses_attributes] || params[:user][:pressures_attributes] || params[:user][:clinic_records_attributes] || params[:user][:pulses_attributes] || params[:user][:lung_rates_attributes] || params[:user][:bmis_attributes]
             format.html { redirect_to daily_update_path(@user), notice: 'Record was successfully updated.' }
             format.json { render :show, status: :ok, location: @user }
           elsif params[:user][:pdpa]
@@ -139,6 +140,7 @@ class UsersController < ApplicationController
       glucoses_attributes: [:id, :user_id, :measurement, :context,:time_taken, :date_taken, :_destroy],
       pressures_attributes: [:id, :user_id, :sbp, :dpb, :context, :time_taken, :date_taken, :_destroy],
       pulses_attributes: [:id, :user_id, :context, :measurement, :date_taken, :time_taken, :_destroy],
+      lung_rates_attributes: [:id, :user_id, :rate, :date_taken, :time_taken,:context_two,:_destroy],
       clinic_records_attributes: [:id, :user_id, :problem, :diagnosis, :treatment,:clinic_name, :visit_date,:visit_time, :cost, :_destroy],
       bmis_attributes: [:id, :height, :user_weigh, :boddymassindex,:date_taken, :time_taken,:_destroy],
        results_attributes: [:id,:user_id, :question_id, :answer_id, :answer,:_destroy, result_answers_attributes: [:id, :result_id, :answer_id, :_destroy]]

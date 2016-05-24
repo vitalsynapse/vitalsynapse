@@ -89,7 +89,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 6%>
-                      <%= task_form.file_field :file %>
+                      <%= task_form.file_field :file%>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
                    <% end %>
@@ -217,7 +217,7 @@
                  <div class="healthrecord">
                    <%= f.fields_for :healths do |task_form| %>
                       <%= task_form.hidden_field :record_category_id, value: 4%>
-                      <%= task_form.file_field :file %>
+                      <%= task_form.file_field :file%>
                      <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger"%>
                      <%= task_form.submit "submit", class: "btn btn-warning" %>
                    <% end %>

@@ -1,11 +1,16 @@
 class Health < ActiveRecord::Base
-  mount_uploader :file
+  mount_uploader :file, HealthRecordUploader
   belongs_to :user
   belongs_to :record_category
 
   def record_name
-    name = RecordCategory.find(self.record_category_id).name
-    name
+    if self.record_category_id == nil
+      cat_id = 11
+    else
+      cat_id = self.record_category_id
+    end
+    name = RecordCategory.find(cat_id).name
+
   end
 
   def record_image
@@ -27,9 +32,10 @@ class Health < ActiveRecord::Base
         "mri.png"
       elsif self.record_category_id == 9
         "petscan.png"
-      else self.record_category_id == 10
-        "others.png"
-      
+      elsif self.record_category_id == 10
+        "dental.png"
+      else
+          "others.png"
     end
   end
 end
