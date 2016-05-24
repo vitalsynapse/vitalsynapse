@@ -12,14 +12,15 @@
 
       </li>
       <li>
-        <% if current_user.has_answered_quiz?  %>
           <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
-        <% elsif current_user.pdpa == nil || false %>
-          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, pdpa_path(@user) %>
-        <% else %>
-          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
-          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, questionaire_path(@user) %>
-        <% end %>
+        <%# if current_user.has_answered_quiz?  %>
+          <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
+        <%# elsif current_user.pdpa == nil || false %>
+          <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, pdpa_path(@user) %>
+        <%# else %>
+          <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
+          <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, questionaire_path(@user) %>
+        <%# end %>
 
       </li>
       <li>
