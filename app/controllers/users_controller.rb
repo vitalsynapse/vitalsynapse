@@ -11,10 +11,12 @@ class UsersController < ApplicationController
 
   def healthupload
 
+      @user_record = User.find(current_user.id)
       @user = User.find(current_user.id)
-      if @user.pdpa == false || nil
-        redirect_to pdpa_path(@user)
-      end
+
+      # if @user.pdpa == false || nil
+      #   redirect_to pdpa_path(@user)
+      # end
   end
 
   def healthrecord
@@ -67,6 +69,10 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @user = current_user
+    @health = @user.healths.build
+    # @reference  = @application.application_references.build
+
 
   end
 
