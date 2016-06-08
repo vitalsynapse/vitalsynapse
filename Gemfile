@@ -38,6 +38,8 @@ gem 'carrierwave'
 gem "rmagick"
 gem 'rails_admin'
 gem 'fog'
+gem 'aws-sdk'
+
 
 #purry -fb
 gem 'omniauth-facebook'
