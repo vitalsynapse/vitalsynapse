@@ -3,3 +3,7 @@ development:
     FB_APP_SECRET: 			"585f6bf04d0cdd62309f383c85f07c87"
     aws_access_key_id:  "AKIAI4E7K7BI55OA47UQ"
     aws_secret_access_key: "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"
+
+S3_KEY: "AKIAINPVBG4IMDW3TCEQ"
+S3_SECRET: "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"
+S3_BUCKET:  "vitalsynapse"

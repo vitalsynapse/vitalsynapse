@@ -34,11 +34,18 @@ gem 'devise_zxcvbn'
 gem 'mail'
 gem 'bootstrap_form'
 gem "nested_form"
+gem 'rails_admin'
+
+#photo uploader
 gem 'carrierwave'
 gem "rmagick"
-gem 'rails_admin'
-gem 'fog'
-gem 'aws-sdk'
+ gem 'fog'
+ gem "figaro"
+
+ # gem 'carrierwave_direct'
+ # gem 'sidekiq'
+# gem 'aws-sdk'
+# gem "fog-aws"
 
 
 #purry -fb

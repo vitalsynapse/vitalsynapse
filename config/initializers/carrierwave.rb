@@ -1,9 +1,9 @@
-# CarrierWave.configure do |config|
-#   config.fog_credentials = {
-#     :provider               => 'AWS',
-#     :aws_access_key_id      => "AKIAI4E7K7BI55OA47UQ",
-#     :aws_secret_access_key  => "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"
-#   }
-#   config.fog_directory  = 'vitalsynapse.userprofile'
-#
-# end
+CarrierWave.configure do |config|
+  config.fog_credentials = {
+    :provider               => 'AWS',
+    :aws_access_key_id      => ENV['S3_KEY'],
+    :aws_secret_access_key  => ENV['S3_SECRET'],
+    :region => "ap-southeast-1"
+  }
+config.fog_directory = ENV['S3_BUCKET']
+end
