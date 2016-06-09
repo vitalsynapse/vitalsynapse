@@ -769,3 +769,13 @@ article.media {
 .shadow {
   box-shadow: 0 0 5px 2px rgba(0, 0, 0, .5);
 }
+
+.upload_form {
+  padding: 20px;
+}
+
+.bar {
+    height: 24px;
+    width: 50px;
+    background: red;
+}

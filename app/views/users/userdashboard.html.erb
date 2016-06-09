@@ -1,3 +1,4 @@
+
 <div class="container">
     <div class="row animated bounceInLeft">
         <br>
@@ -112,7 +113,42 @@
 
           <div class="legend center">
               <div class="row">
-                <%= link_to "Upload Medical Record", health_upload_path(@user), class:"btn btn-primary" %>
+                <%#= link_to "Upload Medical Record", class:"btn btn-primary health-btn" %>
+                <button class="btn btn-primary health-btn">UPLOAD MEDICAL RECORD</button>
+
+                <div class="upload_form">
+                    <div class="row">
+                      <div class="container">
+                      <%= form_for Health.new,class:"form-control", html: { multiple: true }, remote: true do |f|%>
+                          <%= f.hidden_field :user_id, value: @user.id %>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                          STEP 1: SELECT RECORD CATEGORY
+                          <%= f.select :record_category_id, RecordCategory.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}, class:"form-control", required: true %>
+
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                          STEP 2: SELECT FILE/FILES
+                          <%= f.file_field :file,class:"form-control", multiple: true, name:  "health[file]", required: true%>
+                        </div>
+                        <!-- <div class="col-xs-4 col-sm-4 col-md-4">
+                          <%#= f.submit "SUBMIT", class: "btn btn-danger  btn-block"%>
+                       </div> -->
+                     <% end %>
+                   </div>
+                   </div>
+                   <div id="progress">
+                     STEP 3: PROGRESS
+                      <div class="bar" style="width: 0%;"></div>
+                  </div>
+                  <div class="check_uploads">
+                    STEP 4: CHECK RECORDS<br>
+                    <%= link_to "VIEW", health_record_path(@user), class: "btn btn-danger"%><br>
+                    or <br>
+
+                    <button class="btn btn-default close-btn">  CLOSE</button>
+
+                  </div>
+
 
               </div>
           </div>
@@ -1642,3 +1678,29 @@
 
   </div>
 </div>
+
+
+<script>
+$(".upload_form").hide();
+
+$(".health-btn").click(function(){
+  $(".health-btn").hide();
+  $(".upload_form").show();
+});
+
+$(".close-btn").click(function(){
+  $(".health-btn").show();
+  $(".upload_form").hide();
+});
+
+$("#new_health").fileupload({
+  progressall: function (e, data) {
+        var progress = parseInt(data.loaded / data.total * 100, 10);
+        $('#progress .bar').css(
+            'width',
+            progress + '%'
+        );
+    }
+});
+
+</script>

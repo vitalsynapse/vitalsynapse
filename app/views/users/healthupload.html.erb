@@ -10,12 +10,12 @@
                 <br>
                 <br>
                 <center>
-                <%= form_for Health.new, remote: true do |f|%>
-                <%= f.hidden_field :user_id, value: @user.id %>
-                <%= f.hidden_field :record_category_id, value: 1 %>
-                <%= f.file_field :file %>
+                <%= form_for Health.new,class:"form-control", multipart: true, remote: true do |f|%>
+                  <%= f.hidden_field :user_id, value: @user.id %>
+                  <%= f.select :record_category_id, RecordCategory.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}, class:"form-control", required: true %>
+                  <%= f.file_field :file,class:"form-control",multipart: true, required: true%>
 
-                 <%= f.submit "SUBMIT", class: "btn btn-warning"%>
+                 <%= f.submit "SUBMIT", class: "btn btn-danger"%>
                <% end %>
                <center>
                 <br><br>

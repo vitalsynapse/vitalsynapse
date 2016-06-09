@@ -15,16 +15,16 @@
           <thead>
             <tr>
               <td>   </td>
-              <td>  Date </td>
+              <td> Date </td>
               <td> Name </td>
-              <td> Download </td>
+              <td> Doctors Review </td>
               <td> View </td>
             </tr>
           </thead>
 
           <tbody>
             <%if @user_health != nil  %>
-            <%  @user_health.all.each do |health_record| %>
+            <%  @user_health.all.order(created_at: :desc).each do |health_record| %>
              <tr>
                <td>
                   <%= image_tag(health_record.record_image, class: "img-center",  width:"100") %>
@@ -36,8 +36,17 @@
                  <%= health_record.record_name%>
                </td>
                <td>
-                 <%= link_to 'DOWNLOAD', health_record.file.url, class: "btn btn-success " %>
+                 <% if health_record.review.nil? %>
+                    <i> Pending Review .. </i>
+
+                  <% else %>
+                  <b><%= health_record.review%></b>
+
+                  <% end %>
                </td>
+               <!-- <td>
+                 <%#= link_to 'DOWNLOAD', health_record.file.url, class: "btn btn-success " %>
+               </td> -->
                 <td>
                   <%= link_to 'OPEN', health_record.file.url, :target => '_blank', class: "btn btn-success" %>
                 </td>

@@ -41,6 +41,7 @@ gem 'carrierwave'
 gem "rmagick"
  gem 'fog'
  gem "figaro"
+ gem "jquery-fileupload-rails"
 
  # gem 'carrierwave_direct'
  # gem 'sidekiq'
