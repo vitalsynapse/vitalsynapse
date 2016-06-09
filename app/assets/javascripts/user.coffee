@@ -4,6 +4,7 @@
 #= require jquery
 #= require jquery.turbolinks
 #= require jquery_ujs
+#= require jquery-fileupload/basic
 #= require bootstrap/dropdown
 #= require turbolinks
 #= require dashboard/custom
