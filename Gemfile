@@ -35,6 +35,10 @@ gem 'mail'
 gem 'bootstrap_form'
 gem "nested_form"
 gem 'rails_admin'
+gem "chartkick"
+gem 'groupdate'
+
+
 
 #photo uploader
 gem 'carrierwave'
