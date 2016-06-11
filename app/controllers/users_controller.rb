@@ -42,7 +42,8 @@ class UsersController < ApplicationController
     @user = current_user
     @user_health = Health.where(user_id: @user.id)
     @user_bmi = Bmi.where(user_id: @user.id).last
-    @user_blood = ClinicalBloodRecord.where(user_id: @user.id).last
+    @blood_records = ClinicalBloodRecord.where(user_id: @user.id)
+    @user_blood = @blood_records.last
     @blood_pressure = Pressure.where(user_id: @user.id).last
     @pulse = Pulse.where(user_id: @user.id).last
     @lungs = LungRate.where(user_id: @user.id).last

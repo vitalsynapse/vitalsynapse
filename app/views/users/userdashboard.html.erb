@@ -1,4 +1,3 @@
-
 <div class="container">
     <div class="row animated bounceInLeft">
         <br>
@@ -114,40 +113,42 @@
           <div class="legend center">
               <div class="row">
                 <%#= link_to "Upload Medical Record", class:"btn btn-primary health-btn" %>
-                <button class="btn btn-primary health-btn">UPLOAD MEDICAL RECORD</button>
+                <%= link_to 'UPLOAD MEDICAL RECORD'.html_safe, health_upload_path(@user), class:"btn btn-primary" %>
 
-                <div class="upload_form">
+                <!-- <button class="btn btn-primary health-btn">UPLOAD MEDICAL RECORD</button> -->
+
+                <!-- <div class="upload_form">
                     <div class="row">
                       <div class="container">
-                      <%= form_for Health.new,class:"form-control", html: { multiple: true }, remote: true do |f|%>
-                          <%= f.hidden_field :user_id, value: @user.id %>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
+                      <%#= form_for Health.new,class:"form-control", html: { multiple: true }, remote: true do |f|%>
+                          <%#= f.hidden_field :user_id, value: @user.id %>
+                        <!-- <div class="col-xs-6 col-sm-6 col-md-6">
                           STEP 1: SELECT RECORD CATEGORY
-                          <%= f.select :record_category_id, RecordCategory.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}, class:"form-control", required: true %>
+                          <%#= f.select :record_category_id, RecordCategory.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}, class:"form-control", required: true %>
 
-                        </div>
-                        <div class="col-xs-6 col-sm-6 col-md-6">
-                          STEP 2: SELECT FILE/FILES
-                          <%= f.file_field :file,class:"form-control", multiple: true, name:  "health[file]", required: true%>
-                        </div>
+                        </div> -->
+                        <!-- <div class="col-xs-12 col-sm-12 col-md-12">
+                          STEP 1: SELECT FILE/FILES -->
+                          <%#= f.file_field :file,class:"form-control", multiple: true, name:  "health[file]", required: true%>
+                        <!-- </div> -->
                         <!-- <div class="col-xs-4 col-sm-4 col-md-4">
                           <%#= f.submit "SUBMIT", class: "btn btn-danger  btn-block"%>
                        </div> -->
-                     <% end %>
-                   </div>
+                     <%# end %>
+                   <!-- </div>
                    </div>
                    <div id="progress">
-                     STEP 3: PROGRESS
+                     STEP 2: PROGRESS
                       <div class="bar" style="width: 0%;"></div>
                   </div>
                   <div class="check_uploads">
-                    STEP 4: CHECK RECORDS<br>
-                    <%= link_to "VIEW", health_record_path(@user), class: "btn btn-danger"%><br>
-                    or <br>
+                    STEP 3: CHECK RECORDS<br> -->
+                    <!-- <%#= link_to "VIEW", health_record_path(@user), class: "btn btn-danger"%><br> -->
+                    <!-- or <br>
 
                     <button class="btn btn-default close-btn">  CLOSE</button>
 
-                  </div>
+                  </div> -->
                   <!-- <script src="js/vendor/jquery.ui.widget.js"></script>
                   <script src="js/jquery.iframe-transport.js"></script>
                   <script src="js/jquery.fileupload.js"></script> -->
@@ -161,12 +162,12 @@
         <!-- CARDIOVASCULAR -->
 
 
-          <div class="row">
+          <!-- <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-12">
                   <div class="well well-lg rounded">
                       <div class="row">
                           <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
-                              <%= image_tag("cardiovascular.png", class: "img-center", height: "100", width:"100") %>
+                              <%#= image_tag("cardiovascular.png", class: "img-center", height: "100", width:"100") %>
 
                               <span>Cardiovascular</span><br>
                               <br>
@@ -182,18 +183,18 @@
 
 
                                           <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <% if @blood_pressure.present? %>
-                                              <% if @blood_pressure.sbp < 100 || @blood_pressure.sbp > 140 || @blood_pressure.dpb > 90 || @blood_pressure.dpb < 60 %>
+                                            <%# if @blood_pressure.present? %>
+                                              <%# if @blood_pressure.sbp < 100 || @blood_pressure.sbp > 140 || @blood_pressure.dpb > 90 || @blood_pressure.dpb < 60 %>
                                                   <span class=
-                                                "label label-danger value"><sup><%=@blood_pressure.sbp.to_f.ceil%></sup>/<sub><%=@blood_pressure.dpb.to_f.ceil%></sub></span>
+                                                "label label-danger value"><sup><%#=@blood_pressure.sbp.to_f.ceil%></sup>/<sub><%#=@blood_pressure.dpb.to_f.ceil%></sub></span>
                                                 <% else %>
                                                   <span class=
-                                                "label label-success value"><sup><%=@blood_pressure.sbp.to_f.ceil%></sup>/<sub><%=@blood_pressure.dpb.to_f.ceil%></sub></span>
+                                                "label label-success value"><sup><%#=@blood_pressure.sbp.to_f.ceil%></sup>/<sub><%#=@blood_pressure.dpb.to_f.ceil%></sub></span>
 
-                                                <% end %>
-                                              <% else %>
+                                                <%# end %>
+                                              <%# else %>
                                                 <span class="label label-danger value">0</span>
-                                            <% end %>
+                                            <%# end %>
                                               <span class="measurement">mmHg (100-140 / 60-90)</span>
 
                                           </div>
@@ -212,18 +213,18 @@
 
 
                                           <div class="col-xs-6 col-sm-6 col-md-6">
-                                            <% if @pulse.present? %>
-                                              <% if @pulse.measurement.present? %>
-                                                  <% if @pulse.measurement > 100 || @pulse.measurement < 60 %>
-                                                    <span class="label label-danger value"><%= @pulse.measurement %></span>
-                                                  <% else %>
-                                                    <span class="label label-success value"><%= @pulse.measurement %></span>
-                                                  <% end %>
+                                            <%# if @pulse.present? %>
+                                              <%# if @pulse.measurement.present? %>
+                                                  <%# if @pulse.measurement > 100 || @pulse.measurement < 60 %>
+                                                    <span class="label label-danger value"><%#= @pulse.measurement %></span>
+                                                  <%# else %>
+                                                    <span class="label label-success value"><%#= @pulse.measurement %></span>
+                                                  <%# end %>
 
-                                                <% end %>
-                                                <% else %>
+                                                <%# end %>
+                                                <%# else %>
                                                 <span class="label label-danger value">0</span>
-                                              <% end %>
+                                              <%# end %>
                                               <span class="measurement">Beats per minute (60-100)</span>
                                           </div>
                                       </div>
@@ -231,26 +232,38 @@
                                   </div>
                               </div>
                           </div>
-                      </div>
+
+
+                          <!-- <div class="col-xs-12 col-sm-5 col-md-5">
+                              <div class="row">
+                                  <div class="col-xs-12 col-sm-12 col-md-12">
+                                      <div class="graph" style="height: 250px" > -->
+                                        <%#= content_tag :div, id: "orders_chart", data: {user_health: @user_health }%>
+                                        <!-- <img alt="" class="img-responsive" src="http://placehold.it/200x200"> -->
+                                      <!-- </div>
+                                  </div>
+                              </div>
+                          </div> -->
+                      <!-- </div>
                   </div>
               </div>
-          </div>
+          </div> -->
         <!-- end CARDIOVASCULAR -->
 
 
 
         <!-- RESPIRATORY -->
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
                 <div class="well well-lg rounded">
                     <div class="row">
-                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding">
-                              <%= image_tag("respiratory.png", class: "iimg-center", height: "100", width:"100") %>
-                            <span>Respiratory</span><br>
+                        <div class="col-xs-12 col-sm-2 col-md-2 domain padding"> -->
+                              <%#= image_tag("respiratory.png", class: "iimg-center", height: "100", width:"100") %>
+                            <!-- <span>Respiratory</span><br>
                             <br>
-                        </div>
+                        </div> -->
 
-
+<!--
                         <div class="col-xs-12 col-sm-5 col-md-5 mid">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
@@ -259,18 +272,18 @@
                                             <span class="item">Respiratory Rate</span>
                                         </div>
                                         <div class="col-xs-6 col-sm-6 col-md-6">
-                                          <% if @lungs != nil %>
-                                            <% if @lungs.rate < 12 || @lungs.rate > 16 %>
+                                          <%# if @lungs != nil %>
+                                            <%# if @lungs.rate < 12 || @lungs.rate > 16 %>
                                             <span class=
-                                            "label label-danger value"><%= @lungs.rate %></span>
-                                            <% else %>
+                                            "label label-danger value"><%#= @lungs.rate %></span>
+                                            <% #else %>
                                             <span class=
-                                            "label label-success value"><%= @lungs.rate %></span>
+                                            "label label-success value"><%#= @lungs.rate %></span>
 
-                                            <% end %>
-                                            <% else %>
+                                            <%# end %>
+                                            <%# else %>
                                             <span class="label label-danger value">0</span>
-                                            <% end %>
+                                            <%# end %>
                                             <span class="measurement">Breaths per minute (12 - 16)</span>
                                         </div>
                                     </div>
@@ -280,19 +293,19 @@
                         </div>
 
 
-                        <!-- <div class="col-xs-12 col-sm-5 col-md-5">
+                        <div class="col-xs-12 col-sm-5 col-md-5">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="graph"><img alt="" class="img-responsive" src=
-                                    "http://placehold.it/200x200">
-                                    </div>
+                                    <div class="graph" >
+                                      <!-- <img alt="" class="img-responsive" src="http://placehold.it/200x200"> -->
+                                    <!-- </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
         <!-- end RESPIRATORY -->
         <!-- BLOOD -->
 
@@ -346,15 +359,19 @@
                         </div>
 
 
-                        <!-- <div class="col-xs-12 col-sm-5 col-md-4">
+                        <div class="col-xs-12 col-sm-5 col-md-4">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
-                                    <div class="graph"><img alt="" class="img-responsive" src=
-                                    "http://placehold.it/200x200">
+                                    <div class="graph">
+                                      <% @blood_records %>
+                                        <!-- <%#= content_tag :div, id: "orders_chart", data: {user_health: @user_health }%> -->
+                                      <%#= content_tag :div, "",id: "blood-graph" , data: {blood: blood}%>
+                                      	 <!-- <%#= content_tag :div, "", id: "p-active", data: {active: active_users} %> -->
+
                                     </div>
                                 </div>
                             </div>
-                        </div> -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1685,26 +1702,63 @@
 
 
 <script>
-$(".upload_form").hide();
+// $(".upload_form").hide();
+//
+// $(".health-btn").click(function(){
+//   $(".health-btn").hide();
+//   $(".upload_form").show();
+// });
+//
+// $(".close-btn").click(function(){
+//   $(".health-btn").show();
+//   $(".upload_form").hide();
+// });
+//
+// $("#new_health").fileupload({
+//   progressall: function (e, data) {
+//         var progress = parseInt(data.loaded / data.total * 100, 10);
+//         $('#progress .bar').css(
+//             'width',
+//             progress + '%'
+//         );
+//     }
+// });
 
-$(".health-btn").click(function(){
-  $(".health-btn").hide();
-  $(".upload_form").show();
-});
 
-$(".close-btn").click(function(){
-  $(".health-btn").show();
-  $(".upload_form").hide();
-});
 
-$("#new_health").fileupload({
-  progressall: function (e, data) {
-        var progress = parseInt(data.loaded / data.total * 100, 10);
-        $('#progress .bar').css(
-            'width',
-            progress + '%'
-        );
-    }
+//  Morris.Line({
+//   element: 'blood-graph',
+//   data: $('#haemoglobin_chart').data('haemoglobin_value')
+// });
+// Morris.Line({
+//  element: 'blood-graph',
+//  data: $('#blood-graph').data('blood');
+//  xkey:
+//
+// });
+// <%#= content_tag :div, "",id: "blood-graph" , data: {blood: blood}%>
+
+console.log("hello")
+
+Morris.Line({
+  // ID of the element in which to draw the chart.
+  element: 'blood-graph',
+  // Chart data records -- each entry in this array corresponds to a point on
+  // the chart.
+  // data: $('#haemoglobin_chart').data('haemoglobin_value'),
+
+     data: $('#blood-graph').data('blood'),
+    // data: [
+    //   { year: '2008', value: 20 },
+    //   { year: '2009', value: 10 },
+    // ],
+    // The name of the data record attribute that contains x-values.
+    xkey: 'report_date',
+    // A list of names of data record attributes that contain y-values.
+    ykeys: ['haemoglobin'],
+    // Labels for the ykeys -- will be displayed when you hover over the
+    // chart.
+    labels: ['Value']
 });
 
 </script>

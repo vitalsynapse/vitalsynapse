@@ -14,7 +14,7 @@
       <li>
           <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
         <%# if current_user.has_answered_quiz?  %>
-          <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
+          <%= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, health_upload_path(@user) %>
         <%# elsif current_user.pdpa == nil || false %>
           <%#= link_to '<i class="fa fa-upload"></i> Health Upload'.html_safe, pdpa_path(@user) %>
         <%# else %>
@@ -53,14 +53,15 @@
           <li>
             <%= link_to 'Update Password', edit_user_registration_path(@user)%>
           </li>
+          <li>
+            <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+          </li>
 
         </ul>
       </li>
+
       <li>
-        <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
-      </li>
-      <li>
-        <a href="mailto:admin@vitalsynapse.com?Subject=Enquiries" target="_top">Contact Us</a>
+        <a href="mailto:admin@vitalsynapse.com?Subject=Enquiries" target="_top">About Us</a>
       </li>
     </ul>
     <% end %>

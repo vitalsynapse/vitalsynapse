@@ -16,7 +16,7 @@
                       <td>   </td>
                       <td> Date </td>
                       <td> Name </td>
-                      <td> Doctors Review </td>
+                      <td> Review </td>
                       <td> View </td>
                     </tr>
                   </thead>
@@ -36,7 +36,7 @@
                        </td>
                        <td>
                          <% if health_record.review.nil? %>
-                            <i> Pending Review .. </i>
+                            <i> Pending Review . </i>
 
                           <% else %>
                           <b><%= health_record.review%></b>
