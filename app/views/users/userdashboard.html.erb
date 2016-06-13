@@ -482,6 +482,10 @@
                         <div class="col-xs-12 col-sm-5 col-md-5">
                             <div class="row">
                                 <div class="col-xs-12 col-sm-12 col-md-12">
+                                  <!-- <button type="button" class="btn btn-default btn-xs" id="rbs-btn">RBS</button>
+                                  <button type="button" class="btn btn-default btn-xs" id="fbs-btn">FBS</button>
+                                  <button type="button" class="btn btn-default btn-xs" id="hb-btn">HbA1C</button> -->
+
                                   <%  if @blood_records.pluck(:hba1c).compact.count > 1 %>
                                     <h6> HBA1C </h6>
                                     <%= line_chart hba1c %>

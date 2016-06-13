@@ -13,10 +13,20 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script> -->
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="//fast.appcues.com/appcues.min.css">
+
 
 </head>
 
 <body>
+  <script src="//fast.appcues.com/18522.js"></script>
+  <script>
+    Appcues.identify('<%= current_user.id %>', {
+        email: '<%= current_user.email %>',
+        name: '<%= current_user.full_name %>',
+        // Additional user properties
+    });
+</script>
 
   <!-- Navigation -->
   <%= render 'pages/theme/menu' %>
