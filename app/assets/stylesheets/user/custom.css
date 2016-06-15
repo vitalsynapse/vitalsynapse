@@ -779,3 +779,19 @@ article.media {
     width: 50px;
     background: green;
 }
+
+.healthrecord {
+  padding: 40px;
+}
+
+.health-buttons {
+  /*padding-top: 100px*/
+}
+
+.add_nested_fields {
+  margin-top: 10px;
+}
+
+.health-submit{
+  margin-top: 10px;
+}

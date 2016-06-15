@@ -4,52 +4,43 @@
   <div class="upload_form">
       <div class="row">
         <div class="container">
-        <%= form_for Health.new,class:"form-control", html: { multiple: true }, remote: true do |f|%>
-            <%= f.hidden_field :user_id, value: @user.id %>
-          <!-- <div class="col-xs-6 col-sm-6 col-md-6">
-            STEP 1: SELECT RECORD CATEGORY
-            <%#= f.select :record_category_id, RecordCategory.all.collect {|p| [ p.name, p.id ] }, {include_blank: 'None'}, class:"form-control", required: true %>
+          <%= nested_form_for @user, remote: true  do |f| %>
+              <div class="healthrecord" style="padding-bottom:20px">
+                <%= f.fields_for :healths, remote: true do |task_form| %> <br>
+                   <%#= task_form.hidden_field :record_category_id, value: 1 %>
 
-          </div> -->
-          <div class="col-xs-12 col-sm-12 col-md-12">
 
-            STEP 1: SELECT FILE/FILES
-            <br>
-            <br>
-            <%= f.file_field :file,class:"form-control", multiple: true, name:  "health[file]", required: true%>
-          </div>
-          <!-- <div class="col-xs-4 col-sm-4 col-md-4">
-            <%#= f.submit "SUBMIT", class: "btn btn-danger  btn-block"%>
-         </div> -->
-       <% end %>
-     </div>
-     </div>
-     <div id="progress">
-       <br>
-       <br>
-       <br>
-       STEP 2: PROGRESS
-       <br>
-        <div class="bar" style="width: 0%;"></div>
-        <br>
-        <br>
-    </div>
-    <div class="check_uploads">
-      STEP 3: CHECK RECORDS<br>
-      <br>
-      <%= link_to "VIEW", health_record_path(@user), class: "btn btn-danger btn-block"%><br>
-      <!-- <center>
-        OR <br>
-      <center> -->
+                  <div class="col-xs-6 col-sm-6 col-md-6">
+                   <%= task_form.file_field :file, class:"form-control "%>
+                 </div>
+                <div class="col-xs-6 col-sm-6 col-md-6">
+                    <%= task_form.link_to_remove "Remove this record", class: "btn btn-danger btn-large"%> <br>
+                </div>
 
-    </div>
+                <% end %>
+              </div>
+              <div class="health-buttons">
+                  <%= f.link_to_add "Add Record", :healths, class: "btn btn-default btn-file"%>
+                  <%= f.submit "submit", class: "btn btn-warning health-submit", id: "submit-button" %>
+            </div>
+            <% end %>
 
-  </div>
+        </div>
+
+      </div>
   </div>
 
 </div>
 
 <script>
+
+
+$(".btn-warning").hide();
+$(".healthrecord").hide();
+$(".btn-file").click(function(){
+    $(".btn-warning").show();
+});
+
 $("#new_health").fileupload({
   progressall: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);

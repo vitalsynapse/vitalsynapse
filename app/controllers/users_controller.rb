@@ -104,7 +104,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       if @user.update!(user_params)
           if params[:user][:healths_attributes]
-            format.html { redirect_to health_upload_path(@user), notice: 'Record was successfully uploaded.' }
+            format.html { redirect_to health_record_path(@user), notice: 'Record was successfully uploaded.' }
             format.json { render :show, status: :ok, location: @user }
           elsif params[:user][:glucoses_attributes] || params[:user][:pressures_attributes] || params[:user][:clinic_records_attributes] || params[:user][:pulses_attributes] || params[:user][:lung_rates_attributes] || params[:user][:bmis_attributes]
             format.html { redirect_to daily_update_path(@user), notice: 'Record was successfully updated.' }
