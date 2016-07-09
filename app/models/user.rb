@@ -15,6 +15,7 @@ class User < ActiveRecord::Base
   has_many :clinical_blood_records
   has_many :pulses
   has_many :lung_rates
+  belongs_to :company
 
   # accepts_nested_attributes_for :healths, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :glucoses, :reject_if => :all_blank, :allow_destroy => true

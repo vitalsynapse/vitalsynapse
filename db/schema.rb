@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160609024441) do
+ActiveRecord::Schema.define(version: 20160709104210) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -293,6 +293,35 @@ ActiveRecord::Schema.define(version: 20160609024441) do
 
   add_index "clinical_blood_records", ["user_id"], name: "index_clinical_blood_records_on_user_id", using: :btree
 
+  create_table "companies", force: :cascade do |t|
+    t.string   "email",                  default: "",    null: false
+    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,     null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.inet     "current_sign_in_ip"
+    t.inet     "last_sign_in_ip"
+    t.string   "company_name"
+    t.text     "address"
+    t.string   "registration_number"
+    t.string   "office_phone"
+    t.string   "contact_person"
+    t.string   "handphone"
+    t.datetime "contract_start"
+    t.datetime "contract_end"
+    t.integer  "number_of_employee"
+    t.boolean  "payment_status",         default: false
+    t.float    "contract_amount"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+  end
+
+  add_index "companies", ["email"], name: "index_companies_on_email", unique: true, using: :btree
+  add_index "companies", ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true, using: :btree
+
   create_table "ctscans", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -513,8 +542,10 @@ ActiveRecord::Schema.define(version: 20160609024441) do
     t.boolean  "pdpa"
     t.string   "user_blood"
     t.string   "blood_group"
+    t.integer  "company_id"
   end
 
+  add_index "users", ["company_id"], name: "index_users_on_company_id", using: :btree
   add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
@@ -556,5 +587,6 @@ ActiveRecord::Schema.define(version: 20160609024441) do
   add_foreign_key "survey_records", "users"
   add_foreign_key "ultrasounds", "users"
   add_foreign_key "urines", "users"
+  add_foreign_key "users", "companies"
   add_foreign_key "xrays", "users"
 end
