@@ -1,12 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <!-- Meta, title, CSS, favicons, etc. -->
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Twitter Card data -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Modernising Healthcare With Artificial Intelligence">
+    <meta name="twitter:description" content="VitalSynapse is an Artificial Intelligent Personal Health Account. We track, inform, & update your health status. Start investing in your own health today.">
+    <meta name="twitter:creator" content="@VitalSynapse">
+    <meta name="twitter:image" content="http://www.landing.vitalsynapse.com/img/vsfbpreview.jpg">
+    
+    <!-- Open Graph data -->
+    <meta property="og:title" content="Modernising Healthcare With Artificial Intelligence"/>
+    <meta property="og:image" content="http://www.landing.vitalsynapse.com/img/vsfbpreview.jpg"/>
+    <meta property="og:description" content="VitalSynapse is an Artificial Intelligent Personal Health Account. We track, inform, & update your health status. Start investing in your own health today." />
 
-  <title>VitalSynapse - Modernising Your Healthcare</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>VitalSynapse - Modernising Your Healthcare</title><%= favicon_link_tag 'favicon.ico' %>
+
 
   <!-- Bootstrap core CSS  + font awesome -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
@@ -34,17 +48,15 @@
 
 <% end %>
   <!-- Navigation -->
-  <%= render 'pages/theme/menu' %>
+<%= render 'pages/theme/menu' %>
+
+
+<%#= yield :top_content %>
+
+<%= yield %>
 
 
 
-
-<%= yield :top_content %>
-
-<div class="container">
-    <h1><%= yield :header %></h1>
-  <%= yield %>
-</div>
 <!-- Footer -->
 <%= render 'pages/theme/footer' %>
 <script type="text/javascript">

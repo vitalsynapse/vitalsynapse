@@ -18,7 +18,7 @@
 #   username: root
 #   password: chandima9
 #   host: localhost
-  # socket: /var/run/mysqld/mysqld.sock
+#   socket: /var/run/mysqld/mysqld.sock
 
 
   # socket: /var/run/mysqld/mysqld.sock
