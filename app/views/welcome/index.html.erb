@@ -1,0 +1,106 @@
+<head>
+    <%= stylesheet_link_tag "welcome" %>
+</head>
+
+<body>
+    <!-- Intro Header -->
+    <header class="intro" style="padding: 250px 0;">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading">MODERNISING YOUR HEALTHCARE</h1>
+                        <!-- <p class="intro-text">VitalSynapse is an Artificial Intelligent Personal Health Account. We track, inform, & update your health status. Start investing in your own health today.</p> -->
+                        <br> 
+                        <button class="btn btn-default" id="myButton">GET STARTED NOW</button>
+                        <script type="text/javascript">
+    				        document.getElementById("myButton").onclick = function () {
+        			             location.href = "#";
+    				            };
+			            </script>
+                        <br>
+                        <!--- <a href="#about" class="btn btn-circle page-scroll"><i class="fa fa-angle-double-down animated"></i></a> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>ABOUT VITALSYNAPSE</h2>
+                <p>We believe if everyone has access to personalised health account, the health system will be more efficient and you will be healthier.</p>
+
+                <p>Our advanced AI (Artificial Intelligence) ensures all information is personalised according to your unique profile. Age, gender, location & even blood profiles. They all contribute to recommending information that is specific to you and what you need. Anywhere in the world, whatever the time of day, you can get high quality health information delivered to your phone via your personalised health account.</p>
+
+                <p>At VitalSynapse, we also believe that having amazing technology only solves half the equation, equally important is how we utilise this technology to keep you healthier.</p>
+                <br>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel -->
+ 
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <!-- <li data-target="#myCarousel" data-slide-to="1"></li> -->
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <div class="fill"><%= image_tag("slide1.png", class: "img-responsive") %></div>
+                <div class="carousel-caption">
+                </div>
+            </div>
+            <!-- <div class="item">
+                <div class="fill" style="background-image:url('img/sd2.png');"></div>
+            </div> -->
+            <div class="item">
+                <div class="fill"><%= image_tag("slide3.png", class: "img-responsive") %></div>
+            </div>
+            <div class="item">
+                <div class="fill"><%= image_tag("slide4.png", class: "img-responsive") %></div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+            <span class="icon-prev"></span>
+        </a>
+        <a class="right carousel-control" href="#myCarousel" data-slide="next">
+            <span class="icon-next"></span>
+        </a>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <h2>CONTACT</h2>
+                <p></p>
+                <p><span class="glyphicon glyphicon-phone"></span>+6 012 342 1342</p>
+                <p><span class="glyphicon glyphicon-envelope"></span>admin@vitalsynapse.com</p>
+            </div>
+        </div>
+    </section>
+
+</body>
+
+<!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.mobile.custom.min.js"></script> 
+
+    <%= javascript_include_tag "welcome", "data-turbolinks-track" => true %>

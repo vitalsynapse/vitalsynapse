@@ -1,7 +1,4 @@
 module ApplicationHelper
-	def header(text)  #added helper method to provide the header
-		content_for(:header) { text.to_s }
-	end
 
 	def blood
 		blood = @blood_records.where(user_id: @user.id ).pluck(:haemoglobin)

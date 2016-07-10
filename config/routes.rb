@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  root :to => redirect("/users/sign_in")
+  root 'welcome#index'
+  # get 'welcome/index'
+
+  # root :to => redirect("/users/sign_in")
 
   resources :healths
   devise_for :admins
