@@ -7,7 +7,7 @@
     <meta name="twitter:description" content="VitalSynapse is an Artificial Intelligent Personal Health Account. We track, inform, & update your health status. Start investing in your own health today.">
     <meta name="twitter:creator" content="@VitalSynapse">
     <meta name="twitter:image" content="http://www.landing.vitalsynapse.com/img/vsfbpreview.jpg">
-    
+
     <!-- Open Graph data -->
     <meta property="og:title" content="Modernising Healthcare With Artificial Intelligence"/>
     <meta property="og:image" content="http://www.landing.vitalsynapse.com/img/vsfbpreview.jpg"/>
@@ -35,18 +35,7 @@
 </head>
 
 <body>
-  <script src="//fast.appcues.com/18522.js"></script>
-  <% if user_signed_in? %>
 
-  <script>
-    Appcues.identify('<%= current_user.id %>', {
-        email: '<%= current_user.email %>',
-        name: '<%= current_user.full_name %>',
-        // Additional user properties
-    });
-  </script>
-
-<% end %>
   <!-- Navigation -->
 <%= render 'pages/theme/menu' %>
 
